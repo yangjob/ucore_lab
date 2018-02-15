@@ -29,7 +29,7 @@ main(int argc, char *argv[]) {
     }
     fclose(ifp);
     buf[510] = 0x55;
-    buf[511] = 0xAA;
+    buf[511] = 0xAA; //自此，合法的主引导记录构建完成，下一步向<output filename>中写入
     FILE *ofp = fopen(argv[2], "wb+");
     size = fwrite(buf, 1, 512, ofp);
     if (size != 512) {
