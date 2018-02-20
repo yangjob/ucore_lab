@@ -381,7 +381,7 @@ get_pte(pde_t *pgdir, uintptr_t la, bool create) {
     return NULL;          // (8) return page table entry
 #endif
     pde_t *pdep = &pgdir[PDX(la)];              //由PDX(la)找到pdt的index，从而得知该线性地址的二级页表的起始地址pde
-    if(!(*pdep & PTE_P))                        //若入口不存在页表
+    if(!(*pdep & PTE_P))                        //驻留位，若该页不在内存中，则创建页 
     {
             struct Page *p;                     //创建页表p
             if(!create || (p = alloc_page()) == NULL)
