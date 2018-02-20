@@ -305,5 +305,37 @@ print_stackframe(void) {
       *           NOTICE: the calling funciton's return addr eip  = ss:[ebp+4]
       *                   the calling funciton's ebp = ss:[ebp]
       */
+      /*栈的基本模型
+      低地址：参数n        
+              参数n-1
+              ……
+              参数1
+              eip           保存返回本次调用后下一次指令的地址
+              ebp           保存调用者的ebp，然后ebp指向此时的栈顶
+              临时变量1
+              临时变量n
+              ……
+      高地址:
+      */
+
+      uint32_t ebp = read_ebp(); //ebp为当前栈存放ebp的地址
+      uint32_t eip = read_eip(); //eip为当前栈存放eip的地址
+      int i, j;
+
+      for(i = 0; ebp != 0 && i < STACKFRAME_DEPTH; i++)
+      {
+              cprintf("ebp : 0x%08x, eip : 0x%08x  args:", ebp, eip);
+
+              uint32_t *args = (uint32_t *)ebp + 2; 
+              for(j = 0; j < 4; j++)
+                      cprintf("0x%08x ", args[j]);
+
+              print_debuginfo(eip - 1);
+
+              eip = ((uint32_t *)ebp)[1]; //取出存在栈中的地址，ebp[1]指向返回本次调用后的下一条指令
+              ebp = ((uint32_t *)ebp)[0]; //取出存在栈中的地址，ebp[0]指向其调用者函数的ebp
+
+      }
+
 }
 

@@ -70,14 +70,16 @@ default_init_memmap(struct Page *base, size_t n) {
     assert(n > 0);
     struct Page *p = base;
     for (; p != base + n; p ++) {
-        assert(PageReserved(p));
-        p->flags = p->property = 0;
+        assert(PageReserved(p));    //测试page->flags的PG_reserved是否为1（即是否为unusable），不是即报错
+        p->flags = 0;               //将flags置0，将PG_reserved改为0，变为usable
+        SetPageProperty(p);         //使page->property valid,从而设置其值
+        p->property = 0;
         set_page_ref(p, 0);
+        list_add_before(&free_list, &(p->page_link));
     }
-    base->property = n;
-    SetPageProperty(base);
     nr_free += n;
-    list_add(&free_list, &(base->page_link));
+    //第一个块
+    base->property = n;
 }
 
 static struct Page *
@@ -86,57 +88,95 @@ default_alloc_pages(size_t n) {
     if (n > nr_free) {
         return NULL;
     }
-    struct Page *page = NULL;
+
     list_entry_t *le = &free_list;
-    while ((le = list_next(le)) != &free_list) {
+
+    while ((le = list_next(le)) != &free_list) 
+    {
         struct Page *p = le2page(le, page_link);
-        if (p->property >= n) {
-            page = p;
-            break;
+        if (p->property >= n) 
+        {
+            int i;
+            list_entry_t *len;
+            for(i = 0; i < n; i ++)
+            {
+                len = list_next(le);
+                struct Page *pp = le2page(le, page_link);
+                SetPageReserved(pp);
+                ClearPageProperty(pp);
+                list_del(le);   //从free_list中删除le
+                le = len;
+            }
+
+            if(p->property > n)
+                (le2page(le,page_link))->property = p->property - n;
+
+            ClearPageProperty(p);
+            SetPageReserved(p);
+            nr_free -= n;
+
+            return p;   //返回分配内存的首地址
         }
     }
-    if (page != NULL) {
-        list_del(&(page->page_link));
-        if (page->property > n) {
-            struct Page *p = page + n;
-            p->property = page->property - n;
-            list_add(&free_list, &(p->page_link));
-    }
-        nr_free -= n;
-        ClearPageProperty(page);
-    }
-    return page;
+    return NULL;    //没有找到比n大的块
 }
 
 static void
 default_free_pages(struct Page *base, size_t n) {
     assert(n > 0);
-    struct Page *p = base;
-    for (; p != base + n; p ++) {
-        assert(!PageReserved(p) && !PageProperty(p));
-        p->flags = 0;
-        set_page_ref(p, 0);
+    assert(PageReserved(base));
+
+    list_entry_t *le = &free_list;
+    struct Page *p;
+    while((le = list_next(le)) != &free_list)
+    {
+            p = le2page(le, page_link);
+            if(p > base)
+                    break;  //找到回收位置
     }
-    base->property = n;
+
+    //插入
+    for(p = base; p < base + n; p ++)
+    {
+            list_add_before(le, &(p->page_link));
+    }
+
+    //重置pages,flags和refs
+    base->flags = 0;
+    set_page_ref(base, 0);
+    ClearPageProperty(base);
     SetPageProperty(base);
-    list_entry_t *le = list_next(&free_list);
-    while (le != &free_list) {
-        p = le2page(le, page_link);
-        le = list_next(le);
-        if (base + base->property == p) {
+    base->property = n;
+    
+    //测试是否可与高位合并
+    p = le2page(le, page_link);
+    if((base + n) == p)     //可合并
+    {
             base->property += p->property;
-            ClearPageProperty(p);
-            list_del(&(p->page_link));
-        }
-        else if (p + p->property == base) {
-            p->property += base->property;
-            ClearPageProperty(base);
-            base = p;
-            list_del(&(p->page_link));
-        }
+            p->property = 0;
     }
+
+    //测试是否可与低位合并
+    le = list_prev((&(base->page_link)));
+    p = le2page(le, page_link);
+    if(le != &free_list && p == base - 1)
+    {
+            while(le != &free_list)
+            {
+                    if(p->property)     //可合并
+                    {
+                            p->property += base->property;
+                            base->property = 0;
+                            break;
+                    }
+            le = list_prev(le);
+            p = le2page(le, page_link);
+            }
+    }
+
     nr_free += n;
-    list_add(&free_list, &(base->page_link));
+    return ;
+
 }
 
 static size_t
