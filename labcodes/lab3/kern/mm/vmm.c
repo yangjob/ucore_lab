@@ -396,7 +396,37 @@ do_pgfault(struct mm_struct *mm, uint32_t error_code, uintptr_t addr) {
         }
    }
 #endif
-   ret = 0;
+
+    //do lab3 exercise 1
+    if((ptep = get_pte(mm->pgdir, addr, 1)) == NULL ){      //找到pte，如果pte的页表不存在，则创建一个页表(第三个参数'1'表示create is true)，若创建失败则报错
+            cprintf("get_pte in do_pgfaults failed!\n");
+            goto failed;
+    }
+    if(*ptep == 0){           //如果物理地址不存在，那么分配一个物理页帧并且映射到逻辑地址
+            if(pgdir_alloc_page(mm->pgdir, addr, perm) == NULL){
+                    cprintf("pgdir_alloc_page in do_pgfault failed\n");
+                    goto failed;
+            }
+    }
+    else{                     //页面置换
+        if(swap_init_ok){
+            struct Page *page = NULL;
+            if((ret = swap_in(mm, addr, &page)) != 0){
+                cprintf("swap_in in do_pgfaults failed!\n");
+                goto failed;
+            }
+            page_insert(mm->pgdir, page, addr, perm);
+            swap_map_swappable(mm, addr, page, 1);
+            page->pra_vaddr = addr;
+        }
+        else{
+            cprintf("no swap_init_ok but ptep is %x, failed\n",*ptep);
+            goto failed;
+        }
+    }
+
+
+    ret = 0;
 failed:
     return ret;
 }
