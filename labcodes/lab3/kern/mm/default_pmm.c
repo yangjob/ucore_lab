@@ -70,18 +70,23 @@ default_init_memmap(struct Page *base, size_t n) {
     assert(n > 0);
     struct Page *p = base;
     for (; p != base + n; p ++) {
-        assert(PageReserved(p));    //测试page->flags的PG_reserved是否为1（即是否为unusable），不是即报错
-        p->flags = 0;               //将flags置0，将PG_reserved改为0，变为usable
+        assert(PageReserved(p));    //测试该位置是否被映射，若被映射则报错(reserved=0) 
+        p->flags = 0;               //将flags置0，将PG_reserved改为0，变为已映射状态
         SetPageProperty(p);         //使page->property valid,从而设置其值
         p->property = 0;
         set_page_ref(p, 0);
         list_add_before(&free_list, &(p->page_link));
-    }
+    }       
+    //仔细观察list_add_before函数可知，实际每次是插入free_list的前面即队列的末尾
+    //这波循环结束后，形成了一个环形链表，
+    //free_list->1->2->3->……->n->free_list;
+    //free_list<-1<-2<-……<-n-1<-n<-free_list;  
     nr_free += n;
-    //第一个块
     base->property = n;
 }
 
+
+//分配页表
 static struct Page *
 default_alloc_pages(size_t n) {
     assert(n > 0);
@@ -169,8 +174,8 @@ default_free_pages(struct Page *base, size_t n) {
                             base->property = 0;
                             break;
                     }
-            le = list_prev(le);
-            p = le2page(le, page_link);
+                    le = list_prev(le);
+                    p = le2page(le, page_link);
             }
     }
 
