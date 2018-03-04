@@ -402,22 +402,22 @@ do_pgfault(struct mm_struct *mm, uint32_t error_code, uintptr_t addr) {
             cprintf("get_pte in do_pgfaults failed!\n");
             goto failed;
     }
-    if(*ptep == 0){           //如果物理地址不存在，那么分配一个物理页帧并且映射到逻辑地址
+    if(*ptep == 0){           //如果物理地址不存在，那么分配一个物理页帧并且映射到地址addr
             if(pgdir_alloc_page(mm->pgdir, addr, perm) == NULL){
                     cprintf("pgdir_alloc_page in do_pgfault failed\n");
                     goto failed;
             }
     }
-    else{                     //页面置换
+    else{                     //该页在外存中，则从外存中换入并建立地址映射
         if(swap_init_ok){
             struct Page *page = NULL;
-            if((ret = swap_in(mm, addr, &page)) != 0){
+            if((ret = swap_in(mm, addr, &page)) != 0){          //把外存中的内容读到page里去
                 cprintf("swap_in in do_pgfaults failed!\n");
                 goto failed;
             }
-            page_insert(mm->pgdir, page, addr, perm);
-            swap_map_swappable(mm, addr, page, 1);
-            page->pra_vaddr = addr;
+            page_insert(mm->pgdir, page, addr, perm);           //page和addr建立映射
+            swap_map_swappable(mm, addr, page, 1);              //加入到置换队列中，使该page可被置换
+            page->pra_vaddr = addr;                             //记录页对应的虚拟地址
         }
         else{
             cprintf("no swap_init_ok but ptep is %x, failed\n",*ptep);

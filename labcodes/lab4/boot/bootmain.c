@@ -68,7 +68,7 @@ static void
 readseg(uintptr_t va, uint32_t count, uint32_t offset) {
     uintptr_t end_va = va + count;
 
-    // round down to sector boundary
+    // round down to sector boundary，防止过界，一个扇区一个扇区的读
     va -= offset % SECTSIZE;
 
     // translate from bytes to sectors; kernel starts at sector 1
@@ -104,6 +104,9 @@ bootmain(void) {
 
     // call the entry point from the ELF header
     // note: does not return
+    //void (*p)(void);p为函数指针，指向无参数、无返回值的函数
+    //故可用(void (*)(void))var，作强制类型转换，将var转换为无参数无返回值的函数指针类型
+    //函数指针可用于调用函数或作函数参数，通过var()调用函数，故可通过这种方法进入kernel
     ((void (*)(void))(ELFHDR->e_entry & 0xFFFFFF))();
 
 bad:
