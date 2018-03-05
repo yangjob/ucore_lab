@@ -102,6 +102,18 @@ alloc_proc(void) {
      *       uint32_t flags;                             // Process flag
      *       char name[PROC_NAME_LEN + 1];               // Process name
      */
+     proc->state = PROC_UNINIT;
+     proc->pid = -1;
+     proc->runs = 0;
+     proc->kstack = 0;
+     proc->need_resched = 0;
+     proc->parent = NULL;
+     proc->mm = NULL;
+     memset(&(proc->context), 0, sizeof(struct context));
+     proc->tf = NULL;
+     proc->cr3 = boot_cr3;
+     proc->flags = 0;
+     memset(proc->name, 0, PROC_NAME_LEN);
     }
     return proc;
 }
@@ -166,9 +178,9 @@ proc_run(struct proc_struct *proc) {
         local_intr_save(intr_flag);
         {
             current = proc;
-            load_esp0(next->kstack + KSTACKSIZE);
-            lcr3(next->cr3);
-            switch_to(&(prev->context), &(next->context));
+            load_esp0(next->kstack + KSTACKSIZE);               //切换栈
+            lcr3(next->cr3);                                    //切换页表（一级页表PD存储在cr3寄存器内）
+            switch_to(&(prev->context), &(next->context));      //切换上下文
         }
         local_intr_restore(intr_flag);
     }
@@ -296,6 +308,35 @@ do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf) {
     //    5. insert proc_struct into hash_list && proc_list
     //    6. call wakeup_proc to make the new child process RUNNABLE
     //    7. set ret vaule using child proc's pid
+    if((proc = alloc_proc()) == NULL){
+            panic("cannot alloc proc.\n");
+            goto fork_out;
+    }
+
+    proc->parent = current;         //设置fork的子进程的父进程为current进程
+
+    if(setup_kstack(proc) !=0)      //为子进程建立内核栈
+            goto bad_fork_cleanup_proc;
+
+    if(copy_mm(clone_flags, proc) != 0)     //为子进程设置内存管理信息，或分享，或复制
+            goto bad_fork_cleanup_kstack;
+
+    copy_thread(proc, stack, tf);           //复制原进程上下文到新进程
+
+    //把新进程添加到进程队列中
+    bool intr_flag;                 //用于同步，关中断，开中断
+    local_intr_save(intr_flag);
+    { 
+            proc->pid = get_pid();
+            hash_proc(proc);
+            list_add(&proc_list, &(proc->list_link));
+            nr_process ++;
+    }
+    local_intr_restore(intr_flag);
+
+    wakeup_proc(proc);
+    ret = proc->pid;
+
 fork_out:
     return ret;
 
@@ -320,7 +361,7 @@ static int
 init_main(void *arg) {
     cprintf("this initproc, pid = %d, name = \"%s\"\n", current->pid, get_proc_name(current));
     cprintf("To U: \"%s\".\n", (const char *)arg);
-    cprintf("To U: \"en.., Bye, Bye. :)\"\n");
+    cprintf("To U: \"Ok..., Bye, Bye^_^\"\n");
     return 0;
 }
 
@@ -348,7 +389,7 @@ proc_init(void) {
 
     current = idleproc;
 
-    int pid = kernel_thread(init_main, "Hello world!!", 0);
+    int pid = kernel_thread(init_main, "Hello world!This is ucore os!", 0);
     if (pid <= 0) {
         panic("create init_main failed.\n");
     }
