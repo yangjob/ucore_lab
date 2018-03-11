@@ -121,6 +121,8 @@ alloc_proc(void) {
      proc->cr3 = boot_cr3;
      proc->flags = 0;
      memset(proc->name, 0, PROC_NAME_LEN);
+     proc->wait_state = 0;
+     proc->cptr = proc->optr = proc->yptr = NULL;
     }
     return proc;
 }
@@ -407,11 +409,6 @@ do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf) {
     //    5. insert proc_struct into hash_list && proc_list
     //    6. call wakeup_proc to make the new child process RUNNABLE
     //    7. set ret vaule using child proc's pid
-    if((proc = alloc_proc()) == NULL){
-            panic("cannot alloc proc.\n");
-            goto fork_out;
-    }
-
 	//LAB5 YOUR CODE : (update LAB4 steps)
    /* Some Functions
     *    set_links:  set the relation links of process.  ALSO SEE: remove_links:  lean the relation links of process 
@@ -419,8 +416,11 @@ do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf) {
 	*    update step 1: set child proc's parent to current process, make sure current process's wait_state is 0
 	*    update step 5: insert proc_struct into hash_list && proc_list, set the relation links of process
     */
-	
+    if((proc = alloc_proc()) == NULL){
+            goto fork_out;
+    }
     proc->parent = current;         //设置fork的子进程的父进程为current进程
+    assert(current->wait_state == 0);       //LAB5更新，确保目前进程?
 
     if(setup_kstack(proc) !=0)      //为子进程建立内核栈
             goto bad_fork_cleanup_proc;
@@ -436,8 +436,9 @@ do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf) {
     { 
             proc->pid = get_pid();
             hash_proc(proc);
-            list_add(&proc_list, &(proc->list_link));
-            nr_process ++;
+            //list_add(&proc_list, &(proc->list_link));
+            //nr_process ++;                                //为什么要注释掉？？？
+            set_links(proc);        //LAB5更新，设置进程之间的联系
     }
     local_intr_restore(intr_flag);
 
@@ -479,7 +480,7 @@ do_exit(int error_code) {
     }
     current->state = PROC_ZOMBIE;
     current->exit_code = error_code;
-    
+
     bool intr_flag;
     struct proc_struct *proc;
     local_intr_save(intr_flag);
@@ -506,7 +507,7 @@ do_exit(int error_code) {
         }
     }
     local_intr_restore(intr_flag);
-    
+
     schedule();
     panic("do_exit will not return!! %d.\n", current->pid);
 }
@@ -642,6 +643,11 @@ load_icode(unsigned char *binary, size_t size) {
      *          tf_eip should be the entry point of this binary program (elf->e_entry)
      *          tf_eflags should be set to enable computer to produce Interrupt
      */
+    tf->tf_cs = USER_CS;
+    tf->tf_ds = tf->tf_es = tf->tf_ss = USER_DS;
+    tf->tf_esp = USTACKTOP;
+    tf->tf_eip = elf->e_entry;
+    tf->tf_eflags = FL_IF;                  //中断使能
     ret = 0;
 out:
     return ret;
@@ -659,6 +665,7 @@ bad_mm:
 //           - call load_icode to setup new memory space accroding binary prog.
 int
 do_execve(const char *name, size_t len, unsigned char *binary, size_t size) {
+    cprintf("current pid = %d, this process will be emptied memory and loadicode.\n", current->pid); 
     struct mm_struct *mm = current->mm;
     if (!user_mem_check(mm, (uintptr_t)name, len, 0)) {
         return -E_INVAL;
@@ -685,6 +692,7 @@ do_execve(const char *name, size_t len, unsigned char *binary, size_t size) {
         goto execve_exit;
     }
     set_proc_name(current, local_name);
+    cprintf("current pid = %d.This process has been reloaded and now name is \"%s\".\n", current->pid, current->name);
     return 0;
 
 execve_exit:
@@ -818,6 +826,7 @@ user_main(void *arg) {
     KERNEL_EXECVE2(TEST, TESTSTART, TESTSIZE);
 #else
     KERNEL_EXECVE(exit);
+    //KERNEL_EXECVE(hello);
 #endif
     panic("user_main execve failed.\n");
 }
@@ -835,6 +844,7 @@ init_main(void *arg) {
 
     while (do_wait(0, NULL) == 0) {
         schedule();
+   //     cprintf("schedule in inti_main. current pid = %d, name = %s\n", current->pid, current->name);
     }
 
     cprintf("all user-mode processes have quit.\n");

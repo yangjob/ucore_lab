@@ -651,6 +651,7 @@ bad_mm:
 //           - call load_icode to setup new memory space accroding binary prog.
 int
 do_execve(const char *name, size_t len, unsigned char *binary, size_t size) {
+    cprintf("current pid = %d.This process will be emptied memory and loadicode.\n", current->pid);
     struct mm_struct *mm = current->mm;
     if (!user_mem_check(mm, (uintptr_t)name, len, 0)) {
         return -E_INVAL;
@@ -677,6 +678,7 @@ do_execve(const char *name, size_t len, unsigned char *binary, size_t size) {
         goto execve_exit;
     }
     set_proc_name(current, local_name);
+    cprintf("current pid = %d.This process has be reloaded and now name is \"%s\".\n", current->pid, current->name);
     return 0;
 
 execve_exit:
@@ -827,6 +829,7 @@ init_main(void *arg) {
 
     while (do_wait(0, NULL) == 0) {
         schedule();
+        //cprintf("schedule in init_main, now the pid is %d\n", current->pid);
     }
 
     cprintf("all user-mode processes have quit.\n");
