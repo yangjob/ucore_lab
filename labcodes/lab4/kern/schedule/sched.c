@@ -33,6 +33,7 @@ schedule(void) {
         }
         next->runs ++;
         if (next != current) {
+            //cprintf("run next, next pid is %d", next->pid);
             proc_run(next);
         }
     }

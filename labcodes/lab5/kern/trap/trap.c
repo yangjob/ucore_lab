@@ -305,6 +305,7 @@ trap(struct trapframe *tf) {
                 do_exit(-E_KILLED);
             }
             if (current->need_resched) {
+                //cprintf("schedule in trap\n");
                 schedule();
             }
         }

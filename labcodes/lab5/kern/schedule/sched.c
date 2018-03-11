@@ -23,7 +23,7 @@ wakeup_proc(struct proc_struct *proc) {
 
 void
 schedule(void) {
-    //cprintf("current pid = %d, name = %s\n", current->pid, current->name);
+    //cprintf("current pid = %d, name = %s\t", current->pid, current->name);
     bool intr_flag;
     list_entry_t *le, *last;
     struct proc_struct *next = NULL;
@@ -45,8 +45,8 @@ schedule(void) {
         }
         next->runs ++;
         if (next != current) {
-            proc_run(next);
             //cprintf("run next, pid = %d, name = %s\n", next->pid, next->name);
+            proc_run(next);
         }
     }
     local_intr_restore(intr_flag);

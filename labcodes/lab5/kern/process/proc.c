@@ -508,6 +508,7 @@ do_exit(int error_code) {
     }
     local_intr_restore(intr_flag);
 
+    //cprintf("schedule in do_exit\n");
     schedule();
     panic("do_exit will not return!! %d.\n", current->pid);
 }
@@ -665,7 +666,7 @@ bad_mm:
 //           - call load_icode to setup new memory space accroding binary prog.
 int
 do_execve(const char *name, size_t len, unsigned char *binary, size_t size) {
-    cprintf("current pid = %d, this process will be emptied memory and loadicode.\n", current->pid); 
+    //cprintf("current pid = %d, this process will be emptied memory and loadicode.\n", current->pid); 
     struct mm_struct *mm = current->mm;
     if (!user_mem_check(mm, (uintptr_t)name, len, 0)) {
         return -E_INVAL;
@@ -692,7 +693,7 @@ do_execve(const char *name, size_t len, unsigned char *binary, size_t size) {
         goto execve_exit;
     }
     set_proc_name(current, local_name);
-    cprintf("current pid = %d.This process has been reloaded and now name is \"%s\".\n", current->pid, current->name);
+    //cprintf("current pid = %d.This process has been reloaded and now name is \"%s\".\n", current->pid, current->name);
     return 0;
 
 execve_exit:
@@ -712,6 +713,7 @@ do_yield(void) {
 // NOTE: only after do_wait function, all resources of the child proces are free.
 int
 do_wait(int pid, int *code_store) {
+    //cprintf("do_wait arg[0](pid) is %d\t", pid);
     struct mm_struct *mm = current->mm;
     if (code_store != NULL) {
         if (!user_mem_check(mm, (uintptr_t)code_store, sizeof(int), 1)) {
@@ -744,6 +746,7 @@ repeat:
     if (haskid) {
         current->state = PROC_SLEEPING;
         current->wait_state = WT_CHILD;
+        //cprintf("schedule in do_wait\n");
         schedule();
         if (current->flags & PF_EXITING) {
             do_exit(-E_KILLED);
@@ -825,6 +828,7 @@ user_main(void *arg) {
 #ifdef TEST
     KERNEL_EXECVE2(TEST, TESTSTART, TESTSIZE);
 #else
+    //cprintf("exec user_main, current pid is %d\n", current->pid);
     KERNEL_EXECVE(exit);
     //KERNEL_EXECVE(hello);
 #endif
@@ -843,8 +847,8 @@ init_main(void *arg) {
     }
 
     while (do_wait(0, NULL) == 0) {
+        //cprintf("schedule in inti_main while do_wait(0, NULL) == 0\n");
         schedule();
-   //     cprintf("schedule in inti_main. current pid = %d, name = %s\n", current->pid, current->name);
     }
 
     cprintf("all user-mode processes have quit.\n");
@@ -898,6 +902,7 @@ void
 cpu_idle(void) {
     while (1) {
         if (current->need_resched) {
+            //cprintf("schedule in cpu_idle\n");
             schedule();
         }
     }
