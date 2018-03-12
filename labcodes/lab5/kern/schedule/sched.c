@@ -4,6 +4,8 @@
 #include <sched.h>
 #include <assert.h>
 
+//int nr_sche = 0;          //统计schedule被调用次数
+
 void
 wakeup_proc(struct proc_struct *proc) {
     assert(proc->state != PROC_ZOMBIE);
@@ -23,6 +25,7 @@ wakeup_proc(struct proc_struct *proc) {
 
 void
 schedule(void) {
+    //cprintf("nr_sche = %d\n", ++nr_sche);
     //cprintf("current pid = %d, name = %s\t", current->pid, current->name);
     bool intr_flag;
     list_entry_t *le, *last;
