@@ -6,6 +6,8 @@
 #include <assert.h>
 #include <default_sched.h>
 
+//int nr_sche = 0;          //统计schedule被调用次数
+
 // the list of timer
 static list_entry_t timer_list;
 
@@ -77,6 +79,8 @@ wakeup_proc(struct proc_struct *proc) {
 
 void
 schedule(void) {
+    //cprintf("nr_sche = %d\n", ++nr_sche);
+    //cprintf("current pid = %d, name = %s\t", current->pid, current->name);
     bool intr_flag;
     struct proc_struct *next;
     local_intr_save(intr_flag);
@@ -93,6 +97,7 @@ schedule(void) {
         }
         next->runs ++;
         if (next != current) {
+            //cprintf("run next, pid = %d, name = %s\n", next->pid, next->name);
             proc_run(next);
         }
     }
