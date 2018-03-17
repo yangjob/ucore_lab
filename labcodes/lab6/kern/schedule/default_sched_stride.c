@@ -73,6 +73,7 @@ stride_enqueue(struct run_queue *rq, struct proc_struct *proc) {
 #if USE_SKEW_HEAP 
     rq->lab6_run_pool = 
         skew_heap_insert((rq->lab6_run_pool), &(proc->lab6_run_pool), proc_stride_comp_f);
+        //注意rq->lab6_run_pool是指针类型，和proc->lab6_run_pool不一样，ctags在此出错
 #else
     assert(list_empty(&(proc->run_link)));
     list_add_before(&(rq->run_list), &(proc->run_link));
@@ -103,6 +104,7 @@ stride_dequeue(struct run_queue *rq, struct proc_struct *proc) {
 #if USE_SKEW_HEAP
     rq->lab6_run_pool = 
         skew_heap_remove((rq->lab6_run_pool), &(proc->lab6_run_pool), proc_stride_comp_f);
+        //注意rq->lab6_run_pool是指针类型，和proc->lab6_run_pool不一样，ctags在此出错
 #else
     assert(!list_empty(&(proc->run_link)) && proc->rq == rq);
     list_del_init(&(proc->run_link));
