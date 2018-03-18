@@ -297,7 +297,6 @@ MKDIR	Makefile	/^MKDIR   := mkdir -p$/;"	m
 MONO_BASE	kern/driver/console.c	43;"	d	file:
 MONO_BUF	kern/driver/console.c	44;"	d	file:
 MV	Makefile	/^MV		:= mv$/;"	m
-Makefile	Makefile	1;"	F
 NCOMMANDS	kern/debug/kmonitor.c	29;"	d	file:
 NO	kern/driver/console.c	256;"	d	file:
 NPDEENTRY	kern/mm/mmu.h	223;"	d
@@ -381,11 +380,11 @@ REALLOC	kern/init/entry.S	/^#define REALLOC(x) (x - KERNBASE)$/;"	d
 RM	Makefile	/^RM		:= rm -f$/;"	m
 ROUNDDOWN	libs/defs.h	43;"	d
 ROUNDUP	libs/defs.h	49;"	d
-RR_dequeue	kern/schedule/default_sched.c	/^RR_dequeue(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:	signature:(struct run_queue *rq, struct proc_struct *proc)
-RR_enqueue	kern/schedule/default_sched.c	/^RR_enqueue(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:	signature:(struct run_queue *rq, struct proc_struct *proc)
-RR_init	kern/schedule/default_sched.c	/^RR_init(struct run_queue *rq) {$/;"	f	file:	signature:(struct run_queue *rq)
-RR_pick_next	kern/schedule/default_sched.c	/^RR_pick_next(struct run_queue *rq) {$/;"	f	file:	signature:(struct run_queue *rq)
-RR_proc_tick	kern/schedule/default_sched.c	/^RR_proc_tick(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:	signature:(struct run_queue *rq, struct proc_struct *proc)
+RR_dequeue	kern/schedule/default_sched.c	/^RR_dequeue(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:
+RR_enqueue	kern/schedule/default_sched.c	/^RR_enqueue(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:
+RR_init	kern/schedule/default_sched.c	/^RR_init(struct run_queue *rq) {$/;"	f	file:
+RR_pick_next	kern/schedule/default_sched.c	/^RR_pick_next(struct run_queue *rq) {$/;"	f	file:
+RR_proc_tick	kern/schedule/default_sched.c	/^RR_proc_tick(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:
 RUN_PREFIX	Makefile	/^RUN_PREFIX	:= _binary_$(OBJDIR)_$(USER_PREFIX)$/;"	m
 SCROLLLOCK	kern/driver/console.c	264;"	d	file:
 SECTSIZE	boot/bootmain.c	33;"	d	file:
@@ -565,56 +564,41 @@ __LIBS_STDLIB_H__	libs/stdlib.h	2;"	d
 __LIBS_STRING_H__	libs/string.h	2;"	d
 __LIBS_UNISTD_H__	libs/unistd.h	2;"	d
 __LIBS_X86_H__	libs/x86.h	2;"	d
-__STABSTR_BEGIN__	kern/debug/kdebug.c	/^extern const char __STABSTR_BEGIN__[];      \/\/ beginning of string table$/;"	x
-__STABSTR_END__	kern/debug/kdebug.c	/^extern const char __STABSTR_END__[];        \/\/ end of string table$/;"	x
-__STAB_BEGIN__	kern/debug/kdebug.c	/^extern const struct stab __STAB_BEGIN__[];  \/\/ beginning of stabs table$/;"	x
-__STAB_END__	kern/debug/kdebug.c	/^extern const struct stab __STAB_END__[];    \/\/ end of stabs table$/;"	x
 __USER_LIBS_SYSCALL_H__	user/libs/syscall.h	2;"	d
 __USER_LIBS_ULIB_H__	user/libs/ulib.h	2;"	d
 __alltraps	kern/trap/trapentry.S	/^__alltraps:$/;"	l
 __always_inline	libs/defs.h	8;"	d
 __gdt	kern/init/entry.S	/^__gdt:$/;"	l
 __gdtdesc	kern/init/entry.S	/^__gdtdesc:$/;"	l
-__intr_restore	kern/sync/sync.h	/^__intr_restore(bool flag) {$/;"	f	signature:(bool flag)
-__intr_save	kern/sync/sync.h	/^__intr_save(void) {$/;"	f	signature:(void)
-__kmalloc	kern/mm/kmalloc.c	/^static void *__kmalloc(size_t size, gfp_t gfp)$/;"	f	file:	signature:(size_t size, gfp_t gfp)
-__list_add	libs/list.h	/^__list_add(list_entry_t *elm, list_entry_t *prev, list_entry_t *next) {$/;"	f	signature:(list_entry_t *elm, list_entry_t *prev, list_entry_t *next)
-__list_add	libs/list.h	/^static inline void __list_add(list_entry_t *elm, list_entry_t *prev, list_entry_t *next) __attribute__((always_inline));$/;"	p	signature:(list_entry_t *elm, list_entry_t *prev, list_entry_t *next)
-__list_del	libs/list.h	/^__list_del(list_entry_t *prev, list_entry_t *next) {$/;"	f	signature:(list_entry_t *prev, list_entry_t *next)
-__list_del	libs/list.h	/^static inline void __list_del(list_entry_t *prev, list_entry_t *next) __attribute__((always_inline));$/;"	p	signature:(list_entry_t *prev, list_entry_t *next)
-__memcpy	libs/x86.h	/^__memcpy(void *dst, const void *src, size_t n) {$/;"	f	signature:(void *dst, const void *src, size_t n)
-__memcpy	libs/x86.h	/^static inline void *__memcpy(void *dst, const void *src, size_t n) __attribute__((always_inline));$/;"	p	signature:(void *dst, const void *src, size_t n)
-__memmove	libs/x86.h	/^__memmove(void *dst, const void *src, size_t n) {$/;"	f	signature:(void *dst, const void *src, size_t n)
-__memmove	libs/x86.h	/^static inline void *__memmove(void *dst, const void *src, size_t n) __attribute__((always_inline));$/;"	p	signature:(void *dst, const void *src, size_t n)
-__memset	libs/x86.h	/^__memset(void *s, char c, size_t n) {$/;"	f	signature:(void *s, char c, size_t n)
-__memset	libs/x86.h	/^static inline void *__memset(void *s, char c, size_t n) __attribute__((always_inline));$/;"	p	signature:(void *s, char c, size_t n)
+__intr_restore	kern/sync/sync.h	/^__intr_restore(bool flag) {$/;"	f
+__intr_save	kern/sync/sync.h	/^__intr_save(void) {$/;"	f
+__kmalloc	kern/mm/kmalloc.c	/^static void *__kmalloc(size_t size, gfp_t gfp)$/;"	f	file:
+__list_add	libs/list.h	/^__list_add(list_entry_t *elm, list_entry_t *prev, list_entry_t *next) {$/;"	f
+__list_del	libs/list.h	/^__list_del(list_entry_t *prev, list_entry_t *next) {$/;"	f
+__memcpy	libs/x86.h	/^__memcpy(void *dst, const void *src, size_t n) {$/;"	f
+__memmove	libs/x86.h	/^__memmove(void *dst, const void *src, size_t n) {$/;"	f
+__memset	libs/x86.h	/^__memset(void *s, char c, size_t n) {$/;"	f
 __noinline	libs/defs.h	9;"	d
 __noreturn	libs/defs.h	10;"	d
-__panic	kern/debug/assert.h	/^void __noreturn __panic(const char *file, int line, const char *fmt, ...);$/;"	p	signature:(const char *file, int line, const char *fmt, ...)
-__panic	kern/debug/panic.c	/^__panic(const char *file, int line, const char *fmt, ...) {$/;"	f	signature:(const char *file, int line, const char *fmt, ...)
-__panic	user/libs/panic.c	/^__panic(const char *file, int line, const char *fmt, ...) {$/;"	f	signature:(const char *file, int line, const char *fmt, ...)
-__panic	user/libs/ulib.h	/^void __noreturn __panic(const char *file, int line, const char *fmt, ...);$/;"	p	signature:(const char *file, int line, const char *fmt, ...)
+__panic	kern/debug/panic.c	/^__panic(const char *file, int line, const char *fmt, ...) {$/;"	f
+__panic	user/libs/panic.c	/^__panic(const char *file, int line, const char *fmt, ...) {$/;"	f
 __rq	kern/schedule/sched.c	/^static struct run_queue __rq;$/;"	v	typeref:struct:run_queue	file:
-__slob_free_pages	kern/mm/kmalloc.c	/^static inline void __slob_free_pages(unsigned long kva, int order)$/;"	f	file:	signature:(unsigned long kva, int order)
+__slob_free_pages	kern/mm/kmalloc.c	/^static inline void __slob_free_pages(unsigned long kva, int order)$/;"	f	file:
 __slob_get_free_page	kern/mm/kmalloc.c	89;"	d	file:
-__slob_get_free_pages	kern/mm/kmalloc.c	/^static void* __slob_get_free_pages(gfp_t gfp, int order)$/;"	f	file:	signature:(gfp_t gfp, int order)
-__strcmp	libs/x86.h	/^__strcmp(const char *s1, const char *s2) {$/;"	f	signature:(const char *s1, const char *s2)
-__strcmp	libs/x86.h	/^static inline int __strcmp(const char *s1, const char *s2) __attribute__((always_inline));$/;"	p	signature:(const char *s1, const char *s2)
-__strcpy	libs/x86.h	/^__strcpy(char *dst, const char *src) {$/;"	f	signature:(char *dst, const char *src)
-__strcpy	libs/x86.h	/^static inline char *__strcpy(char *dst, const char *src) __attribute__((always_inline));$/;"	p	signature:(char *dst, const char *src)
+__slob_get_free_pages	kern/mm/kmalloc.c	/^static void* __slob_get_free_pages(gfp_t gfp, int order)$/;"	f	file:
+__strcmp	libs/x86.h	/^__strcmp(const char *s1, const char *s2) {$/;"	f
+__strcpy	libs/x86.h	/^__strcpy(char *dst, const char *src) {$/;"	f
 __trapret	kern/trap/trapentry.S	/^__trapret:$/;"	l
 __vectors	kern/trap/vectors.S	/^__vectors:$/;"	l
-__warn	kern/debug/assert.h	/^void __warn(const char *file, int line, const char *fmt, ...);$/;"	p	signature:(const char *file, int line, const char *fmt, ...)
-__warn	kern/debug/panic.c	/^__warn(const char *file, int line, const char *fmt, ...) {$/;"	f	signature:(const char *file, int line, const char *fmt, ...)
-__warn	user/libs/panic.c	/^__warn(const char *file, int line, const char *fmt, ...) {$/;"	f	signature:(const char *file, int line, const char *fmt, ...)
-__warn	user/libs/ulib.h	/^void __warn(const char *file, int line, const char *fmt, ...);$/;"	p	signature:(const char *file, int line, const char *fmt, ...)
-_fifo_check_swap	kern/mm/swap_fifo.c	/^_fifo_check_swap(void) {$/;"	f	file:	signature:(void)
-_fifo_init	kern/mm/swap_fifo.c	/^_fifo_init(void)$/;"	f	file:	signature:(void)
-_fifo_init_mm	kern/mm/swap_fifo.c	/^_fifo_init_mm(struct mm_struct *mm)$/;"	f	file:	signature:(struct mm_struct *mm)
-_fifo_map_swappable	kern/mm/swap_fifo.c	/^_fifo_map_swappable(struct mm_struct *mm, uintptr_t addr, struct Page *page, int swap_in)$/;"	f	file:	signature:(struct mm_struct *mm, uintptr_t addr, struct Page *page, int swap_in)
-_fifo_set_unswappable	kern/mm/swap_fifo.c	/^_fifo_set_unswappable(struct mm_struct *mm, uintptr_t addr)$/;"	f	file:	signature:(struct mm_struct *mm, uintptr_t addr)
-_fifo_swap_out_victim	kern/mm/swap_fifo.c	/^_fifo_swap_out_victim(struct mm_struct *mm, struct Page ** ptr_page, int in_tick)$/;"	f	file:	signature:(struct mm_struct *mm, struct Page ** ptr_page, int in_tick)
-_fifo_tick_event	kern/mm/swap_fifo.c	/^_fifo_tick_event(struct mm_struct *mm)$/;"	f	file:	signature:(struct mm_struct *mm)
+__warn	kern/debug/panic.c	/^__warn(const char *file, int line, const char *fmt, ...) {$/;"	f
+__warn	user/libs/panic.c	/^__warn(const char *file, int line, const char *fmt, ...) {$/;"	f
+_fifo_check_swap	kern/mm/swap_fifo.c	/^_fifo_check_swap(void) {$/;"	f	file:
+_fifo_init	kern/mm/swap_fifo.c	/^_fifo_init(void)$/;"	f	file:
+_fifo_init_mm	kern/mm/swap_fifo.c	/^_fifo_init_mm(struct mm_struct *mm)$/;"	f	file:
+_fifo_map_swappable	kern/mm/swap_fifo.c	/^_fifo_map_swappable(struct mm_struct *mm, uintptr_t addr, struct Page *page, int swap_in)$/;"	f	file:
+_fifo_set_unswappable	kern/mm/swap_fifo.c	/^_fifo_set_unswappable(struct mm_struct *mm, uintptr_t addr)$/;"	f	file:
+_fifo_swap_out_victim	kern/mm/swap_fifo.c	/^_fifo_swap_out_victim(struct mm_struct *mm, struct Page ** ptr_page, int in_tick)$/;"	f	file:
+_fifo_tick_event	kern/mm/swap_fifo.c	/^_fifo_tick_event(struct mm_struct *mm)$/;"	f	file:
 _start	user/libs/initcode.S	/^_start:$/;"	l
 acc	user/priority.c	/^unsigned int acc[TOTAL];$/;"	v
 add_dependency	tools/function.mk	/^add_dependency = $(eval $(1): $(2))$/;"	m
@@ -622,802 +606,571 @@ add_files	tools/function.mk	/^add_files = $(eval $(call do_add_files_to_packet,$
 add_files_cc	Makefile	/^add_files_cc = $(call add_files,$(1),$(CC),$(CFLAGS) $(3),$(2),$(4))$/;"	m
 add_files_host	Makefile	/^add_files_host = $(call add_files,$(1),$(HOSTCC),$(HOSTCFLAGS),$(2),$(3))$/;"	m
 add_objs	tools/function.mk	/^add_objs = $(eval $(call do_add_objs_to_packet,$(1),$(2)))$/;"	m
-addr	kern/mm/memlayout.h	/^        uint64_t addr;$/;"	m	struct:e820map::__anon3	access:public
+addr	kern/mm/memlayout.h	/^        uint64_t addr;$/;"	m	struct:e820map::__anon3
 addr_6845	kern/driver/console.c	/^static uint16_t addr_6845;$/;"	v	file:
 alloc_page	kern/mm/pmm.h	35;"	d
-alloc_pages	kern/mm/pmm.c	/^alloc_pages(size_t n) {$/;"	f	signature:(size_t n)
-alloc_pages	kern/mm/pmm.h	/^    struct Page *(*alloc_pages)(size_t n);            \/\/ allocate >=n pages, depend on the allocation algorithm $/;"	m	struct:pmm_manager	typeref:struct:pmm_manager::alloc_pages	access:public
-alloc_pages	kern/mm/pmm.h	/^struct Page *alloc_pages(size_t n);$/;"	p	signature:(size_t n)
-alloc_proc	kern/process/proc.c	/^alloc_proc(void) {$/;"	f	file:	signature:(void)
+alloc_pages	kern/mm/pmm.c	/^alloc_pages(size_t n) {$/;"	f
+alloc_pages	kern/mm/pmm.h	/^    struct Page *(*alloc_pages)(size_t n);            \/\/ allocate >=n pages, depend on the allocation algorithm $/;"	m	struct:pmm_manager	typeref:struct:pmm_manager::alloc_pages
+alloc_proc	kern/process/proc.c	/^alloc_proc(void) {$/;"	f	file:
 arena	kern/mm/kmalloc.c	/^static slob_t arena = { .next = &arena, .units = 1 };$/;"	v	file:
-asm.h	boot/asm.h	1;"	F
 asmfile	Makefile	/^asmfile = $(call cgtype,$(call toobj,$(1)),o,asm)$/;"	m
 assert	kern/debug/assert.h	15;"	d
 assert	user/libs/ulib.h	15;"	d
-assert.h	kern/debug/assert.h	1;"	F
-atomic.h	libs/atomic.h	1;"	F
-badarg.c	user/badarg.c	1;"	F
-badsegment.c	user/badsegment.c	1;"	F
 barrier	libs/x86.h	21;"	d
-base	kern/driver/ide.c	/^    unsigned short base;        \/\/ I\/O Base$/;"	m	struct:__anon2	file:	access:public
-basic_check	kern/mm/default_pmm.c	/^basic_check(void) {$/;"	f	file:	signature:(void)
+base	kern/driver/ide.c	/^    unsigned short base;        \/\/ I\/O Base$/;"	m	struct:__anon2	file:
+basic_check	kern/mm/default_pmm.c	/^basic_check(void) {$/;"	f	file:
 bigarray	user/testbss.c	/^uint32_t bigarray[ARRAYSIZE];$/;"	v
 bigblock	kern/mm/kmalloc.c	/^struct bigblock {$/;"	s	file:
 bigblock_t	kern/mm/kmalloc.c	/^typedef struct bigblock bigblock_t;$/;"	t	typeref:struct:bigblock	file:
 bigblocks	kern/mm/kmalloc.c	/^static bigblock_t *bigblocks;$/;"	v	file:
 bool	libs/defs.h	/^typedef int bool;$/;"	t
-boot_alloc_page	kern/mm/pmm.c	/^boot_alloc_page(void) {$/;"	f	file:	signature:(void)
+boot_alloc_page	kern/mm/pmm.c	/^boot_alloc_page(void) {$/;"	f	file:
 boot_cr3	kern/mm/pmm.c	/^uintptr_t boot_cr3;$/;"	v
-boot_cr3	kern/mm/pmm.h	/^extern uintptr_t boot_cr3;$/;"	x
-boot_map_segment	kern/mm/pmm.c	/^boot_map_segment(pde_t *pgdir, uintptr_t la, size_t size, uintptr_t pa, uint32_t perm) {$/;"	f	file:	signature:(pde_t *pgdir, uintptr_t la, size_t size, uintptr_t pa, uint32_t perm)
+boot_map_segment	kern/mm/pmm.c	/^boot_map_segment(pde_t *pgdir, uintptr_t la, size_t size, uintptr_t pa, uint32_t perm) {$/;"	f	file:
 boot_pgdir	kern/mm/pmm.c	/^pde_t *boot_pgdir = NULL;$/;"	v
-boot_pgdir	kern/mm/pmm.h	/^extern pde_t *boot_pgdir;$/;"	x
-bootasm.S	boot/bootasm.S	1;"	F
 bootblock	Makefile	/^bootblock = $(call totarget,bootblock)$/;"	m
 bootfiles	Makefile	/^bootfiles = $(call listf_cc,boot)$/;"	m
-bootmain	boot/bootmain.c	/^bootmain(void) {$/;"	f	signature:(void)
-bootmain.c	boot/bootmain.c	1;"	F
+bootmain	boot/bootmain.c	/^bootmain(void) {$/;"	f
 bootstack	kern/init/entry.S	/^bootstack:$/;"	l
-bootstack	kern/mm/pmm.h	/^extern char bootstack[], bootstacktop[];$/;"	x
 bootstacktop	kern/init/entry.S	/^bootstacktop:$/;"	l
-bootstacktop	kern/mm/pmm.h	/^extern char bootstack[], bootstacktop[];$/;"	x
-breakpoint	libs/x86.h	/^breakpoint(void) {$/;"	f	signature:(void)
-breakpoint	libs/x86.h	/^static inline void breakpoint(void) __attribute__((always_inline));$/;"	p	signature:(void)
-buf	kern/driver/console.c	/^    uint8_t buf[CONSBUFSIZE];$/;"	m	struct:__anon1	file:	access:public
+breakpoint	libs/x86.h	/^breakpoint(void) {$/;"	f
+buf	kern/driver/console.c	/^    uint8_t buf[CONSBUFSIZE];$/;"	m	struct:__anon1	file:
 buf	kern/libs/readline.c	/^static char buf[BUFSIZE];$/;"	v	file:
-buf	libs/printfmt.c	/^    char *buf;          \/\/ address pointer points to the first unused memory$/;"	m	struct:sprintbuf	file:	access:public
+buf	libs/printfmt.c	/^    char *buf;          \/\/ address pointer points to the first unused memory$/;"	m	struct:sprintbuf	file:
 build_run	tools/grade.sh	/^build_run() {$/;"	f
 cc_compile	tools/function.mk	/^cc_compile = $(eval $(call do_cc_compile,$(1),$(2),$(3),$(4)))$/;"	m
 cc_template	tools/function.mk	/^define cc_template$/;"	m
-cga_init	kern/driver/console.c	/^cga_init(void) {$/;"	f	file:	signature:(void)
-cga_putc	kern/driver/console.c	/^cga_putc(int c) {$/;"	f	file:	signature:(int c)
+cga_init	kern/driver/console.c	/^cga_init(void) {$/;"	f	file:
+cga_putc	kern/driver/console.c	/^cga_putc(int c) {$/;"	f	file:
 cgtype	Makefile	/^cgtype = $(patsubst %.$(2),%.$(3),$(1))$/;"	m
-change_bit	libs/atomic.h	/^change_bit(int nr, volatile void *addr) {$/;"	f	signature:(int nr, volatile void *addr)
-change_bit	libs/atomic.h	/^static inline void change_bit(int nr, volatile void *addr) __attribute__((always_inline));$/;"	p	signature:(int nr, volatile void *addr)
+change_bit	libs/atomic.h	/^change_bit(int nr, volatile void *addr) {$/;"	f
 channels	kern/driver/ide.c	/^} channels[2] = {$/;"	v	typeref:struct:__anon2	file:
 charcode	kern/driver/console.c	/^static uint8_t *charcode[4] = {$/;"	v	file:
-check	kern/mm/pmm.h	/^    void (*check)(void);                              \/\/ check the correctness of XXX_pmm_manager $/;"	m	struct:pmm_manager	access:public
-check_alloc_page	kern/mm/pmm.c	/^check_alloc_page(void) {$/;"	f	file:	signature:(void)
-check_alloc_page	kern/mm/pmm.c	/^static void check_alloc_page(void);$/;"	p	file:	signature:(void)
-check_boot_pgdir	kern/mm/pmm.c	/^check_boot_pgdir(void) {$/;"	f	file:	signature:(void)
-check_boot_pgdir	kern/mm/pmm.c	/^static void check_boot_pgdir(void);$/;"	p	file:	signature:(void)
-check_content_access	kern/mm/swap.c	/^check_content_access(void)$/;"	f	file:	signature:(void)
-check_content_set	kern/mm/swap.c	/^check_content_set(void)$/;"	f	file:	signature:(void)
+check	kern/mm/pmm.h	/^    void (*check)(void);                              \/\/ check the correctness of XXX_pmm_manager $/;"	m	struct:pmm_manager
+check_alloc_page	kern/mm/pmm.c	/^check_alloc_page(void) {$/;"	f	file:
+check_boot_pgdir	kern/mm/pmm.c	/^check_boot_pgdir(void) {$/;"	f	file:
+check_content_access	kern/mm/swap.c	/^check_content_access(void)$/;"	f	file:
+check_content_set	kern/mm/swap.c	/^check_content_set(void)$/;"	f	file:
 check_mm_struct	kern/mm/vmm.c	/^struct mm_struct *check_mm_struct;$/;"	v	typeref:struct:mm_struct
-check_mm_struct	kern/mm/vmm.h	/^extern struct mm_struct *check_mm_struct;$/;"	x
-check_mm_struct	kern/trap/trap.c	/^extern struct mm_struct *check_mm_struct;$/;"	x
-check_pgdir	kern/mm/pmm.c	/^check_pgdir(void) {$/;"	f	file:	signature:(void)
-check_pgdir	kern/mm/pmm.c	/^static void check_pgdir(void);$/;"	p	file:	signature:(void)
-check_pgfault	kern/mm/vmm.c	/^check_pgfault(void) {$/;"	f	file:	signature:(void)
-check_pgfault	kern/mm/vmm.c	/^static void check_pgfault(void);$/;"	p	file:	signature:(void)
+check_pgdir	kern/mm/pmm.c	/^check_pgdir(void) {$/;"	f	file:
+check_pgfault	kern/mm/vmm.c	/^check_pgfault(void) {$/;"	f	file:
 check_ptep	kern/mm/swap.c	/^pte_t * check_ptep[CHECK_VALID_PHY_PAGE_NUM];$/;"	v
 check_regexps	tools/grade.sh	/^check_regexps() {$/;"	f
 check_result	tools/grade.sh	/^check_result() {$/;"	f
 check_rp	kern/mm/swap.c	/^struct Page * check_rp[CHECK_VALID_PHY_PAGE_NUM];$/;"	v	typeref:struct:Page
-check_swap	kern/mm/swap.c	/^check_swap(void)$/;"	f	file:	signature:(void)
-check_swap	kern/mm/swap.c	/^static void check_swap(void);$/;"	p	file:	signature:(void)
-check_swap	kern/mm/swap.h	/^     int (*check_swap)(void);     $/;"	m	struct:swap_manager	access:public
+check_swap	kern/mm/swap.c	/^check_swap(void)$/;"	f	file:
+check_swap	kern/mm/swap.h	/^     int (*check_swap)(void);     $/;"	m	struct:swap_manager
 check_swap_addr	kern/mm/swap.c	/^unsigned int check_swap_addr[CHECK_VALID_VIR_PAGE_NUM];$/;"	v
-check_vma_overlap	kern/mm/vmm.c	/^check_vma_overlap(struct vma_struct *prev, struct vma_struct *next) {$/;"	f	file:	signature:(struct vma_struct *prev, struct vma_struct *next)
-check_vma_struct	kern/mm/vmm.c	/^check_vma_struct(void) {$/;"	f	file:	signature:(void)
-check_vma_struct	kern/mm/vmm.c	/^static void check_vma_struct(void);$/;"	p	file:	signature:(void)
-check_vmm	kern/mm/vmm.c	/^check_vmm(void) {$/;"	f	file:	signature:(void)
-check_vmm	kern/mm/vmm.c	/^static void check_vmm(void);$/;"	p	file:	signature:(void)
-clear_bit	libs/atomic.h	/^clear_bit(int nr, volatile void *addr) {$/;"	f	signature:(int nr, volatile void *addr)
-clear_bit	libs/atomic.h	/^static inline void clear_bit(int nr, volatile void *addr) __attribute__((always_inline));$/;"	p	signature:(int nr, volatile void *addr)
-cli	libs/x86.h	/^cli(void) {$/;"	f	signature:(void)
-cli	libs/x86.h	/^static inline void cli(void) __attribute__((always_inline));$/;"	p	signature:(void)
-clock.c	kern/driver/clock.c	1;"	F
-clock.h	kern/driver/clock.h	1;"	F
-clock_init	kern/driver/clock.c	/^clock_init(void) {$/;"	f	signature:(void)
-clock_init	kern/driver/clock.h	/^void clock_init(void);$/;"	p	signature:(void)
-cnt	libs/printfmt.c	/^    int cnt;            \/\/ the number of characters that have been placed in this buffer$/;"	m	struct:sprintbuf	file:	access:public
+check_vma_overlap	kern/mm/vmm.c	/^check_vma_overlap(struct vma_struct *prev, struct vma_struct *next) {$/;"	f	file:
+check_vma_struct	kern/mm/vmm.c	/^check_vma_struct(void) {$/;"	f	file:
+check_vmm	kern/mm/vmm.c	/^check_vmm(void) {$/;"	f	file:
+clear_bit	libs/atomic.h	/^clear_bit(int nr, volatile void *addr) {$/;"	f
+cli	libs/x86.h	/^cli(void) {$/;"	f
+clock_init	kern/driver/clock.c	/^clock_init(void) {$/;"	f
+cnt	libs/printfmt.c	/^    int cnt;            \/\/ the number of characters that have been placed in this buffer$/;"	m	struct:sprintbuf	file:
 command	kern/debug/kmonitor.c	/^struct command {$/;"	s	file:
 commands	kern/debug/kmonitor.c	/^static struct command commands[] = {$/;"	v	typeref:struct:command	file:
 compare_f	libs/skew_heap.h	/^typedef int(*compare_f)(void *a, void *b);$/;"	t
 cons	kern/driver/console.c	/^} cons;$/;"	v	typeref:struct:__anon1	file:
-cons_getc	kern/driver/console.c	/^cons_getc(void) {$/;"	f	signature:(void)
-cons_getc	kern/driver/console.h	/^int cons_getc(void);$/;"	p	signature:(void)
-cons_init	kern/driver/console.c	/^cons_init(void) {$/;"	f	signature:(void)
-cons_init	kern/driver/console.h	/^void cons_init(void);$/;"	p	signature:(void)
-cons_intr	kern/driver/console.c	/^cons_intr(int (*proc)(void)) {$/;"	f	file:	signature:(int (*proc)(void))
-cons_putc	kern/driver/console.c	/^cons_putc(int c) {$/;"	f	signature:(int c)
-cons_putc	kern/driver/console.h	/^void cons_putc(int c);$/;"	p	signature:(int c)
-console.c	kern/driver/console.c	1;"	F
-console.h	kern/driver/console.h	1;"	F
+cons_getc	kern/driver/console.c	/^cons_getc(void) {$/;"	f
+cons_init	kern/driver/console.c	/^cons_init(void) {$/;"	f
+cons_intr	kern/driver/console.c	/^cons_intr(int (*proc)(void)) {$/;"	f	file:
+cons_putc	kern/driver/console.c	/^cons_putc(int c) {$/;"	f
 cont	boot/bootasm.S	/^cont:$/;"	l
-context	kern/process/proc.h	/^    struct context context;                     \/\/ Switch here to run process$/;"	m	struct:proc_struct	typeref:struct:proc_struct::context	access:public
+context	kern/process/proc.h	/^    struct context context;                     \/\/ Switch here to run process$/;"	m	struct:proc_struct	typeref:struct:proc_struct::context
 context	kern/process/proc.h	/^struct context {$/;"	s
-copy_from_user	kern/mm/vmm.c	/^copy_from_user(struct mm_struct *mm, void *dst, const void *src, size_t len, bool writable) {$/;"	f	signature:(struct mm_struct *mm, void *dst, const void *src, size_t len, bool writable)
-copy_from_user	kern/mm/vmm.h	/^bool copy_from_user(struct mm_struct *mm, void *dst, const void *src, size_t len, bool writable);$/;"	p	signature:(struct mm_struct *mm, void *dst, const void *src, size_t len, bool writable)
-copy_mm	kern/process/proc.c	/^copy_mm(uint32_t clone_flags, struct proc_struct *proc) {$/;"	f	file:	signature:(uint32_t clone_flags, struct proc_struct *proc)
-copy_range	kern/mm/pmm.c	/^copy_range(pde_t *to, pde_t *from, uintptr_t start, uintptr_t end, bool share) {$/;"	f	signature:(pde_t *to, pde_t *from, uintptr_t start, uintptr_t end, bool share)
-copy_range	kern/mm/pmm.h	/^int copy_range(pde_t *to, pde_t *from, uintptr_t start, uintptr_t end, bool share);$/;"	p	signature:(pde_t *to, pde_t *from, uintptr_t start, uintptr_t end, bool share)
-copy_thread	kern/process/proc.c	/^copy_thread(struct proc_struct *proc, uintptr_t esp, struct trapframe *tf) {$/;"	f	file:	signature:(struct proc_struct *proc, uintptr_t esp, struct trapframe *tf)
-copy_to_user	kern/mm/vmm.c	/^copy_to_user(struct mm_struct *mm, void *dst, const void *src, size_t len) {$/;"	f	signature:(struct mm_struct *mm, void *dst, const void *src, size_t len)
-copy_to_user	kern/mm/vmm.h	/^bool copy_to_user(struct mm_struct *mm, void *dst, const void *src, size_t len);$/;"	p	signature:(struct mm_struct *mm, void *dst, const void *src, size_t len)
-cprintf	kern/libs/stdio.c	/^cprintf(const char *fmt, ...) {$/;"	f	signature:(const char *fmt, ...)
-cprintf	libs/stdio.h	/^int cprintf(const char *fmt, ...);$/;"	p	signature:(const char *fmt, ...)
-cprintf	user/libs/stdio.c	/^cprintf(const char *fmt, ...) {$/;"	f	signature:(const char *fmt, ...)
-cptr	kern/process/proc.h	/^    struct proc_struct *cptr, *yptr, *optr;     \/\/ relations between processes$/;"	m	struct:proc_struct	typeref:struct:proc_struct::proc_struct	access:public
-cpu_idle	kern/process/proc.c	/^cpu_idle(void) {$/;"	f	signature:(void)
-cpu_idle	kern/process/proc.h	/^void cpu_idle(void) __attribute__((noreturn));$/;"	p	signature:(void)
-cputch	kern/libs/stdio.c	/^cputch(int c, int *cnt) {$/;"	f	file:	signature:(int c, int *cnt)
-cputch	user/libs/stdio.c	/^cputch(int c, int *cnt) {$/;"	f	file:	signature:(int c, int *cnt)
-cputchar	kern/libs/stdio.c	/^cputchar(int c) {$/;"	f	signature:(int c)
-cputchar	libs/stdio.h	/^void cputchar(int c);$/;"	p	signature:(int c)
-cputs	kern/libs/stdio.c	/^cputs(const char *str) {$/;"	f	signature:(const char *str)
-cputs	libs/stdio.h	/^int cputs(const char *str);$/;"	p	signature:(const char *str)
-cputs	user/libs/stdio.c	/^cputs(const char *str) {$/;"	f	signature:(const char *str)
-cr3	kern/process/proc.h	/^    uintptr_t cr3;                              \/\/ CR3 register: the base addr of Page Directroy Table(PDT)$/;"	m	struct:proc_struct	access:public
+copy_from_user	kern/mm/vmm.c	/^copy_from_user(struct mm_struct *mm, void *dst, const void *src, size_t len, bool writable) {$/;"	f
+copy_mm	kern/process/proc.c	/^copy_mm(uint32_t clone_flags, struct proc_struct *proc) {$/;"	f	file:
+copy_range	kern/mm/pmm.c	/^copy_range(pde_t *to, pde_t *from, uintptr_t start, uintptr_t end, bool share) {$/;"	f
+copy_thread	kern/process/proc.c	/^copy_thread(struct proc_struct *proc, uintptr_t esp, struct trapframe *tf) {$/;"	f	file:
+copy_to_user	kern/mm/vmm.c	/^copy_to_user(struct mm_struct *mm, void *dst, const void *src, size_t len) {$/;"	f
+cprintf	kern/libs/stdio.c	/^cprintf(const char *fmt, ...) {$/;"	f
+cprintf	user/libs/stdio.c	/^cprintf(const char *fmt, ...) {$/;"	f
+cptr	kern/process/proc.h	/^    struct proc_struct *cptr, *yptr, *optr;     \/\/ relations between processes$/;"	m	struct:proc_struct	typeref:struct:proc_struct::proc_struct
+cpu_idle	kern/process/proc.c	/^cpu_idle(void) {$/;"	f
+cputch	kern/libs/stdio.c	/^cputch(int c, int *cnt) {$/;"	f	file:
+cputch	user/libs/stdio.c	/^cputch(int c, int *cnt) {$/;"	f	file:
+cputchar	kern/libs/stdio.c	/^cputchar(int c) {$/;"	f
+cputs	kern/libs/stdio.c	/^cputs(const char *str) {$/;"	f
+cputs	user/libs/stdio.c	/^cputs(const char *str) {$/;"	f
+cr3	kern/process/proc.h	/^    uintptr_t cr3;                              \/\/ CR3 register: the base addr of Page Directroy Table(PDT)$/;"	m	struct:proc_struct
 create_target	tools/function.mk	/^create_target = $(eval $(call do_create_target,$(1),$(2),$(3),$(4),$(5)))$/;"	m
 create_target_cc	Makefile	/^create_target_cc = $(call create_target,$(1),$(2),$(3),$(CC),$(CFLAGS))$/;"	m
 create_target_host	Makefile	/^create_target_host = $(call create_target,$(1),$(2),$(3),$(HOSTCC),$(HOSTCFLAGS))$/;"	m
 crt_buf	kern/driver/console.c	/^static uint16_t *crt_buf;$/;"	v	file:
 crt_pos	kern/driver/console.c	/^static uint16_t crt_pos;$/;"	v	file:
 ctlmap	kern/driver/console.c	/^static uint8_t ctlmap[256] = {$/;"	v	file:
-ctrl	kern/driver/ide.c	/^    unsigned short ctrl;        \/\/ Control Base$/;"	m	struct:__anon2	file:	access:public
+ctrl	kern/driver/ide.c	/^    unsigned short ctrl;        \/\/ Control Base$/;"	m	struct:__anon2	file:
 current	kern/process/proc.c	/^struct proc_struct *current = NULL;$/;"	v	typeref:struct:proc_struct
-current	kern/process/proc.h	/^extern struct proc_struct *idleproc, *initproc, *current;$/;"	x
-debuginfo_eip	kern/debug/kdebug.c	/^debuginfo_eip(uintptr_t addr, struct eipdebuginfo *info) {$/;"	f	signature:(uintptr_t addr, struct eipdebuginfo *info)
-default_alloc_pages	kern/mm/default_pmm.c	/^default_alloc_pages(size_t n) {$/;"	f	file:	signature:(size_t n)
-default_check	kern/mm/default_pmm.c	/^default_check(void) {$/;"	f	file:	signature:(void)
+debuginfo_eip	kern/debug/kdebug.c	/^debuginfo_eip(uintptr_t addr, struct eipdebuginfo *info) {$/;"	f
+default_alloc_pages	kern/mm/default_pmm.c	/^default_alloc_pages(size_t n) {$/;"	f	file:
+default_check	kern/mm/default_pmm.c	/^default_check(void) {$/;"	f	file:
 default_check	tools/grade.sh	/^default_check() {$/;"	f
-default_free_pages	kern/mm/default_pmm.c	/^default_free_pages(struct Page *base, size_t n) {$/;"	f	file:	signature:(struct Page *base, size_t n)
-default_init	kern/mm/default_pmm.c	/^default_init(void) {$/;"	f	file:	signature:(void)
-default_init_memmap	kern/mm/default_pmm.c	/^default_init_memmap(struct Page *base, size_t n) {$/;"	f	file:	signature:(struct Page *base, size_t n)
-default_nr_free_pages	kern/mm/default_pmm.c	/^default_nr_free_pages(void) {$/;"	f	file:	signature:(void)
-default_pmm.c	kern/mm/default_pmm.c	1;"	F
-default_pmm.h	kern/mm/default_pmm.h	1;"	F
+default_free_pages	kern/mm/default_pmm.c	/^default_free_pages(struct Page *base, size_t n) {$/;"	f	file:
+default_init	kern/mm/default_pmm.c	/^default_init(void) {$/;"	f	file:
+default_init_memmap	kern/mm/default_pmm.c	/^default_init_memmap(struct Page *base, size_t n) {$/;"	f	file:
+default_nr_free_pages	kern/mm/default_pmm.c	/^default_nr_free_pages(void) {$/;"	f	file:
 default_pmm_manager	kern/mm/default_pmm.c	/^const struct pmm_manager default_pmm_manager = {$/;"	v	typeref:struct:pmm_manager
-default_pmm_manager	kern/mm/default_pmm.h	/^extern const struct pmm_manager default_pmm_manager;$/;"	x
-default_sched.c	kern/schedule/default_sched.c	1;"	F
-default_sched.h	kern/schedule/default_sched.h	1;"	F
 default_sched_class	kern/schedule/default_sched.c	/^struct sched_class default_sched_class = {$/;"	v	typeref:struct:sched_class
-default_sched_class	kern/schedule/default_sched.h	/^extern struct sched_class default_sched_class;$/;"	x
-default_sched_stride.c	kern/schedule/default_sched_stride.c	1;"	F
-default_sched_stride.h	kern/schedule/default_sched_stride.h	1;"	F
 default_sched_stride_class	kern/schedule/default_sched_stride.c	/^struct sched_class default_sched_stride_class = {$/;"	v	typeref:struct:sched_class
-default_sched_stride_class	kern/schedule/default_sched_stride.h	/^extern struct sched_class default_sched_stride_class;$/;"	x
-defs.h	libs/defs.h	1;"	F
-delay	kern/driver/console.c	/^delay(void) {$/;"	f	file:	signature:(void)
-dequeue	kern/schedule/sched.h	/^    void (*dequeue)(struct run_queue *rq, struct proc_struct *proc);$/;"	m	struct:sched_class	access:public
-desc	kern/debug/kmonitor.c	/^    const char *desc;$/;"	m	struct:command	file:	access:public
+delay	kern/driver/console.c	/^delay(void) {$/;"	f	file:
+dequeue	kern/schedule/sched.h	/^    void (*dequeue)(struct run_queue *rq, struct proc_struct *proc);$/;"	m	struct:sched_class
+desc	kern/debug/kmonitor.c	/^    const char *desc;$/;"	m	struct:command	file:
 did_init	kern/driver/picirq.c	/^static bool did_init = 0;$/;"	v	file:
-divzero.c	user/divzero.c	1;"	F
 do_add_files_to_packet	tools/function.mk	/^define do_add_files_to_packet$/;"	m
 do_add_objs_to_packet	tools/function.mk	/^define do_add_objs_to_packet$/;"	m
 do_cc_compile	tools/function.mk	/^define do_cc_compile$/;"	m
 do_create_target	tools/function.mk	/^define do_create_target$/;"	m
 do_div	libs/x86.h	6;"	d
-do_execve	kern/process/proc.c	/^do_execve(const char *name, size_t len, unsigned char *binary, size_t size) {$/;"	f	signature:(const char *name, size_t len, unsigned char *binary, size_t size)
-do_execve	kern/process/proc.h	/^int do_execve(const char *name, size_t len, unsigned char *binary, size_t size);$/;"	p	signature:(const char *name, size_t len, unsigned char *binary, size_t size)
-do_exit	kern/process/proc.c	/^do_exit(int error_code) {$/;"	f	signature:(int error_code)
-do_exit	kern/process/proc.h	/^int do_exit(int error_code);$/;"	p	signature:(int error_code)
+do_execve	kern/process/proc.c	/^do_execve(const char *name, size_t len, unsigned char *binary, size_t size) {$/;"	f
+do_exit	kern/process/proc.c	/^do_exit(int error_code) {$/;"	f
 do_finish_all	tools/function.mk	/^define do_finish_all$/;"	m
-do_fork	kern/process/proc.c	/^do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf) {$/;"	f	signature:(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf)
-do_fork	kern/process/proc.h	/^int do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf);$/;"	p	signature:(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf)
-do_kill	kern/process/proc.c	/^do_kill(int pid) {$/;"	f	signature:(int pid)
-do_kill	kern/process/proc.h	/^int do_kill(int pid);$/;"	p	signature:(int pid)
-do_pgfault	kern/mm/vmm.c	/^do_pgfault(struct mm_struct *mm, uint32_t error_code, uintptr_t addr) {$/;"	f	signature:(struct mm_struct *mm, uint32_t error_code, uintptr_t addr)
-do_pgfault	kern/mm/vmm.h	/^int do_pgfault(struct mm_struct *mm, uint32_t error_code, uintptr_t addr);$/;"	p	signature:(struct mm_struct *mm, uint32_t error_code, uintptr_t addr)
-do_wait	kern/process/proc.c	/^do_wait(int pid, int *code_store) {$/;"	f	signature:(int pid, int *code_store)
-do_wait	kern/process/proc.h	/^int do_wait(int pid, int *code_store);$/;"	p	signature:(int pid, int *code_store)
-do_yield	kern/process/proc.c	/^do_yield(void) {$/;"	f	signature:(void)
-do_yield	kern/process/proc.h	/^int do_yield(void);$/;"	p	signature:(void)
-do_yield	user/waitkill.c	/^do_yield(void) {$/;"	f	signature:(void)
-dup_mmap	kern/mm/vmm.c	/^dup_mmap(struct mm_struct *to, struct mm_struct *from) {$/;"	f	signature:(struct mm_struct *to, struct mm_struct *from)
-dup_mmap	kern/mm/vmm.h	/^int dup_mmap(struct mm_struct *to, struct mm_struct *from);$/;"	p	signature:(struct mm_struct *to, struct mm_struct *from)
+do_fork	kern/process/proc.c	/^do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf) {$/;"	f
+do_kill	kern/process/proc.c	/^do_kill(int pid) {$/;"	f
+do_pgfault	kern/mm/vmm.c	/^do_pgfault(struct mm_struct *mm, uint32_t error_code, uintptr_t addr) {$/;"	f
+do_wait	kern/process/proc.c	/^do_wait(int pid, int *code_store) {$/;"	f
+do_yield	kern/process/proc.c	/^do_yield(void) {$/;"	f
+do_yield	user/waitkill.c	/^do_yield(void) {$/;"	f
+dup_mmap	kern/mm/vmm.c	/^dup_mmap(struct mm_struct *to, struct mm_struct *from) {$/;"	f
 e820map	kern/mm/memlayout.h	/^struct e820map {$/;"	s
-e_ehsize	libs/elf.h	/^    uint16_t e_ehsize;    \/\/ size of this elf header$/;"	m	struct:elfhdr	access:public
-e_elf	libs/elf.h	/^    uint8_t e_elf[12];$/;"	m	struct:elfhdr	access:public
-e_entry	libs/elf.h	/^    uint32_t e_entry;     \/\/ entry point if executable$/;"	m	struct:elfhdr	access:public
-e_flags	libs/elf.h	/^    uint32_t e_flags;     \/\/ architecture-specific flags, usually 0$/;"	m	struct:elfhdr	access:public
-e_machine	libs/elf.h	/^    uint16_t e_machine;   \/\/ 3=x86, 4=68K, etc.$/;"	m	struct:elfhdr	access:public
-e_magic	libs/elf.h	/^    uint32_t e_magic;     \/\/ must equal ELF_MAGIC$/;"	m	struct:elfhdr	access:public
-e_phentsize	libs/elf.h	/^    uint16_t e_phentsize; \/\/ size of an entry in program header$/;"	m	struct:elfhdr	access:public
-e_phnum	libs/elf.h	/^    uint16_t e_phnum;     \/\/ number of entries in program header or 0$/;"	m	struct:elfhdr	access:public
-e_phoff	libs/elf.h	/^    uint32_t e_phoff;     \/\/ file position of program header or 0$/;"	m	struct:elfhdr	access:public
-e_shentsize	libs/elf.h	/^    uint16_t e_shentsize; \/\/ size of an entry in section header$/;"	m	struct:elfhdr	access:public
-e_shnum	libs/elf.h	/^    uint16_t e_shnum;     \/\/ number of entries in section header or 0$/;"	m	struct:elfhdr	access:public
-e_shoff	libs/elf.h	/^    uint32_t e_shoff;     \/\/ file position of section header or 0$/;"	m	struct:elfhdr	access:public
-e_shstrndx	libs/elf.h	/^    uint16_t e_shstrndx;  \/\/ section number that contains section name strings$/;"	m	struct:elfhdr	access:public
-e_type	libs/elf.h	/^    uint16_t e_type;      \/\/ 1=relocatable, 2=executable, 3=shared object, 4=core image$/;"	m	struct:elfhdr	access:public
-e_version	libs/elf.h	/^    uint32_t e_version;   \/\/ file version, always 1$/;"	m	struct:elfhdr	access:public
-ebp	kern/process/proc.h	/^    uint32_t ebp;$/;"	m	struct:context	access:public
-ebuf	libs/printfmt.c	/^    char *ebuf;         \/\/ points the end of the buffer$/;"	m	struct:sprintbuf	file:	access:public
-ebx	kern/process/proc.h	/^    uint32_t ebx;$/;"	m	struct:context	access:public
-ecx	kern/process/proc.h	/^    uint32_t ecx;$/;"	m	struct:context	access:public
-edi	kern/process/proc.h	/^    uint32_t edi;$/;"	m	struct:context	access:public
-edx	kern/process/proc.h	/^    uint32_t edx;$/;"	m	struct:context	access:public
-eip	kern/process/proc.h	/^    uint32_t eip;$/;"	m	struct:context	access:public
-eip_file	kern/debug/kdebug.c	/^    const char *eip_file;                   \/\/ source code filename for eip$/;"	m	struct:eipdebuginfo	file:	access:public
-eip_fn_addr	kern/debug/kdebug.c	/^    uintptr_t eip_fn_addr;                  \/\/ start address of function$/;"	m	struct:eipdebuginfo	file:	access:public
-eip_fn_name	kern/debug/kdebug.c	/^    const char *eip_fn_name;                \/\/ name of function containing eip$/;"	m	struct:eipdebuginfo	file:	access:public
-eip_fn_namelen	kern/debug/kdebug.c	/^    int eip_fn_namelen;                     \/\/ length of function's name$/;"	m	struct:eipdebuginfo	file:	access:public
-eip_fn_narg	kern/debug/kdebug.c	/^    int eip_fn_narg;                        \/\/ number of function arguments$/;"	m	struct:eipdebuginfo	file:	access:public
-eip_line	kern/debug/kdebug.c	/^    int eip_line;                           \/\/ source code line number for eip$/;"	m	struct:eipdebuginfo	file:	access:public
+e_ehsize	libs/elf.h	/^    uint16_t e_ehsize;    \/\/ size of this elf header$/;"	m	struct:elfhdr
+e_elf	libs/elf.h	/^    uint8_t e_elf[12];$/;"	m	struct:elfhdr
+e_entry	libs/elf.h	/^    uint32_t e_entry;     \/\/ entry point if executable$/;"	m	struct:elfhdr
+e_flags	libs/elf.h	/^    uint32_t e_flags;     \/\/ architecture-specific flags, usually 0$/;"	m	struct:elfhdr
+e_machine	libs/elf.h	/^    uint16_t e_machine;   \/\/ 3=x86, 4=68K, etc.$/;"	m	struct:elfhdr
+e_magic	libs/elf.h	/^    uint32_t e_magic;     \/\/ must equal ELF_MAGIC$/;"	m	struct:elfhdr
+e_phentsize	libs/elf.h	/^    uint16_t e_phentsize; \/\/ size of an entry in program header$/;"	m	struct:elfhdr
+e_phnum	libs/elf.h	/^    uint16_t e_phnum;     \/\/ number of entries in program header or 0$/;"	m	struct:elfhdr
+e_phoff	libs/elf.h	/^    uint32_t e_phoff;     \/\/ file position of program header or 0$/;"	m	struct:elfhdr
+e_shentsize	libs/elf.h	/^    uint16_t e_shentsize; \/\/ size of an entry in section header$/;"	m	struct:elfhdr
+e_shnum	libs/elf.h	/^    uint16_t e_shnum;     \/\/ number of entries in section header or 0$/;"	m	struct:elfhdr
+e_shoff	libs/elf.h	/^    uint32_t e_shoff;     \/\/ file position of section header or 0$/;"	m	struct:elfhdr
+e_shstrndx	libs/elf.h	/^    uint16_t e_shstrndx;  \/\/ section number that contains section name strings$/;"	m	struct:elfhdr
+e_type	libs/elf.h	/^    uint16_t e_type;      \/\/ 1=relocatable, 2=executable, 3=shared object, 4=core image$/;"	m	struct:elfhdr
+e_version	libs/elf.h	/^    uint32_t e_version;   \/\/ file version, always 1$/;"	m	struct:elfhdr
+ebp	kern/process/proc.h	/^    uint32_t ebp;$/;"	m	struct:context
+ebuf	libs/printfmt.c	/^    char *ebuf;         \/\/ points the end of the buffer$/;"	m	struct:sprintbuf	file:
+ebx	kern/process/proc.h	/^    uint32_t ebx;$/;"	m	struct:context
+ecx	kern/process/proc.h	/^    uint32_t ecx;$/;"	m	struct:context
+edi	kern/process/proc.h	/^    uint32_t edi;$/;"	m	struct:context
+edx	kern/process/proc.h	/^    uint32_t edx;$/;"	m	struct:context
+eip	kern/process/proc.h	/^    uint32_t eip;$/;"	m	struct:context
+eip_file	kern/debug/kdebug.c	/^    const char *eip_file;                   \/\/ source code filename for eip$/;"	m	struct:eipdebuginfo	file:
+eip_fn_addr	kern/debug/kdebug.c	/^    uintptr_t eip_fn_addr;                  \/\/ start address of function$/;"	m	struct:eipdebuginfo	file:
+eip_fn_name	kern/debug/kdebug.c	/^    const char *eip_fn_name;                \/\/ name of function containing eip$/;"	m	struct:eipdebuginfo	file:
+eip_fn_namelen	kern/debug/kdebug.c	/^    int eip_fn_namelen;                     \/\/ length of function's name$/;"	m	struct:eipdebuginfo	file:
+eip_fn_narg	kern/debug/kdebug.c	/^    int eip_fn_narg;                        \/\/ number of function arguments$/;"	m	struct:eipdebuginfo	file:
+eip_line	kern/debug/kdebug.c	/^    int eip_line;                           \/\/ source code line number for eip$/;"	m	struct:eipdebuginfo	file:
 eipdebuginfo	kern/debug/kdebug.c	/^struct eipdebuginfo {$/;"	s	file:
-elf.h	libs/elf.h	1;"	F
 elfhdr	libs/elf.h	/^struct elfhdr {$/;"	s
-enable_paging	kern/mm/pmm.c	/^enable_paging(void) {$/;"	f	file:	signature:(void)
-enqueue	kern/schedule/sched.h	/^    void (*enqueue)(struct run_queue *rq, struct proc_struct *proc);$/;"	m	struct:sched_class	access:public
-entry.S	kern/init/entry.S	1;"	F
-entry.S	kern/process/entry.S	1;"	F
-error.h	libs/error.h	1;"	F
+enable_paging	kern/mm/pmm.c	/^enable_paging(void) {$/;"	f	file:
+enqueue	kern/schedule/sched.h	/^    void (*enqueue)(struct run_queue *rq, struct proc_struct *proc);$/;"	m	struct:sched_class
 error_string	libs/printfmt.c	/^static const char * const error_string[MAXERROR + 1] = {$/;"	v	file:
-esi	kern/process/proc.h	/^    uint32_t esi;$/;"	m	struct:context	access:public
-esp	kern/process/proc.h	/^    uint32_t esp;$/;"	m	struct:context	access:public
-exit	user/libs/ulib.c	/^exit(int error_code) {$/;"	f	signature:(int error_code)
-exit	user/libs/ulib.h	/^void __noreturn exit(int error_code);$/;"	p	signature:(int error_code)
-exit.c	user/exit.c	1;"	F
-exit_code	kern/process/proc.h	/^    int exit_code;                              \/\/ exit code (be sent to parent proc)$/;"	m	struct:proc_struct	access:public
-exit_mmap	kern/mm/vmm.c	/^exit_mmap(struct mm_struct *mm) {$/;"	f	signature:(struct mm_struct *mm)
-exit_mmap	kern/mm/vmm.h	/^void exit_mmap(struct mm_struct *mm);$/;"	p	signature:(struct mm_struct *mm)
-exit_range	kern/mm/pmm.c	/^exit_range(pde_t *pgdir, uintptr_t start, uintptr_t end) {$/;"	f	signature:(pde_t *pgdir, uintptr_t start, uintptr_t end)
-exit_range	kern/mm/pmm.h	/^void exit_range(pde_t *pgdir, uintptr_t start, uintptr_t end);$/;"	p	signature:(pde_t *pgdir, uintptr_t start, uintptr_t end)
+esi	kern/process/proc.h	/^    uint32_t esi;$/;"	m	struct:context
+esp	kern/process/proc.h	/^    uint32_t esp;$/;"	m	struct:context
+exit	user/libs/ulib.c	/^exit(int error_code) {$/;"	f
+exit_code	kern/process/proc.h	/^    int exit_code;                              \/\/ exit code (be sent to parent proc)$/;"	m	struct:proc_struct
+exit_mmap	kern/mm/vmm.c	/^exit_mmap(struct mm_struct *mm) {$/;"	f
+exit_range	kern/mm/pmm.c	/^exit_range(pde_t *pgdir, uintptr_t start, uintptr_t end) {$/;"	f
 fail	tools/grade.sh	/^fail() {$/;"	f
-faultread.c	user/faultread.c	1;"	F
-faultreadkernel.c	user/faultreadkernel.c	1;"	F
 filename	Makefile	/^filename = $(basename $(notdir $(1)))$/;"	m
-find_order	kern/mm/kmalloc.c	/^static int find_order(int size)$/;"	f	file:	signature:(int size)
-find_proc	kern/process/proc.c	/^find_proc(int pid) {$/;"	f	signature:(int pid)
-find_proc	kern/process/proc.h	/^struct proc_struct *find_proc(int pid);$/;"	p	signature:(int pid)
-find_vma	kern/mm/vmm.c	/^find_vma(struct mm_struct *mm, uintptr_t addr) {$/;"	f	signature:(struct mm_struct *mm, uintptr_t addr)
-find_vma	kern/mm/vmm.h	/^struct vma_struct *find_vma(struct mm_struct *mm, uintptr_t addr);$/;"	p	signature:(struct mm_struct *mm, uintptr_t addr)
+find_order	kern/mm/kmalloc.c	/^static int find_order(int size)$/;"	f	file:
+find_proc	kern/process/proc.c	/^find_proc(int pid) {$/;"	f
+find_vma	kern/mm/vmm.c	/^find_vma(struct mm_struct *mm, uintptr_t addr) {$/;"	f
 finish_all	tools/function.mk	/^finish_all = $(eval $(call do_finish_all))$/;"	m
 finish_probe	boot/bootasm.S	/^finish_probe:$/;"	l
-flags	kern/mm/memlayout.h	/^    uint32_t flags;                 \/\/ array of flags that describe the status of the page frame$/;"	m	struct:Page	access:public
-flags	kern/process/proc.h	/^    uint32_t flags;                             \/\/ Process flag$/;"	m	struct:proc_struct	access:public
-fork	user/libs/ulib.c	/^fork(void) {$/;"	f	signature:(void)
-fork	user/libs/ulib.h	/^int fork(void);$/;"	p	signature:(void)
-forkchild	user/forktree.c	/^forkchild(const char *cur, char branch) {$/;"	f	signature:(const char *cur, char branch)
-forkret	kern/process/proc.c	/^forkret(void) {$/;"	f	file:	signature:(void)
-forkrets	kern/process/proc.c	/^void forkrets(struct trapframe *tf);$/;"	p	file:	signature:(struct trapframe *tf)
+flags	kern/mm/memlayout.h	/^    uint32_t flags;                 \/\/ array of flags that describe the status of the page frame$/;"	m	struct:Page
+flags	kern/process/proc.h	/^    uint32_t flags;                             \/\/ Process flag$/;"	m	struct:proc_struct
+fork	user/libs/ulib.c	/^fork(void) {$/;"	f
+forkchild	user/forktree.c	/^forkchild(const char *cur, char branch) {$/;"	f
+forkret	kern/process/proc.c	/^forkret(void) {$/;"	f	file:
 forkrets	kern/trap/trapentry.S	/^forkrets:$/;"	l
-forktest.c	user/forktest.c	1;"	F
-forktree	user/forktree.c	/^forktree(const char *cur) {$/;"	f	signature:(const char *cur)
-forktree	user/forktree.c	/^void forktree(const char *cur);$/;"	p	file:	signature:(const char *cur)
-forktree.c	user/forktree.c	1;"	F
+forktree	user/forktree.c	/^forktree(const char *cur) {$/;"	f
 free_area	kern/mm/default_pmm.c	/^free_area_t free_area;$/;"	v
-free_area	kern/mm/default_pmm.h	/^extern free_area_t free_area;$/;"	x
-free_area	kern/mm/swap.c	/^extern free_area_t free_area;$/;"	x
 free_area_t	kern/mm/memlayout.h	/^} free_area_t;$/;"	t	typeref:struct:__anon4
 free_list	kern/mm/default_pmm.c	59;"	d	file:
-free_list	kern/mm/memlayout.h	/^    list_entry_t free_list;         \/\/ the list header$/;"	m	struct:__anon4	access:public
+free_list	kern/mm/memlayout.h	/^    list_entry_t free_list;         \/\/ the list header$/;"	m	struct:__anon4
 free_list	kern/mm/swap.c	176;"	d	file:
 free_page	kern/mm/pmm.h	36;"	d
-free_pages	kern/mm/pmm.c	/^free_pages(struct Page *base, size_t n) {$/;"	f	signature:(struct Page *base, size_t n)
-free_pages	kern/mm/pmm.h	/^    void (*free_pages)(struct Page *base, size_t n);  \/\/ free >=n pages with "base" addr of Page descriptor structures(memlayout.h)$/;"	m	struct:pmm_manager	access:public
-free_pages	kern/mm/pmm.h	/^void free_pages(struct Page *base, size_t n);$/;"	p	signature:(struct Page *base, size_t n)
-fs.h	kern/fs/fs.h	1;"	F
-func	kern/debug/kmonitor.c	/^    int(*func)(int argc, char **argv, struct trapframe *tf);$/;"	m	struct:command	file:	access:public
-function.mk	tools/function.mk	1;"	F
+free_pages	kern/mm/pmm.c	/^free_pages(struct Page *base, size_t n) {$/;"	f
+free_pages	kern/mm/pmm.h	/^    void (*free_pages)(struct Page *base, size_t n);  \/\/ free >=n pages with "base" addr of Page descriptor structures(memlayout.h)$/;"	m	struct:pmm_manager
+func	kern/debug/kmonitor.c	/^    int(*func)(int argc, char **argv, struct trapframe *tf);$/;"	m	struct:command	file:
 gatedesc	kern/mm/mmu.h	/^struct gatedesc {$/;"	s
-gd_args	kern/mm/mmu.h	/^    unsigned gd_args : 5;           \/\/ # args, 0 for interrupt\/trap gates$/;"	m	struct:gatedesc	access:public
-gd_dpl	kern/mm/mmu.h	/^    unsigned gd_dpl : 2;            \/\/ descriptor(meaning new) privilege level$/;"	m	struct:gatedesc	access:public
-gd_off_15_0	kern/mm/mmu.h	/^    unsigned gd_off_15_0 : 16;      \/\/ low 16 bits of offset in segment$/;"	m	struct:gatedesc	access:public
-gd_off_31_16	kern/mm/mmu.h	/^    unsigned gd_off_31_16 : 16;     \/\/ high bits of offset in segment$/;"	m	struct:gatedesc	access:public
-gd_p	kern/mm/mmu.h	/^    unsigned gd_p : 1;              \/\/ Present$/;"	m	struct:gatedesc	access:public
-gd_rsv1	kern/mm/mmu.h	/^    unsigned gd_rsv1 : 3;           \/\/ reserved(should be zero I guess)$/;"	m	struct:gatedesc	access:public
-gd_s	kern/mm/mmu.h	/^    unsigned gd_s : 1;              \/\/ must be 0 (system)$/;"	m	struct:gatedesc	access:public
-gd_ss	kern/mm/mmu.h	/^    unsigned gd_ss : 16;            \/\/ segment selector$/;"	m	struct:gatedesc	access:public
-gd_type	kern/mm/mmu.h	/^    unsigned gd_type : 4;           \/\/ type(STS_{TG,IG32,TG32})$/;"	m	struct:gatedesc	access:public
+gd_args	kern/mm/mmu.h	/^    unsigned gd_args : 5;           \/\/ # args, 0 for interrupt\/trap gates$/;"	m	struct:gatedesc
+gd_dpl	kern/mm/mmu.h	/^    unsigned gd_dpl : 2;            \/\/ descriptor(meaning new) privilege level$/;"	m	struct:gatedesc
+gd_off_15_0	kern/mm/mmu.h	/^    unsigned gd_off_15_0 : 16;      \/\/ low 16 bits of offset in segment$/;"	m	struct:gatedesc
+gd_off_31_16	kern/mm/mmu.h	/^    unsigned gd_off_31_16 : 16;     \/\/ high bits of offset in segment$/;"	m	struct:gatedesc
+gd_p	kern/mm/mmu.h	/^    unsigned gd_p : 1;              \/\/ Present$/;"	m	struct:gatedesc
+gd_rsv1	kern/mm/mmu.h	/^    unsigned gd_rsv1 : 3;           \/\/ reserved(should be zero I guess)$/;"	m	struct:gatedesc
+gd_s	kern/mm/mmu.h	/^    unsigned gd_s : 1;              \/\/ must be 0 (system)$/;"	m	struct:gatedesc
+gd_ss	kern/mm/mmu.h	/^    unsigned gd_ss : 16;            \/\/ segment selector$/;"	m	struct:gatedesc
+gd_type	kern/mm/mmu.h	/^    unsigned gd_type : 4;           \/\/ type(STS_{TG,IG32,TG32})$/;"	m	struct:gatedesc
 gdt	boot/bootasm.S	/^gdt:$/;"	l
 gdt	kern/mm/pmm.c	/^static struct segdesc gdt[] = {$/;"	v	typeref:struct:segdesc	file:
-gdt_init	kern/mm/pmm.c	/^gdt_init(void) {$/;"	f	file:	signature:(void)
+gdt_init	kern/mm/pmm.c	/^gdt_init(void) {$/;"	f	file:
 gdt_pd	kern/mm/pmm.c	/^static struct pseudodesc gdt_pd = {$/;"	v	typeref:struct:pseudodesc	file:
 gdtdesc	boot/bootasm.S	/^gdtdesc:$/;"	l
-get_page	kern/mm/pmm.c	/^get_page(pde_t *pgdir, uintptr_t la, pte_t **ptep_store) {$/;"	f	signature:(pde_t *pgdir, uintptr_t la, pte_t **ptep_store)
-get_page	kern/mm/pmm.h	/^struct Page *get_page(pde_t *pgdir, uintptr_t la, pte_t **ptep_store);$/;"	p	signature:(pde_t *pgdir, uintptr_t la, pte_t **ptep_store)
-get_pgtable_items	kern/mm/pmm.c	/^get_pgtable_items(size_t left, size_t right, size_t start, uintptr_t *table, size_t *left_store, size_t *right_store) {$/;"	f	file:	signature:(size_t left, size_t right, size_t start, uintptr_t *table, size_t *left_store, size_t *right_store)
-get_pid	kern/process/proc.c	/^get_pid(void) {$/;"	f	file:	signature:(void)
-get_proc_name	kern/process/proc.c	/^get_proc_name(struct proc_struct *proc) {$/;"	f	signature:(struct proc_struct *proc)
-get_proc_name	kern/process/proc.h	/^char *get_proc_name(struct proc_struct *proc);$/;"	p	signature:(struct proc_struct *proc)
-get_pte	kern/mm/pmm.c	/^get_pte(pde_t *pgdir, uintptr_t la, bool create) {$/;"	f	signature:(pde_t *pgdir, uintptr_t la, bool create)
-get_pte	kern/mm/pmm.h	/^pte_t *get_pte(pde_t *pgdir, uintptr_t la, bool create);$/;"	p	signature:(pde_t *pgdir, uintptr_t la, bool create)
+get_page	kern/mm/pmm.c	/^get_page(pde_t *pgdir, uintptr_t la, pte_t **ptep_store) {$/;"	f
+get_pgtable_items	kern/mm/pmm.c	/^get_pgtable_items(size_t left, size_t right, size_t start, uintptr_t *table, size_t *left_store, size_t *right_store) {$/;"	f	file:
+get_pid	kern/process/proc.c	/^get_pid(void) {$/;"	f	file:
+get_proc_name	kern/process/proc.c	/^get_proc_name(struct proc_struct *proc) {$/;"	f
+get_pte	kern/mm/pmm.c	/^get_pte(pde_t *pgdir, uintptr_t la, bool create) {$/;"	f
 get_time	tools/grade.sh	/^get_time() {$/;"	f
-get_unmapped_area	kern/mm/vmm.h	/^uintptr_t get_unmapped_area(struct mm_struct *mm, size_t len);$/;"	p	signature:(struct mm_struct *mm, size_t len)
-getchar	kern/libs/stdio.c	/^getchar(void) {$/;"	f	signature:(void)
-getchar	libs/stdio.h	/^int getchar(void);$/;"	p	signature:(void)
-getint	libs/printfmt.c	/^getint(va_list *ap, int lflag) {$/;"	f	file:	signature:(va_list *ap, int lflag)
-getpid	user/libs/ulib.c	/^getpid(void) {$/;"	f	signature:(void)
-getpid	user/libs/ulib.h	/^int getpid(void);$/;"	p	signature:(void)
-gettime_msec	user/libs/ulib.c	/^gettime_msec(void) {$/;"	f	signature:(void)
-gettime_msec	user/libs/ulib.h	/^unsigned int gettime_msec(void);$/;"	p	signature:(void)
-getuint	libs/printfmt.c	/^getuint(va_list *ap, int lflag) {$/;"	f	file:	signature:(va_list *ap, int lflag)
+getchar	kern/libs/stdio.c	/^getchar(void) {$/;"	f
+getint	libs/printfmt.c	/^getint(va_list *ap, int lflag) {$/;"	f	file:
+getpid	user/libs/ulib.c	/^getpid(void) {$/;"	f
+gettime_msec	user/libs/ulib.c	/^gettime_msec(void) {$/;"	f
+getuint	libs/printfmt.c	/^getuint(va_list *ap, int lflag) {$/;"	f	file:
 gfp_t	kern/mm/kmalloc.c	/^typedef unsigned int gfp_t;$/;"	t	file:
-grade.sh	tools/grade.sh	1;"	F
-grade_backtrace	kern/init/init.c	/^grade_backtrace(void) {$/;"	f	signature:(void)
-grade_backtrace	kern/init/init.c	/^void grade_backtrace(void);$/;"	p	file:	signature:(void)
-grade_backtrace0	kern/init/init.c	/^grade_backtrace0(int arg0, int arg1, int arg2) {$/;"	f	signature:(int arg0, int arg1, int arg2)
-grade_backtrace1	kern/init/init.c	/^grade_backtrace1(int arg0, int arg1) {$/;"	f	signature:(int arg0, int arg1)
-grade_backtrace2	kern/init/init.c	/^grade_backtrace2(int arg0, int arg1, int arg2, int arg3) {$/;"	f	signature:(int arg0, int arg1, int arg2, int arg3)
-hash.c	libs/hash.c	1;"	F
-hash32	libs/hash.c	/^hash32(uint32_t val, unsigned int bits) {$/;"	f	signature:(uint32_t val, unsigned int bits)
-hash32	libs/stdlib.h	/^uint32_t hash32(uint32_t val, unsigned int bits);$/;"	p	signature:(uint32_t val, unsigned int bits)
-hash_link	kern/process/proc.h	/^    list_entry_t hash_link;                     \/\/ Process hash list$/;"	m	struct:proc_struct	access:public
+grade_backtrace	kern/init/init.c	/^grade_backtrace(void) {$/;"	f
+grade_backtrace0	kern/init/init.c	/^grade_backtrace0(int arg0, int arg1, int arg2) {$/;"	f
+grade_backtrace1	kern/init/init.c	/^grade_backtrace1(int arg0, int arg1) {$/;"	f
+grade_backtrace2	kern/init/init.c	/^grade_backtrace2(int arg0, int arg1, int arg2, int arg3) {$/;"	f
+hash32	libs/hash.c	/^hash32(uint32_t val, unsigned int bits) {$/;"	f
+hash_link	kern/process/proc.h	/^    list_entry_t hash_link;                     \/\/ Process hash list$/;"	m	struct:proc_struct
 hash_list	kern/process/proc.c	/^static list_entry_t hash_list[HASH_LIST_SIZE];$/;"	v	file:
-hash_proc	kern/process/proc.c	/^hash_proc(struct proc_struct *proc) {$/;"	f	file:	signature:(struct proc_struct *proc)
-hello.c	user/hello.c	1;"	F
-ide.c	kern/driver/ide.c	1;"	F
-ide.h	kern/driver/ide.h	1;"	F
+hash_proc	kern/process/proc.c	/^hash_proc(struct proc_struct *proc) {$/;"	f	file:
 ide_device	kern/driver/ide.c	/^static struct ide_device {$/;"	s	file:
-ide_device_size	kern/driver/ide.c	/^ide_device_size(unsigned short ideno) {$/;"	f	signature:(unsigned short ideno)
-ide_device_size	kern/driver/ide.h	/^size_t ide_device_size(unsigned short ideno);$/;"	p	signature:(unsigned short ideno)
-ide_device_valid	kern/driver/ide.c	/^ide_device_valid(unsigned short ideno) {$/;"	f	signature:(unsigned short ideno)
-ide_device_valid	kern/driver/ide.h	/^bool ide_device_valid(unsigned short ideno);$/;"	p	signature:(unsigned short ideno)
+ide_device_size	kern/driver/ide.c	/^ide_device_size(unsigned short ideno) {$/;"	f
+ide_device_valid	kern/driver/ide.c	/^ide_device_valid(unsigned short ideno) {$/;"	f
 ide_devices	kern/driver/ide.c	/^} ide_devices[MAX_IDE];$/;"	v	typeref:struct:ide_device	file:
-ide_init	kern/driver/ide.c	/^ide_init(void) {$/;"	f	signature:(void)
-ide_init	kern/driver/ide.h	/^void ide_init(void);$/;"	p	signature:(void)
-ide_read_secs	kern/driver/ide.c	/^ide_read_secs(unsigned short ideno, uint32_t secno, void *dst, size_t nsecs) {$/;"	f	signature:(unsigned short ideno, uint32_t secno, void *dst, size_t nsecs)
-ide_read_secs	kern/driver/ide.h	/^int ide_read_secs(unsigned short ideno, uint32_t secno, void *dst, size_t nsecs);$/;"	p	signature:(unsigned short ideno, uint32_t secno, void *dst, size_t nsecs)
-ide_wait_ready	kern/driver/ide.c	/^ide_wait_ready(unsigned short iobase, bool check_error) {$/;"	f	file:	signature:(unsigned short iobase, bool check_error)
-ide_write_secs	kern/driver/ide.c	/^ide_write_secs(unsigned short ideno, uint32_t secno, const void *src, size_t nsecs) {$/;"	f	signature:(unsigned short ideno, uint32_t secno, const void *src, size_t nsecs)
-ide_write_secs	kern/driver/ide.h	/^int ide_write_secs(unsigned short ideno, uint32_t secno, const void *src, size_t nsecs);$/;"	p	signature:(unsigned short ideno, uint32_t secno, const void *src, size_t nsecs)
+ide_init	kern/driver/ide.c	/^ide_init(void) {$/;"	f
+ide_read_secs	kern/driver/ide.c	/^ide_read_secs(unsigned short ideno, uint32_t secno, void *dst, size_t nsecs) {$/;"	f
+ide_wait_ready	kern/driver/ide.c	/^ide_wait_ready(unsigned short iobase, bool check_error) {$/;"	f	file:
+ide_write_secs	kern/driver/ide.c	/^ide_write_secs(unsigned short ideno, uint32_t secno, const void *src, size_t nsecs) {$/;"	f
 idleproc	kern/process/proc.c	/^struct proc_struct *idleproc = NULL;$/;"	v	typeref:struct:proc_struct
-idleproc	kern/process/proc.h	/^extern struct proc_struct *idleproc, *initproc, *current;$/;"	x
 idt	kern/trap/trap.c	/^static struct gatedesc idt[256] = {{0}};$/;"	v	typeref:struct:gatedesc	file:
-idt_init	kern/trap/trap.c	/^idt_init(void) {$/;"	f	signature:(void)
-idt_init	kern/trap/trap.h	/^void idt_init(void);$/;"	p	signature:(void)
+idt_init	kern/trap/trap.c	/^idt_init(void) {$/;"	f
 idt_pd	kern/trap/trap.c	/^static struct pseudodesc idt_pd = {$/;"	v	typeref:struct:pseudodesc	file:
 in_swap_tick_event	kern/trap/trap.c	/^static volatile int in_swap_tick_event = 0;$/;"	v	file:
-inb	libs/x86.h	/^inb(uint16_t port) {$/;"	f	signature:(uint16_t port)
-inb	libs/x86.h	/^static inline uint8_t inb(uint16_t port) __attribute__((always_inline));$/;"	p	signature:(uint16_t port)
-init	kern/mm/pmm.h	/^    void (*init)(void);                               \/\/ initialize internal description&management data structure$/;"	m	struct:pmm_manager	access:public
-init	kern/mm/swap.h	/^     int (*init)            (void);$/;"	m	struct:swap_manager	access:public
-init	kern/schedule/sched.h	/^    void (*init)(struct run_queue *rq);$/;"	m	struct:sched_class	access:public
-init.c	kern/init/init.c	1;"	F
-init_main	kern/process/proc.c	/^init_main(void *arg) {$/;"	f	file:	signature:(void *arg)
-init_memmap	kern/mm/pmm.c	/^init_memmap(struct Page *base, size_t n) {$/;"	f	file:	signature:(struct Page *base, size_t n)
-init_memmap	kern/mm/pmm.h	/^    void (*init_memmap)(struct Page *base, size_t n); \/\/ setup description&management data structcure according to$/;"	m	struct:pmm_manager	access:public
-init_mm	kern/mm/swap.h	/^     int (*init_mm)         (struct mm_struct *mm);$/;"	m	struct:swap_manager	access:public
-init_pmm_manager	kern/mm/pmm.c	/^init_pmm_manager(void) {$/;"	f	file:	signature:(void)
-initcode.S	user/libs/initcode.S	1;"	F
+inb	libs/x86.h	/^inb(uint16_t port) {$/;"	f
+init	kern/mm/pmm.h	/^    void (*init)(void);                               \/\/ initialize internal description&management data structure$/;"	m	struct:pmm_manager
+init	kern/mm/swap.h	/^     int (*init)            (void);$/;"	m	struct:swap_manager
+init	kern/schedule/sched.h	/^    void (*init)(struct run_queue *rq);$/;"	m	struct:sched_class
+init_main	kern/process/proc.c	/^init_main(void *arg) {$/;"	f	file:
+init_memmap	kern/mm/pmm.c	/^init_memmap(struct Page *base, size_t n) {$/;"	f	file:
+init_memmap	kern/mm/pmm.h	/^    void (*init_memmap)(struct Page *base, size_t n); \/\/ setup description&management data structcure according to$/;"	m	struct:pmm_manager
+init_mm	kern/mm/swap.h	/^     int (*init_mm)         (struct mm_struct *mm);$/;"	m	struct:swap_manager
+init_pmm_manager	kern/mm/pmm.c	/^init_pmm_manager(void) {$/;"	f	file:
 initproc	kern/process/proc.c	/^struct proc_struct *initproc = NULL;$/;"	v	typeref:struct:proc_struct
-initproc	kern/process/proc.h	/^extern struct proc_struct *idleproc, *initproc, *current;$/;"	x
-insert_vma_struct	kern/mm/vmm.c	/^insert_vma_struct(struct mm_struct *mm, struct vma_struct *vma) {$/;"	f	signature:(struct mm_struct *mm, struct vma_struct *vma)
-insert_vma_struct	kern/mm/vmm.h	/^void insert_vma_struct(struct mm_struct *mm, struct vma_struct *vma);$/;"	p	signature:(struct mm_struct *mm, struct vma_struct *vma)
-insl	libs/x86.h	/^insl(uint32_t port, void *addr, int cnt) {$/;"	f	signature:(uint32_t port, void *addr, int cnt)
-insl	libs/x86.h	/^static inline void insl(uint32_t port, void *addr, int cnt) __attribute__((always_inline));$/;"	p	signature:(uint32_t port, void *addr, int cnt)
+insert_vma_struct	kern/mm/vmm.c	/^insert_vma_struct(struct mm_struct *mm, struct vma_struct *vma) {$/;"	f
+insl	libs/x86.h	/^insl(uint32_t port, void *addr, int cnt) {$/;"	f
 int16_t	libs/defs.h	/^typedef short int16_t;$/;"	t
 int32_t	libs/defs.h	/^typedef int int32_t;$/;"	t
 int64_t	libs/defs.h	/^typedef long long int64_t;$/;"	t
 int8_t	libs/defs.h	/^typedef char int8_t;$/;"	t
 intptr_t	libs/defs.h	/^typedef int32_t intptr_t;$/;"	t
-intr.c	kern/driver/intr.c	1;"	F
-intr.h	kern/driver/intr.h	1;"	F
-intr_disable	kern/driver/intr.c	/^intr_disable(void) {$/;"	f	signature:(void)
-intr_disable	kern/driver/intr.h	/^void intr_disable(void);$/;"	p	signature:(void)
-intr_enable	kern/driver/intr.c	/^intr_enable(void) {$/;"	f	signature:(void)
-intr_enable	kern/driver/intr.h	/^void intr_enable(void);$/;"	p	signature:(void)
-invlpg	libs/x86.h	/^invlpg(void *addr) {$/;"	f	signature:(void *addr)
-invlpg	libs/x86.h	/^static inline void invlpg(void *addr) __attribute__((always_inline));$/;"	p	signature:(void *addr)
+intr_disable	kern/driver/intr.c	/^intr_disable(void) {$/;"	f
+intr_enable	kern/driver/intr.c	/^intr_enable(void) {$/;"	f
+invlpg	libs/x86.h	/^invlpg(void *addr) {$/;"	f
 irq_mask	kern/driver/picirq.c	/^static uint16_t irq_mask = 0xFFFF & ~(1 << IRQ_SLAVE);$/;"	v	file:
-is_kernel_panic	kern/debug/kmonitor.c	/^bool is_kernel_panic(void);$/;"	p	file:	signature:(void)
-is_kernel_panic	kern/debug/panic.c	/^is_kernel_panic(void) {$/;"	f	signature:(void)
+is_kernel_panic	kern/debug/panic.c	/^is_kernel_panic(void) {$/;"	f
 is_panic	kern/debug/panic.c	/^static bool is_panic = 0;$/;"	v	file:
-kallocated	kern/mm/kmalloc.c	/^kallocated(void) {$/;"	f	signature:(void)
-kallocated	kern/mm/kmalloc.h	/^size_t kallocated(void);$/;"	p	signature:(void)
-kbd_init	kern/driver/console.c	/^kbd_init(void) {$/;"	f	file:	signature:(void)
-kbd_intr	kern/driver/console.c	/^kbd_intr(void) {$/;"	f	file:	signature:(void)
-kbd_intr	kern/driver/console.h	/^void kbd_intr(void);$/;"	p	signature:(void)
-kbd_proc_data	kern/driver/console.c	/^kbd_proc_data(void) {$/;"	f	file:	signature:(void)
-kbdreg.h	kern/driver/kbdreg.h	1;"	F
-kdebug.c	kern/debug/kdebug.c	1;"	F
-kdebug.h	kern/debug/kdebug.h	1;"	F
+kallocated	kern/mm/kmalloc.c	/^kallocated(void) {$/;"	f
+kbd_init	kern/driver/console.c	/^kbd_init(void) {$/;"	f	file:
+kbd_intr	kern/driver/console.c	/^kbd_intr(void) {$/;"	f	file:
+kbd_proc_data	kern/driver/console.c	/^kbd_proc_data(void) {$/;"	f	file:
 kern_entry	kern/init/entry.S	/^kern_entry:$/;"	l
-kern_init	kern/init/init.c	/^int kern_init(void) __attribute__((noreturn));$/;"	p	file:	signature:(void)
-kern_init	kern/init/init.c	/^kern_init(void) {$/;"	f	signature:(void)
+kern_init	kern/init/init.c	/^kern_init(void) {$/;"	f
 kernel	Makefile	/^kernel = $(call totarget,kernel)$/;"	m
-kernel_execve	kern/process/proc.c	/^kernel_execve(const char *name, unsigned char *binary, size_t size) {$/;"	f	file:	signature:(const char *name, unsigned char *binary, size_t size)
-kernel_thread	kern/process/proc.c	/^kernel_thread(int (*fn)(void *), void *arg, uint32_t clone_flags) {$/;"	f	signature:(int (*fn)(void *), void *arg, uint32_t clone_flags)
-kernel_thread	kern/process/proc.h	/^int kernel_thread(int (*fn)(void *), void *arg, uint32_t clone_flags);$/;"	p	signature:(int (*fn)(void *), void *arg, uint32_t clone_flags)
+kernel_execve	kern/process/proc.c	/^kernel_execve(const char *name, unsigned char *binary, size_t size) {$/;"	f	file:
+kernel_thread	kern/process/proc.c	/^kernel_thread(int (*fn)(void *), void *arg, uint32_t clone_flags) {$/;"	f
 kernel_thread_entry	kern/process/entry.S	/^kernel_thread_entry:        # void kernel_thread(void)$/;"	l
-kernel_thread_entry	kern/process/proc.c	/^void kernel_thread_entry(void);$/;"	p	file:	signature:(void)
-kfree	kern/mm/kmalloc.c	/^void kfree(void *block)$/;"	f	signature:(void *block)
-kfree	kern/mm/kmalloc.h	/^void kfree(void *objp);$/;"	p	signature:(void *objp)
-kill	user/libs/ulib.c	/^kill(int pid) {$/;"	f	signature:(int pid)
-kill	user/libs/ulib.h	/^int kill(int pid);$/;"	p	signature:(int pid)
-kmalloc	kern/mm/kmalloc.c	/^kmalloc(size_t size)$/;"	f	signature:(size_t size)
-kmalloc	kern/mm/kmalloc.h	/^void *kmalloc(size_t n);$/;"	p	signature:(size_t n)
-kmalloc.c	kern/mm/kmalloc.c	1;"	F
-kmalloc.h	kern/mm/kmalloc.h	1;"	F
-kmalloc_init	kern/mm/kmalloc.c	/^kmalloc_init(void) {$/;"	f	signature:(void)
-kmalloc_init	kern/mm/kmalloc.h	/^void kmalloc_init(void);$/;"	p	signature:(void)
-kmonitor	kern/debug/kmonitor.c	/^kmonitor(struct trapframe *tf) {$/;"	f	signature:(struct trapframe *tf)
-kmonitor	kern/debug/kmonitor.h	/^void kmonitor(struct trapframe *tf);$/;"	p	signature:(struct trapframe *tf)
-kmonitor.c	kern/debug/kmonitor.c	1;"	F
-kmonitor.h	kern/debug/kmonitor.h	1;"	F
-ksize	kern/mm/kmalloc.c	/^unsigned int ksize(const void *block)$/;"	f	signature:(const void *block)
-kstack	kern/process/proc.h	/^    uintptr_t kstack;                           \/\/ Process kernel stack$/;"	m	struct:proc_struct	access:public
-kva2page	kern/mm/pmm.h	/^kva2page(void *kva) {$/;"	f	signature:(void *kva)
-lab1_print_cur_status	kern/init/init.c	/^lab1_print_cur_status(void) {$/;"	f	file:	signature:(void)
-lab1_switch_test	kern/init/init.c	/^lab1_switch_test(void) {$/;"	f	file:	signature:(void)
-lab1_switch_test	kern/init/init.c	/^static void lab1_switch_test(void);$/;"	p	file:	signature:(void)
-lab1_switch_to_kernel	kern/init/init.c	/^lab1_switch_to_kernel(void) {$/;"	f	file:	signature:(void)
-lab1_switch_to_user	kern/init/init.c	/^lab1_switch_to_user(void) {$/;"	f	file:	signature:(void)
-lab6_priority	kern/process/proc.h	/^    uint32_t lab6_priority;                     \/\/ FOR LAB6 ONLY: the priority of process, set by lab6_set_priority(uint32_t)$/;"	m	struct:proc_struct	access:public
-lab6_run_pool	kern/process/proc.h	/^    skew_heap_entry_t lab6_run_pool;            \/\/ FOR LAB6 ONLY: the entry in the run pool$/;"	m	struct:proc_struct	access:public
-lab6_run_pool	kern/schedule/sched.h	/^    skew_heap_entry_t *lab6_run_pool;$/;"	m	struct:run_queue	access:public
-lab6_set_priority	kern/process/proc.c	/^lab6_set_priority(uint32_t priority)$/;"	f	signature:(uint32_t priority)
-lab6_set_priority	kern/process/proc.h	/^void lab6_set_priority(uint32_t priority);$/;"	p	signature:(uint32_t priority)
-lab6_set_priority	user/libs/ulib.c	/^lab6_set_priority(uint32_t priority)$/;"	f	signature:(uint32_t priority)
-lab6_set_priority	user/libs/ulib.h	/^void lab6_set_priority(uint32_t priority);$/;"	p	signature:(uint32_t priority)
-lab6_stride	kern/process/proc.h	/^    uint32_t lab6_stride;                       \/\/ FOR LAB6 ONLY: the current stride of the process $/;"	m	struct:proc_struct	access:public
-lcr0	libs/x86.h	/^lcr0(uintptr_t cr0) {$/;"	f	signature:(uintptr_t cr0)
-lcr0	libs/x86.h	/^static inline void lcr0(uintptr_t cr0) __attribute__((always_inline));$/;"	p	signature:(uintptr_t cr0)
-lcr3	libs/x86.h	/^lcr3(uintptr_t cr3) {$/;"	f	signature:(uintptr_t cr3)
-lcr3	libs/x86.h	/^static inline void lcr3(uintptr_t cr3) __attribute__((always_inline));$/;"	p	signature:(uintptr_t cr3)
+kfree	kern/mm/kmalloc.c	/^void kfree(void *block)$/;"	f
+kill	user/libs/ulib.c	/^kill(int pid) {$/;"	f
+kmalloc	kern/mm/kmalloc.c	/^kmalloc(size_t size)$/;"	f
+kmalloc_init	kern/mm/kmalloc.c	/^kmalloc_init(void) {$/;"	f
+kmonitor	kern/debug/kmonitor.c	/^kmonitor(struct trapframe *tf) {$/;"	f
+ksize	kern/mm/kmalloc.c	/^unsigned int ksize(const void *block)$/;"	f
+kstack	kern/process/proc.h	/^    uintptr_t kstack;                           \/\/ Process kernel stack$/;"	m	struct:proc_struct
+kva2page	kern/mm/pmm.h	/^kva2page(void *kva) {$/;"	f
+lab1_print_cur_status	kern/init/init.c	/^lab1_print_cur_status(void) {$/;"	f	file:
+lab1_switch_test	kern/init/init.c	/^lab1_switch_test(void) {$/;"	f	file:
+lab1_switch_to_kernel	kern/init/init.c	/^lab1_switch_to_kernel(void) {$/;"	f	file:
+lab1_switch_to_user	kern/init/init.c	/^lab1_switch_to_user(void) {$/;"	f	file:
+lab6_priority	kern/process/proc.h	/^    uint32_t lab6_priority;                     \/\/ FOR LAB6 ONLY: the priority of process, set by lab6_set_priority(uint32_t)$/;"	m	struct:proc_struct
+lab6_run_pool	kern/process/proc.h	/^    skew_heap_entry_t lab6_run_pool;            \/\/ FOR LAB6 ONLY: the entry in the run pool$/;"	m	struct:proc_struct
+lab6_run_pool	kern/schedule/sched.h	/^    skew_heap_entry_t *lab6_run_pool;$/;"	m	struct:run_queue
+lab6_set_priority	kern/process/proc.c	/^lab6_set_priority(uint32_t priority)$/;"	f
+lab6_set_priority	user/libs/ulib.c	/^lab6_set_priority(uint32_t priority)$/;"	f
+lab6_stride	kern/process/proc.h	/^    uint32_t lab6_stride;                       \/\/ FOR LAB6 ONLY: the current stride of the process $/;"	m	struct:proc_struct
+lcr0	libs/x86.h	/^lcr0(uintptr_t cr0) {$/;"	f
+lcr3	libs/x86.h	/^lcr3(uintptr_t cr3) {$/;"	f
 le2page	kern/mm/memlayout.h	150;"	d
 le2proc	kern/process/proc.h	75;"	d
 le2vma	kern/mm/vmm.h	22;"	d
-left	libs/skew_heap.h	/^     struct skew_heap_entry *parent, *left, *right;$/;"	m	struct:skew_heap_entry	typeref:struct:skew_heap_entry::	access:public
-lgdt	kern/mm/pmm.c	/^lgdt(struct pseudodesc *pd) {$/;"	f	file:	signature:(struct pseudodesc *pd)
-lidt	libs/x86.h	/^lidt(struct pseudodesc *pd) {$/;"	f	signature:(struct pseudodesc *pd)
-lidt	libs/x86.h	/^static inline void lidt(struct pseudodesc *pd) __attribute__((always_inline));$/;"	p	signature:(struct pseudodesc *pd)
-list.h	libs/list.h	1;"	F
-list_add	libs/list.h	/^list_add(list_entry_t *listelm, list_entry_t *elm) {$/;"	f	signature:(list_entry_t *listelm, list_entry_t *elm)
-list_add	libs/list.h	/^static inline void list_add(list_entry_t *listelm, list_entry_t *elm) __attribute__((always_inline));$/;"	p	signature:(list_entry_t *listelm, list_entry_t *elm)
-list_add_after	libs/list.h	/^list_add_after(list_entry_t *listelm, list_entry_t *elm) {$/;"	f	signature:(list_entry_t *listelm, list_entry_t *elm)
-list_add_after	libs/list.h	/^static inline void list_add_after(list_entry_t *listelm, list_entry_t *elm) __attribute__((always_inline));$/;"	p	signature:(list_entry_t *listelm, list_entry_t *elm)
-list_add_before	libs/list.h	/^list_add_before(list_entry_t *listelm, list_entry_t *elm) {$/;"	f	signature:(list_entry_t *listelm, list_entry_t *elm)
-list_add_before	libs/list.h	/^static inline void list_add_before(list_entry_t *listelm, list_entry_t *elm) __attribute__((always_inline));$/;"	p	signature:(list_entry_t *listelm, list_entry_t *elm)
-list_del	libs/list.h	/^list_del(list_entry_t *listelm) {$/;"	f	signature:(list_entry_t *listelm)
-list_del	libs/list.h	/^static inline void list_del(list_entry_t *listelm) __attribute__((always_inline));$/;"	p	signature:(list_entry_t *listelm)
-list_del_init	libs/list.h	/^list_del_init(list_entry_t *listelm) {$/;"	f	signature:(list_entry_t *listelm)
-list_del_init	libs/list.h	/^static inline void list_del_init(list_entry_t *listelm) __attribute__((always_inline));$/;"	p	signature:(list_entry_t *listelm)
-list_empty	libs/list.h	/^list_empty(list_entry_t *list) {$/;"	f	signature:(list_entry_t *list)
-list_empty	libs/list.h	/^static inline bool list_empty(list_entry_t *list) __attribute__((always_inline));$/;"	p	signature:(list_entry_t *list)
+left	libs/skew_heap.h	/^     struct skew_heap_entry *parent, *left, *right;$/;"	m	struct:skew_heap_entry	typeref:struct:skew_heap_entry::
+lgdt	kern/mm/pmm.c	/^lgdt(struct pseudodesc *pd) {$/;"	f	file:
+lidt	libs/x86.h	/^lidt(struct pseudodesc *pd) {$/;"	f
+list_add	libs/list.h	/^list_add(list_entry_t *listelm, list_entry_t *elm) {$/;"	f
+list_add_after	libs/list.h	/^list_add_after(list_entry_t *listelm, list_entry_t *elm) {$/;"	f
+list_add_before	libs/list.h	/^list_add_before(list_entry_t *listelm, list_entry_t *elm) {$/;"	f
+list_del	libs/list.h	/^list_del(list_entry_t *listelm) {$/;"	f
+list_del_init	libs/list.h	/^list_del_init(list_entry_t *listelm) {$/;"	f
+list_empty	libs/list.h	/^list_empty(list_entry_t *list) {$/;"	f
 list_entry	libs/list.h	/^struct list_entry {$/;"	s
 list_entry_t	libs/list.h	/^typedef struct list_entry list_entry_t;$/;"	t	typeref:struct:list_entry
-list_init	libs/list.h	/^list_init(list_entry_t *elm) {$/;"	f	signature:(list_entry_t *elm)
-list_init	libs/list.h	/^static inline void list_init(list_entry_t *elm) __attribute__((always_inline));$/;"	p	signature:(list_entry_t *elm)
-list_link	kern/mm/vmm.h	/^    list_entry_t list_link;  \/\/ linear list link which sorted by start addr of vma$/;"	m	struct:vma_struct	access:public
-list_link	kern/process/proc.h	/^    list_entry_t list_link;                     \/\/ Process link list $/;"	m	struct:proc_struct	access:public
-list_next	libs/list.h	/^list_next(list_entry_t *listelm) {$/;"	f	signature:(list_entry_t *listelm)
-list_next	libs/list.h	/^static inline list_entry_t *list_next(list_entry_t *listelm) __attribute__((always_inline));$/;"	p	signature:(list_entry_t *listelm)
-list_prev	libs/list.h	/^list_prev(list_entry_t *listelm) {$/;"	f	signature:(list_entry_t *listelm)
-list_prev	libs/list.h	/^static inline list_entry_t *list_prev(list_entry_t *listelm) __attribute__((always_inline));$/;"	p	signature:(list_entry_t *listelm)
+list_init	libs/list.h	/^list_init(list_entry_t *elm) {$/;"	f
+list_link	kern/mm/vmm.h	/^    list_entry_t list_link;  \/\/ linear list link which sorted by start addr of vma$/;"	m	struct:vma_struct
+list_link	kern/process/proc.h	/^    list_entry_t list_link;                     \/\/ Process link list $/;"	m	struct:proc_struct
+list_next	libs/list.h	/^list_next(list_entry_t *listelm) {$/;"	f
+list_prev	libs/list.h	/^list_prev(list_entry_t *listelm) {$/;"	f
 listf	tools/function.mk	/^listf = $(filter $(if $(2),$(addprefix %.,$(2)),%),\\$/;"	m
 listf_cc	Makefile	/^listf_cc = $(call listf,$(1),$(CTYPE))$/;"	m
-load_esp0	kern/mm/pmm.c	/^load_esp0(uintptr_t esp0) {$/;"	f	signature:(uintptr_t esp0)
-load_esp0	kern/mm/pmm.h	/^void load_esp0(uintptr_t esp0);$/;"	p	signature:(uintptr_t esp0)
-load_icode	kern/process/proc.c	/^load_icode(unsigned char *binary, size_t size) {$/;"	f	file:	signature:(unsigned char *binary, size_t size)
+load_esp0	kern/mm/pmm.c	/^load_esp0(uintptr_t esp0) {$/;"	f
+load_icode	kern/process/proc.c	/^load_icode(unsigned char *binary, size_t size) {$/;"	f	file:
 local_intr_restore	kern/sync/sync.h	28;"	d
 local_intr_save	kern/sync/sync.h	27;"	d
-lock	kern/sync/sync.h	/^lock(lock_t *lock) {$/;"	f	signature:(lock_t *lock)
-lock_init	kern/sync/sync.h	/^lock_init(lock_t *lock) {$/;"	f	signature:(lock_t *lock)
-lock_mm	kern/mm/vmm.h	/^lock_mm(struct mm_struct *mm) {$/;"	f	signature:(struct mm_struct *mm)
+lock	kern/sync/sync.h	/^lock(lock_t *lock) {$/;"	f
+lock_init	kern/sync/sync.h	/^lock_init(lock_t *lock) {$/;"	f
+lock_mm	kern/mm/vmm.h	/^lock_mm(struct mm_struct *mm) {$/;"	f
 lock_t	kern/sync/sync.h	/^typedef volatile bool lock_t;$/;"	t
-loop	user/waitkill.c	/^loop(void) {$/;"	f	signature:(void)
-lpt_putc	kern/driver/console.c	/^lpt_putc(int c) {$/;"	f	file:	signature:(int c)
-lpt_putc_sub	kern/driver/console.c	/^lpt_putc_sub(int c) {$/;"	f	file:	signature:(int c)
-ltr	libs/x86.h	/^ltr(uint16_t sel) {$/;"	f	signature:(uint16_t sel)
-ltr	libs/x86.h	/^static inline void ltr(uint16_t sel) __attribute__((always_inline));$/;"	p	signature:(uint16_t sel)
+loop	user/waitkill.c	/^loop(void) {$/;"	f
+lpt_putc	kern/driver/console.c	/^lpt_putc(int c) {$/;"	f	file:
+lpt_putc_sub	kern/driver/console.c	/^lpt_putc_sub(int c) {$/;"	f	file:
+ltr	libs/x86.h	/^ltr(uint16_t sel) {$/;"	f
 magic	user/exit.c	/^int magic = -0x10384;$/;"	v
-main	tools/sign.c	/^main(int argc, char *argv[]) {$/;"	f	signature:(int argc, char *argv[])
-main	tools/vector.c	/^main(void) {$/;"	f	signature:(void)
-main	user/badarg.c	/^main(void) {$/;"	f	signature:(void)
-main	user/badsegment.c	/^main(void) {$/;"	f	signature:(void)
-main	user/divzero.c	/^main(void) {$/;"	f	signature:(void)
-main	user/exit.c	/^main(void) {$/;"	f	signature:(void)
-main	user/faultread.c	/^main(void) {$/;"	f	signature:(void)
-main	user/faultreadkernel.c	/^main(void) {$/;"	f	signature:(void)
-main	user/forktest.c	/^main(void) {$/;"	f	signature:(void)
-main	user/forktree.c	/^main(void) {$/;"	f	signature:(void)
-main	user/hello.c	/^main(void) {$/;"	f	signature:(void)
-main	user/libs/umain.c	/^int main(void);$/;"	p	file:	signature:(void)
-main	user/matrix.c	/^main(void) {$/;"	f	signature:(void)
-main	user/pgdir.c	/^main(void) {$/;"	f	signature:(void)
-main	user/priority.c	/^main(void) {$/;"	f	signature:(void)
-main	user/softint.c	/^main(void) {$/;"	f	signature:(void)
-main	user/spin.c	/^main(void) {$/;"	f	signature:(void)
-main	user/testbss.c	/^main(void) {$/;"	f	signature:(void)
-main	user/waitkill.c	/^main(void) {$/;"	f	signature:(void)
-main	user/yield.c	/^main(void) {$/;"	f	signature:(void)
+main	tools/sign.c	/^main(int argc, char *argv[]) {$/;"	f
+main	tools/vector.c	/^main(void) {$/;"	f
+main	user/badarg.c	/^main(void) {$/;"	f
+main	user/badsegment.c	/^main(void) {$/;"	f
+main	user/divzero.c	/^main(void) {$/;"	f
+main	user/exit.c	/^main(void) {$/;"	f
+main	user/faultread.c	/^main(void) {$/;"	f
+main	user/faultreadkernel.c	/^main(void) {$/;"	f
+main	user/forktest.c	/^main(void) {$/;"	f
+main	user/forktree.c	/^main(void) {$/;"	f
+main	user/hello.c	/^main(void) {$/;"	f
+main	user/matrix.c	/^main(void) {$/;"	f
+main	user/pgdir.c	/^main(void) {$/;"	f
+main	user/priority.c	/^main(void) {$/;"	f
+main	user/softint.c	/^main(void) {$/;"	f
+main	user/spin.c	/^main(void) {$/;"	f
+main	user/testbss.c	/^main(void) {$/;"	f
+main	user/waitkill.c	/^main(void) {$/;"	f
+main	user/yield.c	/^main(void) {$/;"	f
 make_print	tools/grade.sh	/^make_print() {$/;"	f
-map	kern/mm/memlayout.h	/^    } __attribute__((packed)) map[E820MAX];$/;"	m	struct:e820map	typeref:struct:e820map::__anon3	access:public
-map_count	kern/mm/vmm.h	/^    int map_count;                 \/\/ the count of these vma$/;"	m	struct:mm_struct	access:public
-map_swappable	kern/mm/swap.h	/^     int (*map_swappable)   (struct mm_struct *mm, uintptr_t addr, struct Page *page, int swap_in);$/;"	m	struct:swap_manager	access:public
+map	kern/mm/memlayout.h	/^    } __attribute__((packed)) map[E820MAX];$/;"	m	struct:e820map	typeref:struct:e820map::__anon3
+map_count	kern/mm/vmm.h	/^    int map_count;                 \/\/ the count of these vma$/;"	m	struct:mm_struct
+map_swappable	kern/mm/swap.h	/^     int (*map_swappable)   (struct mm_struct *mm, uintptr_t addr, struct Page *page, int swap_in);$/;"	m	struct:swap_manager
 mata	user/matrix.c	/^static int mata[MATSIZE][MATSIZE];$/;"	v	file:
 matb	user/matrix.c	/^static int matb[MATSIZE][MATSIZE];$/;"	v	file:
 matc	user/matrix.c	/^static int matc[MATSIZE][MATSIZE];$/;"	v	file:
 match	Makefile	/^match = $(shell echo $(2) | $(AWK) '{for(i=1;i<=NF;i++){if(match("$(1)","^"$$(i)"$$")){exit 1;}}}'; echo $$?)$/;"	m
-matrix.c	user/matrix.c	1;"	F
 max_child	user/forktest.c	/^const int max_child = 32;$/;"	v
 max_swap_offset	kern/mm/swap.c	/^size_t max_swap_offset;$/;"	v
-max_swap_offset	kern/mm/swap.h	/^extern size_t max_swap_offset;$/;"	x
-max_time_slice	kern/schedule/sched.h	/^    int max_time_slice;$/;"	m	struct:run_queue	access:public
-memcmp	libs/string.c	/^memcmp(const void *v1, const void *v2, size_t n) {$/;"	f	signature:(const void *v1, const void *v2, size_t n)
-memcmp	libs/string.h	/^int memcmp(const void *v1, const void *v2, size_t n);$/;"	p	signature:(const void *v1, const void *v2, size_t n)
-memcpy	libs/string.c	/^memcpy(void *dst, const void *src, size_t n) {$/;"	f	signature:(void *dst, const void *src, size_t n)
-memcpy	libs/string.h	/^void *memcpy(void *dst, const void *src, size_t n);$/;"	p	signature:(void *dst, const void *src, size_t n)
-memlayout.h	kern/mm/memlayout.h	1;"	F
-memmove	libs/string.c	/^memmove(void *dst, const void *src, size_t n) {$/;"	f	signature:(void *dst, const void *src, size_t n)
-memmove	libs/string.h	/^void *memmove(void *dst, const void *src, size_t n);$/;"	p	signature:(void *dst, const void *src, size_t n)
-memset	libs/string.c	/^memset(void *s, char c, size_t n) {$/;"	f	signature:(void *s, char c, size_t n)
-memset	libs/string.h	/^void *memset(void *s, char c, size_t n);$/;"	p	signature:(void *s, char c, size_t n)
-mm	kern/process/proc.h	/^    struct mm_struct *mm;                       \/\/ Process's memory management field$/;"	m	struct:proc_struct	typeref:struct:proc_struct::mm_struct	access:public
-mm_brk	kern/mm/vmm.h	/^int mm_brk(struct mm_struct *mm, uintptr_t addr, size_t len);$/;"	p	signature:(struct mm_struct *mm, uintptr_t addr, size_t len)
-mm_count	kern/mm/vmm.h	/^    int mm_count;                  \/\/ the number ofprocess which shared the mm$/;"	m	struct:mm_struct	access:public
-mm_count	kern/mm/vmm.h	/^mm_count(struct mm_struct *mm) {$/;"	f	signature:(struct mm_struct *mm)
-mm_count_dec	kern/mm/vmm.h	/^mm_count_dec(struct mm_struct *mm) {$/;"	f	signature:(struct mm_struct *mm)
-mm_count_inc	kern/mm/vmm.h	/^mm_count_inc(struct mm_struct *mm) {$/;"	f	signature:(struct mm_struct *mm)
-mm_create	kern/mm/vmm.c	/^mm_create(void) {$/;"	f	signature:(void)
-mm_create	kern/mm/vmm.h	/^struct mm_struct *mm_create(void);$/;"	p	signature:(void)
-mm_destroy	kern/mm/vmm.c	/^mm_destroy(struct mm_struct *mm) {$/;"	f	signature:(struct mm_struct *mm)
-mm_destroy	kern/mm/vmm.h	/^void mm_destroy(struct mm_struct *mm);$/;"	p	signature:(struct mm_struct *mm)
-mm_lock	kern/mm/vmm.h	/^    lock_t mm_lock;                \/\/ mutex for using dup_mmap fun to duplicat the mm$/;"	m	struct:mm_struct	access:public
-mm_map	kern/mm/vmm.c	/^mm_map(struct mm_struct *mm, uintptr_t addr, size_t len, uint32_t vm_flags,$/;"	f	signature:(struct mm_struct *mm, uintptr_t addr, size_t len, uint32_t vm_flags, struct vma_struct **vma_store)
-mm_map	kern/mm/vmm.h	/^int mm_map(struct mm_struct *mm, uintptr_t addr, size_t len, uint32_t vm_flags,$/;"	p	signature:(struct mm_struct *mm, uintptr_t addr, size_t len, uint32_t vm_flags, struct vma_struct **vma_store)
+max_time_slice	kern/schedule/sched.h	/^    int max_time_slice;$/;"	m	struct:run_queue
+memcmp	libs/string.c	/^memcmp(const void *v1, const void *v2, size_t n) {$/;"	f
+memcpy	libs/string.c	/^memcpy(void *dst, const void *src, size_t n) {$/;"	f
+memmove	libs/string.c	/^memmove(void *dst, const void *src, size_t n) {$/;"	f
+memset	libs/string.c	/^memset(void *s, char c, size_t n) {$/;"	f
+mm	kern/process/proc.h	/^    struct mm_struct *mm;                       \/\/ Process's memory management field$/;"	m	struct:proc_struct	typeref:struct:proc_struct::mm_struct
+mm_count	kern/mm/vmm.h	/^    int mm_count;                  \/\/ the number ofprocess which shared the mm$/;"	m	struct:mm_struct
+mm_count	kern/mm/vmm.h	/^mm_count(struct mm_struct *mm) {$/;"	f
+mm_count_dec	kern/mm/vmm.h	/^mm_count_dec(struct mm_struct *mm) {$/;"	f
+mm_count_inc	kern/mm/vmm.h	/^mm_count_inc(struct mm_struct *mm) {$/;"	f
+mm_create	kern/mm/vmm.c	/^mm_create(void) {$/;"	f
+mm_destroy	kern/mm/vmm.c	/^mm_destroy(struct mm_struct *mm) {$/;"	f
+mm_lock	kern/mm/vmm.h	/^    lock_t mm_lock;                \/\/ mutex for using dup_mmap fun to duplicat the mm$/;"	m	struct:mm_struct
+mm_map	kern/mm/vmm.c	/^mm_map(struct mm_struct *mm, uintptr_t addr, size_t len, uint32_t vm_flags,$/;"	f
 mm_struct	kern/mm/vmm.h	/^struct mm_struct {$/;"	s
-mm_struct	kern/mm/vmm.h	/^struct mm_struct;$/;"	x
-mm_unmap	kern/mm/vmm.h	/^int mm_unmap(struct mm_struct *mm, uintptr_t addr, size_t len);$/;"	p	signature:(struct mm_struct *mm, uintptr_t addr, size_t len)
-mmap_cache	kern/mm/vmm.h	/^    struct vma_struct *mmap_cache; \/\/ current accessed vma, used for speed purpose$/;"	m	struct:mm_struct	typeref:struct:mm_struct::vma_struct	access:public
-mmap_list	kern/mm/vmm.h	/^    list_entry_t mmap_list;        \/\/ linear list link which sorted by start addr of vma$/;"	m	struct:mm_struct	access:public
-mmu.h	kern/mm/mmu.h	1;"	F
-model	kern/driver/ide.c	/^    unsigned char model[41];    \/\/ Model in String$/;"	m	struct:ide_device	file:	access:public
-mon_backtrace	kern/debug/kmonitor.c	/^mon_backtrace(int argc, char **argv, struct trapframe *tf) {$/;"	f	signature:(int argc, char **argv, struct trapframe *tf)
-mon_backtrace	kern/debug/kmonitor.h	/^int mon_backtrace(int argc, char **argv, struct trapframe *tf);$/;"	p	signature:(int argc, char **argv, struct trapframe *tf)
-mon_breakpoint	kern/debug/kmonitor.h	/^int mon_breakpoint(int argc, char **argv, struct trapframe *tf);$/;"	p	signature:(int argc, char **argv, struct trapframe *tf)
-mon_continue	kern/debug/kmonitor.h	/^int mon_continue(int argc, char **argv, struct trapframe *tf);$/;"	p	signature:(int argc, char **argv, struct trapframe *tf)
-mon_delete_dr	kern/debug/kmonitor.h	/^int mon_delete_dr(int argc, char **argv, struct trapframe *tf);$/;"	p	signature:(int argc, char **argv, struct trapframe *tf)
-mon_help	kern/debug/kmonitor.c	/^mon_help(int argc, char **argv, struct trapframe *tf) {$/;"	f	signature:(int argc, char **argv, struct trapframe *tf)
-mon_help	kern/debug/kmonitor.h	/^int mon_help(int argc, char **argv, struct trapframe *tf);$/;"	p	signature:(int argc, char **argv, struct trapframe *tf)
-mon_kerninfo	kern/debug/kmonitor.c	/^mon_kerninfo(int argc, char **argv, struct trapframe *tf) {$/;"	f	signature:(int argc, char **argv, struct trapframe *tf)
-mon_kerninfo	kern/debug/kmonitor.h	/^int mon_kerninfo(int argc, char **argv, struct trapframe *tf);$/;"	p	signature:(int argc, char **argv, struct trapframe *tf)
-mon_list_dr	kern/debug/kmonitor.h	/^int mon_list_dr(int argc, char **argv, struct trapframe *tf);$/;"	p	signature:(int argc, char **argv, struct trapframe *tf)
-mon_step	kern/debug/kmonitor.h	/^int mon_step(int argc, char **argv, struct trapframe *tf);$/;"	p	signature:(int argc, char **argv, struct trapframe *tf)
-mon_watchpoint	kern/debug/kmonitor.h	/^int mon_watchpoint(int argc, char **argv, struct trapframe *tf);$/;"	p	signature:(int argc, char **argv, struct trapframe *tf)
-n_desc	kern/debug/stab.h	/^    uint16_t n_desc;        \/\/ description field$/;"	m	struct:stab	access:public
-n_other	kern/debug/stab.h	/^    uint8_t n_other;        \/\/ misc info (usually empty)$/;"	m	struct:stab	access:public
-n_strx	kern/debug/stab.h	/^    uint32_t n_strx;        \/\/ index into string table of name$/;"	m	struct:stab	access:public
-n_type	kern/debug/stab.h	/^    uint8_t n_type;         \/\/ type of symbol$/;"	m	struct:stab	access:public
-n_value	kern/debug/stab.h	/^    uintptr_t n_value;      \/\/ value of symbol$/;"	m	struct:stab	access:public
-name	kern/debug/kmonitor.c	/^    const char *name;$/;"	m	struct:command	file:	access:public
-name	kern/mm/pmm.h	/^    const char *name;                                 \/\/ XXX_pmm_manager's name$/;"	m	struct:pmm_manager	access:public
-name	kern/mm/swap.h	/^     const char *name;$/;"	m	struct:swap_manager	access:public
-name	kern/process/proc.h	/^    char name[PROC_NAME_LEN + 1];               \/\/ Process name$/;"	m	struct:proc_struct	access:public
-name	kern/schedule/sched.h	/^    const char *name;$/;"	m	struct:sched_class	access:public
-need_resched	kern/process/proc.h	/^    volatile bool need_resched;                 \/\/ bool value: need to be rescheduled to release CPU?$/;"	m	struct:proc_struct	access:public
-next	kern/mm/kmalloc.c	/^	struct bigblock *next;$/;"	m	struct:bigblock	typeref:struct:bigblock::bigblock	file:	access:public
-next	kern/mm/kmalloc.c	/^	struct slob_block *next;$/;"	m	struct:slob_block	typeref:struct:slob_block::slob_block	file:	access:public
-next	libs/list.h	/^    struct list_entry *prev, *next;$/;"	m	struct:list_entry	typeref:struct:list_entry::	access:public
+mmap_cache	kern/mm/vmm.h	/^    struct vma_struct *mmap_cache; \/\/ current accessed vma, used for speed purpose$/;"	m	struct:mm_struct	typeref:struct:mm_struct::vma_struct
+mmap_list	kern/mm/vmm.h	/^    list_entry_t mmap_list;        \/\/ linear list link which sorted by start addr of vma$/;"	m	struct:mm_struct
+model	kern/driver/ide.c	/^    unsigned char model[41];    \/\/ Model in String$/;"	m	struct:ide_device	file:
+mon_backtrace	kern/debug/kmonitor.c	/^mon_backtrace(int argc, char **argv, struct trapframe *tf) {$/;"	f
+mon_help	kern/debug/kmonitor.c	/^mon_help(int argc, char **argv, struct trapframe *tf) {$/;"	f
+mon_kerninfo	kern/debug/kmonitor.c	/^mon_kerninfo(int argc, char **argv, struct trapframe *tf) {$/;"	f
+n_desc	kern/debug/stab.h	/^    uint16_t n_desc;        \/\/ description field$/;"	m	struct:stab
+n_other	kern/debug/stab.h	/^    uint8_t n_other;        \/\/ misc info (usually empty)$/;"	m	struct:stab
+n_strx	kern/debug/stab.h	/^    uint32_t n_strx;        \/\/ index into string table of name$/;"	m	struct:stab
+n_type	kern/debug/stab.h	/^    uint8_t n_type;         \/\/ type of symbol$/;"	m	struct:stab
+n_value	kern/debug/stab.h	/^    uintptr_t n_value;      \/\/ value of symbol$/;"	m	struct:stab
+name	kern/debug/kmonitor.c	/^    const char *name;$/;"	m	struct:command	file:
+name	kern/mm/pmm.h	/^    const char *name;                                 \/\/ XXX_pmm_manager's name$/;"	m	struct:pmm_manager
+name	kern/mm/swap.h	/^     const char *name;$/;"	m	struct:swap_manager
+name	kern/process/proc.h	/^    char name[PROC_NAME_LEN + 1];               \/\/ Process name$/;"	m	struct:proc_struct
+name	kern/schedule/sched.h	/^    const char *name;$/;"	m	struct:sched_class
+need_resched	kern/process/proc.h	/^    volatile bool need_resched;                 \/\/ bool value: need to be rescheduled to release CPU?$/;"	m	struct:proc_struct
+next	kern/mm/kmalloc.c	/^	struct bigblock *next;$/;"	m	struct:bigblock	typeref:struct:bigblock::bigblock	file:
+next	kern/mm/kmalloc.c	/^	struct slob_block *next;$/;"	m	struct:slob_block	typeref:struct:slob_block::slob_block	file:
+next	libs/list.h	/^    struct list_entry *prev, *next;$/;"	m	struct:list_entry	typeref:struct:list_entry::
 next	libs/rand.c	/^static unsigned long long next = 1;$/;"	v	file:
 normalmap	kern/driver/console.c	/^static uint8_t normalmap[256] = {$/;"	v	file:
 npage	kern/mm/pmm.c	/^size_t npage = 0;$/;"	v
-npage	kern/mm/pmm.h	/^extern size_t npage;$/;"	x
 nr_free	kern/mm/default_pmm.c	60;"	d	file:
-nr_free	kern/mm/memlayout.h	/^    unsigned int nr_free;           \/\/ # of free pages in this free list$/;"	m	struct:__anon4	access:public
+nr_free	kern/mm/memlayout.h	/^    unsigned int nr_free;           \/\/ # of free pages in this free list$/;"	m	struct:__anon4
 nr_free	kern/mm/swap.c	177;"	d	file:
-nr_free_pages	kern/mm/pmm.c	/^nr_free_pages(void) {$/;"	f	signature:(void)
-nr_free_pages	kern/mm/pmm.h	/^    size_t (*nr_free_pages)(void);                    \/\/ return the number of free pages $/;"	m	struct:pmm_manager	access:public
-nr_free_pages	kern/mm/pmm.h	/^size_t nr_free_pages(void);$/;"	p	signature:(void)
-nr_map	kern/mm/memlayout.h	/^    int nr_map;$/;"	m	struct:e820map	access:public
+nr_free_pages	kern/mm/pmm.c	/^nr_free_pages(void) {$/;"	f
+nr_free_pages	kern/mm/pmm.h	/^    size_t (*nr_free_pages)(void);                    \/\/ return the number of free pages $/;"	m	struct:pmm_manager
+nr_map	kern/mm/memlayout.h	/^    int nr_map;$/;"	m	struct:e820map
 nr_process	kern/process/proc.c	/^static int nr_process = 0;$/;"	v	file:
 objfile	Makefile	/^objfile = $(call toobj,$(1))$/;"	m
 offsetof	libs/defs.h	55;"	d
-optr	kern/process/proc.h	/^    struct proc_struct *cptr, *yptr, *optr;     \/\/ relations between processes$/;"	m	struct:proc_struct	typeref:struct:proc_struct::	access:public
-order	kern/mm/kmalloc.c	/^	int order;$/;"	m	struct:bigblock	file:	access:public
-outb	libs/x86.h	/^outb(uint16_t port, uint8_t data) {$/;"	f	signature:(uint16_t port, uint8_t data)
-outb	libs/x86.h	/^static inline void outb(uint16_t port, uint8_t data) __attribute__((always_inline));$/;"	p	signature:(uint16_t port, uint8_t data)
+optr	kern/process/proc.h	/^    struct proc_struct *cptr, *yptr, *optr;     \/\/ relations between processes$/;"	m	struct:proc_struct	typeref:struct:proc_struct::
+order	kern/mm/kmalloc.c	/^	int order;$/;"	m	struct:bigblock	file:
+outb	libs/x86.h	/^outb(uint16_t port, uint8_t data) {$/;"	f
 outfile	Makefile	/^outfile = $(call cgtype,$(call toobj,$(1)),o,out)$/;"	m
-outsl	libs/x86.h	/^outsl(uint32_t port, const void *addr, int cnt) {$/;"	f	signature:(uint32_t port, const void *addr, int cnt)
-outsl	libs/x86.h	/^static inline void outsl(uint32_t port, const void *addr, int cnt) __attribute__((always_inline));$/;"	p	signature:(uint32_t port, const void *addr, int cnt)
-outw	libs/x86.h	/^outw(uint16_t port, uint16_t data) {$/;"	f	signature:(uint16_t port, uint16_t data)
-outw	libs/x86.h	/^static inline void outw(uint16_t port, uint16_t data) __attribute__((always_inline));$/;"	p	signature:(uint16_t port, uint16_t data)
-p_align	libs/elf.h	/^    uint32_t p_align;  \/\/ required alignment, invariably hardware page size$/;"	m	struct:proghdr	access:public
-p_filesz	libs/elf.h	/^    uint32_t p_filesz; \/\/ size of segment in file$/;"	m	struct:proghdr	access:public
-p_flags	libs/elf.h	/^    uint32_t p_flags;  \/\/ read\/write\/execute bits$/;"	m	struct:proghdr	access:public
-p_memsz	libs/elf.h	/^    uint32_t p_memsz;  \/\/ size of segment in memory (bigger if contains bss）$/;"	m	struct:proghdr	access:public
-p_offset	libs/elf.h	/^    uint32_t p_offset; \/\/ file offset of segment$/;"	m	struct:proghdr	access:public
-p_pa	libs/elf.h	/^    uint32_t p_pa;     \/\/ physical address, not used$/;"	m	struct:proghdr	access:public
-p_type	libs/elf.h	/^    uint32_t p_type;   \/\/ loadable code or data, dynamic linking info,etc.$/;"	m	struct:proghdr	access:public
-p_va	libs/elf.h	/^    uint32_t p_va;     \/\/ virtual address to map segment$/;"	m	struct:proghdr	access:public
-pa2page	kern/mm/pmm.h	/^pa2page(uintptr_t pa) {$/;"	f	signature:(uintptr_t pa)
+outsl	libs/x86.h	/^outsl(uint32_t port, const void *addr, int cnt) {$/;"	f
+outw	libs/x86.h	/^outw(uint16_t port, uint16_t data) {$/;"	f
+p_align	libs/elf.h	/^    uint32_t p_align;  \/\/ required alignment, invariably hardware page size$/;"	m	struct:proghdr
+p_filesz	libs/elf.h	/^    uint32_t p_filesz; \/\/ size of segment in file$/;"	m	struct:proghdr
+p_flags	libs/elf.h	/^    uint32_t p_flags;  \/\/ read\/write\/execute bits$/;"	m	struct:proghdr
+p_memsz	libs/elf.h	/^    uint32_t p_memsz;  \/\/ size of segment in memory (bigger if contains bss）$/;"	m	struct:proghdr
+p_offset	libs/elf.h	/^    uint32_t p_offset; \/\/ file offset of segment$/;"	m	struct:proghdr
+p_pa	libs/elf.h	/^    uint32_t p_pa;     \/\/ physical address, not used$/;"	m	struct:proghdr
+p_type	libs/elf.h	/^    uint32_t p_type;   \/\/ loadable code or data, dynamic linking info,etc.$/;"	m	struct:proghdr
+p_va	libs/elf.h	/^    uint32_t p_va;     \/\/ virtual address to map segment$/;"	m	struct:proghdr
+pa2page	kern/mm/pmm.h	/^pa2page(uintptr_t pa) {$/;"	f
 packetname	tools/function.mk	/^packetname = $(if $(1),$(addprefix $(OBJPREFIX),$(1)),$(OBJPREFIX))$/;"	m
-page2kva	kern/mm/pmm.h	/^page2kva(struct Page *page) {$/;"	f	signature:(struct Page *page)
-page2pa	kern/mm/pmm.h	/^page2pa(struct Page *page) {$/;"	f	signature:(struct Page *page)
-page2ppn	kern/mm/pmm.h	/^page2ppn(struct Page *page) {$/;"	f	signature:(struct Page *page)
-page_init	kern/mm/pmm.c	/^page_init(void) {$/;"	f	file:	signature:(void)
-page_insert	kern/mm/pmm.c	/^page_insert(pde_t *pgdir, struct Page *page, uintptr_t la, uint32_t perm) {$/;"	f	signature:(pde_t *pgdir, struct Page *page, uintptr_t la, uint32_t perm)
-page_insert	kern/mm/pmm.h	/^int page_insert(pde_t *pgdir, struct Page *page, uintptr_t la, uint32_t perm);$/;"	p	signature:(pde_t *pgdir, struct Page *page, uintptr_t la, uint32_t perm)
-page_link	kern/mm/memlayout.h	/^    list_entry_t page_link;         \/\/ free list link$/;"	m	struct:Page	access:public
-page_ref	kern/mm/pmm.h	/^page_ref(struct Page *page) {$/;"	f	signature:(struct Page *page)
-page_ref_dec	kern/mm/pmm.h	/^page_ref_dec(struct Page *page) {$/;"	f	signature:(struct Page *page)
-page_ref_inc	kern/mm/pmm.h	/^page_ref_inc(struct Page *page) {$/;"	f	signature:(struct Page *page)
-page_remove	kern/mm/pmm.c	/^page_remove(pde_t *pgdir, uintptr_t la) {$/;"	f	signature:(pde_t *pgdir, uintptr_t la)
-page_remove	kern/mm/pmm.h	/^void page_remove(pde_t *pgdir, uintptr_t la);$/;"	p	signature:(pde_t *pgdir, uintptr_t la)
-page_remove_pte	kern/mm/pmm.c	/^page_remove_pte(pde_t *pgdir, uintptr_t la, pte_t *ptep) {$/;"	f	file:	signature:(pde_t *pgdir, uintptr_t la, pte_t *ptep)
-pages	kern/mm/kmalloc.c	/^	void *pages;$/;"	m	struct:bigblock	file:	access:public
+page2kva	kern/mm/pmm.h	/^page2kva(struct Page *page) {$/;"	f
+page2pa	kern/mm/pmm.h	/^page2pa(struct Page *page) {$/;"	f
+page2ppn	kern/mm/pmm.h	/^page2ppn(struct Page *page) {$/;"	f
+page_init	kern/mm/pmm.c	/^page_init(void) {$/;"	f	file:
+page_insert	kern/mm/pmm.c	/^page_insert(pde_t *pgdir, struct Page *page, uintptr_t la, uint32_t perm) {$/;"	f
+page_link	kern/mm/memlayout.h	/^    list_entry_t page_link;         \/\/ free list link$/;"	m	struct:Page
+page_ref	kern/mm/pmm.h	/^page_ref(struct Page *page) {$/;"	f
+page_ref_dec	kern/mm/pmm.h	/^page_ref_dec(struct Page *page) {$/;"	f
+page_ref_inc	kern/mm/pmm.h	/^page_ref_inc(struct Page *page) {$/;"	f
+page_remove	kern/mm/pmm.c	/^page_remove(pde_t *pgdir, uintptr_t la) {$/;"	f
+page_remove_pte	kern/mm/pmm.c	/^page_remove_pte(pde_t *pgdir, uintptr_t la, pte_t *ptep) {$/;"	f	file:
+pages	kern/mm/kmalloc.c	/^	void *pages;$/;"	m	struct:bigblock	file:
 pages	kern/mm/pmm.c	/^struct Page *pages;$/;"	v	typeref:struct:Page
-pages	kern/mm/pmm.h	/^extern struct Page *pages;$/;"	x
 panic	kern/debug/assert.h	12;"	d
 panic	user/libs/ulib.h	12;"	d
-panic.c	kern/debug/panic.c	1;"	F
-panic.c	user/libs/panic.c	1;"	F
-parent	kern/process/proc.h	/^    struct proc_struct *parent;                 \/\/ the parent process$/;"	m	struct:proc_struct	typeref:struct:proc_struct::proc_struct	access:public
-parent	libs/skew_heap.h	/^     struct skew_heap_entry *parent, *left, *right;$/;"	m	struct:skew_heap_entry	typeref:struct:skew_heap_entry::skew_heap_entry	access:public
+parent	kern/process/proc.h	/^    struct proc_struct *parent;                 \/\/ the parent process$/;"	m	struct:proc_struct	typeref:struct:proc_struct::proc_struct
+parent	libs/skew_heap.h	/^     struct skew_heap_entry *parent, *left, *right;$/;"	m	struct:skew_heap_entry	typeref:struct:skew_heap_entry::skew_heap_entry
 parent	user/waitkill.c	/^int parent, pid1, pid2;$/;"	v
-parse	kern/debug/kmonitor.c	/^parse(char *buf, char **argv) {$/;"	f	file:	signature:(char *buf, char **argv)
+parse	kern/debug/kmonitor.c	/^parse(char *buf, char **argv) {$/;"	f	file:
 pass	tools/grade.sh	/^pass() {$/;"	f
-pd_base	libs/x86.h	/^    uintptr_t pd_base;      \/\/ Base address$/;"	m	struct:pseudodesc	access:public
-pd_lim	libs/x86.h	/^    uint16_t pd_lim;        \/\/ Limit$/;"	m	struct:pseudodesc	access:public
-pde2page	kern/mm/pmm.h	/^pde2page(pde_t pde) {$/;"	f	signature:(pde_t pde)
+pd_base	libs/x86.h	/^    uintptr_t pd_base;      \/\/ Base address$/;"	m	struct:pseudodesc
+pd_lim	libs/x86.h	/^    uint16_t pd_lim;        \/\/ Limit$/;"	m	struct:pseudodesc
+pde2page	kern/mm/pmm.h	/^pde2page(pde_t pde) {$/;"	f
 pde_t	kern/mm/memlayout.h	/^typedef uintptr_t pde_t;$/;"	t
-perm2str	kern/mm/pmm.c	/^perm2str(int perm) {$/;"	f	file:	signature:(int perm)
-pgdir	kern/mm/vmm.h	/^    pde_t *pgdir;                  \/\/ the PDT of these vma$/;"	m	struct:mm_struct	access:public
-pgdir.c	user/pgdir.c	1;"	F
-pgdir_alloc_page	kern/mm/pmm.c	/^pgdir_alloc_page(pde_t *pgdir, uintptr_t la, uint32_t perm) {$/;"	f	signature:(pde_t *pgdir, uintptr_t la, uint32_t perm)
-pgdir_alloc_page	kern/mm/pmm.h	/^struct Page *pgdir_alloc_page(pde_t *pgdir, uintptr_t la, uint32_t perm);$/;"	p	signature:(pde_t *pgdir, uintptr_t la, uint32_t perm)
-pgfault_handler	kern/trap/trap.c	/^pgfault_handler(struct trapframe *tf) {$/;"	f	file:	signature:(struct trapframe *tf)
+perm2str	kern/mm/pmm.c	/^perm2str(int perm) {$/;"	f	file:
+pgdir	kern/mm/vmm.h	/^    pde_t *pgdir;                  \/\/ the PDT of these vma$/;"	m	struct:mm_struct
+pgdir_alloc_page	kern/mm/pmm.c	/^pgdir_alloc_page(pde_t *pgdir, uintptr_t la, uint32_t perm) {$/;"	f
+pgfault_handler	kern/trap/trap.c	/^pgfault_handler(struct trapframe *tf) {$/;"	f	file:
 pgfault_num	kern/mm/vmm.c	/^volatile unsigned int pgfault_num=0;$/;"	v
-pgfault_num	kern/mm/vmm.h	/^extern volatile unsigned int pgfault_num;$/;"	x
-pic_enable	kern/driver/picirq.c	/^pic_enable(unsigned int irq) {$/;"	f	signature:(unsigned int irq)
-pic_enable	kern/driver/picirq.h	/^void pic_enable(unsigned int irq);$/;"	p	signature:(unsigned int irq)
-pic_init	kern/driver/picirq.c	/^pic_init(void) {$/;"	f	signature:(void)
-pic_init	kern/driver/picirq.h	/^void pic_init(void);$/;"	p	signature:(void)
-pic_setmask	kern/driver/picirq.c	/^pic_setmask(uint16_t mask) {$/;"	f	file:	signature:(uint16_t mask)
-picirq.c	kern/driver/picirq.c	1;"	F
-picirq.h	kern/driver/picirq.h	1;"	F
-pick_next	kern/schedule/sched.h	/^    struct proc_struct *(*pick_next)(struct run_queue *rq);$/;"	m	struct:sched_class	typeref:struct:sched_class::pick_next	access:public
-pid	kern/process/proc.h	/^    int pid;                                    \/\/ Process ID$/;"	m	struct:proc_struct	access:public
+pic_enable	kern/driver/picirq.c	/^pic_enable(unsigned int irq) {$/;"	f
+pic_init	kern/driver/picirq.c	/^pic_init(void) {$/;"	f
+pic_setmask	kern/driver/picirq.c	/^pic_setmask(uint16_t mask) {$/;"	f	file:
+pick_next	kern/schedule/sched.h	/^    struct proc_struct *(*pick_next)(struct run_queue *rq);$/;"	m	struct:sched_class	typeref:struct:sched_class::pick_next
+pid	kern/process/proc.h	/^    int pid;                                    \/\/ Process ID$/;"	m	struct:proc_struct
 pid1	user/waitkill.c	/^int parent, pid1, pid2;$/;"	v
 pid2	user/waitkill.c	/^int parent, pid1, pid2;$/;"	v
 pid_hashfn	kern/process/proc.c	67;"	d	file:
 pids	user/priority.c	/^int pids[TOTAL];$/;"	v
-pmm.c	kern/mm/pmm.c	1;"	F
-pmm.h	kern/mm/pmm.h	1;"	F
-pmm_init	kern/mm/pmm.c	/^pmm_init(void) {$/;"	f	signature:(void)
-pmm_init	kern/mm/pmm.h	/^void pmm_init(void);$/;"	p	signature:(void)
+pmm_init	kern/mm/pmm.c	/^pmm_init(void) {$/;"	f
 pmm_manager	kern/mm/pmm.c	/^const struct pmm_manager *pmm_manager;$/;"	v	typeref:struct:pmm_manager
-pmm_manager	kern/mm/pmm.h	/^extern const struct pmm_manager *pmm_manager;$/;"	x
 pmm_manager	kern/mm/pmm.h	/^struct pmm_manager {$/;"	s
 ppn_t	libs/defs.h	/^typedef size_t ppn_t;$/;"	t
 pra_list_head	kern/mm/swap_fifo.c	/^list_entry_t pra_list_head;$/;"	v
-pra_page_link	kern/mm/memlayout.h	/^    list_entry_t pra_page_link;     \/\/ used for pra (page replace algorithm)$/;"	m	struct:Page	access:public
-pra_vaddr	kern/mm/memlayout.h	/^    uintptr_t pra_vaddr;            \/\/ used for pra (page replace algorithm)$/;"	m	struct:Page	access:public
-prev	libs/list.h	/^    struct list_entry *prev, *next;$/;"	m	struct:list_entry	typeref:struct:list_entry::list_entry	access:public
-print_debuginfo	kern/debug/kdebug.c	/^print_debuginfo(uintptr_t eip) {$/;"	f	signature:(uintptr_t eip)
-print_debuginfo	kern/debug/kdebug.h	/^void print_debuginfo(uintptr_t eip);$/;"	p	signature:(uintptr_t eip)
-print_kerninfo	kern/debug/kdebug.c	/^print_kerninfo(void) {$/;"	f	signature:(void)
-print_kerninfo	kern/debug/kdebug.h	/^void print_kerninfo(void);$/;"	p	signature:(void)
-print_pgdir	kern/mm/pmm.c	/^print_pgdir(void) {$/;"	f	signature:(void)
-print_pgdir	kern/mm/pmm.h	/^void print_pgdir(void);$/;"	p	signature:(void)
-print_pgdir	user/libs/ulib.c	/^print_pgdir(void) {$/;"	f	signature:(void)
-print_pgdir	user/libs/ulib.h	/^void print_pgdir(void);$/;"	p	signature:(void)
-print_pgfault	kern/trap/trap.c	/^print_pgfault(struct trapframe *tf) {$/;"	f	file:	signature:(struct trapframe *tf)
-print_regs	kern/trap/trap.c	/^print_regs(struct pushregs *regs) {$/;"	f	signature:(struct pushregs *regs)
-print_regs	kern/trap/trap.h	/^void print_regs(struct pushregs *regs);$/;"	p	signature:(struct pushregs *regs)
-print_stackframe	kern/debug/kdebug.c	/^print_stackframe(void) {$/;"	f	signature:(void)
-print_stackframe	kern/debug/kdebug.h	/^void print_stackframe(void);$/;"	p	signature:(void)
+pra_page_link	kern/mm/memlayout.h	/^    list_entry_t pra_page_link;     \/\/ used for pra (page replace algorithm)$/;"	m	struct:Page
+pra_vaddr	kern/mm/memlayout.h	/^    uintptr_t pra_vaddr;            \/\/ used for pra (page replace algorithm)$/;"	m	struct:Page
+prev	libs/list.h	/^    struct list_entry *prev, *next;$/;"	m	struct:list_entry	typeref:struct:list_entry::list_entry
+print_debuginfo	kern/debug/kdebug.c	/^print_debuginfo(uintptr_t eip) {$/;"	f
+print_kerninfo	kern/debug/kdebug.c	/^print_kerninfo(void) {$/;"	f
+print_pgdir	kern/mm/pmm.c	/^print_pgdir(void) {$/;"	f
+print_pgdir	user/libs/ulib.c	/^print_pgdir(void) {$/;"	f
+print_pgfault	kern/trap/trap.c	/^print_pgfault(struct trapframe *tf) {$/;"	f	file:
+print_regs	kern/trap/trap.c	/^print_regs(struct pushregs *regs) {$/;"	f
+print_stackframe	kern/debug/kdebug.c	/^print_stackframe(void) {$/;"	f
 print_ticks	kern/trap/trap.c	/^static void print_ticks() {$/;"	f	file:
-print_trapframe	kern/trap/trap.c	/^print_trapframe(struct trapframe *tf) {$/;"	f	signature:(struct trapframe *tf)
-print_trapframe	kern/trap/trap.h	/^void print_trapframe(struct trapframe *tf);$/;"	p	signature:(struct trapframe *tf)
-printfmt	libs/printfmt.c	/^printfmt(void (*putch)(int, void*), void *putdat, const char *fmt, ...) {$/;"	f	signature:(void (*putch)(int, void*), void *putdat, const char *fmt, ...)
-printfmt	libs/stdio.h	/^void printfmt(void (*putch)(int, void *), void *putdat, const char *fmt, ...);$/;"	p	signature:(void (*putch)(int, void *), void *putdat, const char *fmt, ...)
-printfmt.c	libs/printfmt.c	1;"	F
-printnum	libs/printfmt.c	/^printnum(void (*putch)(int, void*), void *putdat,$/;"	f	file:	signature:(void (*putch)(int, void*), void *putdat, unsigned long long num, unsigned base, int width, int padc)
-priority.c	user/priority.c	1;"	F
+print_trapframe	kern/trap/trap.c	/^print_trapframe(struct trapframe *tf) {$/;"	f
+printfmt	libs/printfmt.c	/^printfmt(void (*putch)(int, void*), void *putdat, const char *fmt, ...) {$/;"	f
+printnum	libs/printfmt.c	/^printnum(void (*putch)(int, void*), void *putdat,$/;"	f	file:
 probe_memory	boot/bootasm.S	/^probe_memory:$/;"	l
-proc.c	kern/process/proc.c	1;"	F
-proc.h	kern/process/proc.h	1;"	F
-proc_init	kern/process/proc.c	/^proc_init(void) {$/;"	f	signature:(void)
-proc_init	kern/process/proc.h	/^void proc_init(void);$/;"	p	signature:(void)
+proc_init	kern/process/proc.c	/^proc_init(void) {$/;"	f
 proc_list	kern/process/proc.c	/^list_entry_t proc_list;$/;"	v
-proc_list	kern/process/proc.h	/^extern list_entry_t proc_list;$/;"	x
-proc_num	kern/schedule/sched.h	/^    unsigned int proc_num;$/;"	m	struct:run_queue	access:public
-proc_run	kern/process/proc.c	/^proc_run(struct proc_struct *proc) {$/;"	f	signature:(struct proc_struct *proc)
-proc_run	kern/process/proc.h	/^void proc_run(struct proc_struct *proc);$/;"	p	signature:(struct proc_struct *proc)
+proc_num	kern/schedule/sched.h	/^    unsigned int proc_num;$/;"	m	struct:run_queue
+proc_run	kern/process/proc.c	/^proc_run(struct proc_struct *proc) {$/;"	f
 proc_state	kern/process/proc.h	/^enum proc_state {$/;"	g
-proc_stride_comp_f	kern/schedule/default_sched_stride.c	/^proc_stride_comp_f(void *a, void *b)$/;"	f	file:	signature:(void *a, void *b)
+proc_stride_comp_f	kern/schedule/default_sched_stride.c	/^proc_stride_comp_f(void *a, void *b)$/;"	f	file:
 proc_struct	kern/process/proc.h	/^struct proc_struct {$/;"	s
-proc_struct	kern/schedule/sched.h	/^struct proc_struct;$/;"	x
-proc_tick	kern/schedule/sched.h	/^    void (*proc_tick)(struct run_queue *rq, struct proc_struct *proc);$/;"	m	struct:sched_class	access:public
+proc_tick	kern/schedule/sched.h	/^    void (*proc_tick)(struct run_queue *rq, struct proc_struct *proc);$/;"	m	struct:sched_class
 proghdr	libs/elf.h	/^struct proghdr {$/;"	s
-property	kern/mm/memlayout.h	/^    unsigned int property;          \/\/ the num of free block, used in first fit pm manager$/;"	m	struct:Page	access:public
+property	kern/mm/memlayout.h	/^    unsigned int property;          \/\/ the num of free block, used in first fit pm manager$/;"	m	struct:Page
 protcseg	boot/bootasm.S	/^protcseg:$/;"	l
 pseudodesc	libs/x86.h	/^struct pseudodesc {$/;"	s
-pte2page	kern/mm/pmm.h	/^pte2page(pte_t pte) {$/;"	f	signature:(pte_t pte)
+pte2page	kern/mm/pmm.h	/^pte2page(pte_t pte) {$/;"	f
 pte_t	kern/mm/memlayout.h	/^typedef uintptr_t pte_t;$/;"	t
 pushregs	kern/trap/trap.h	/^struct pushregs {$/;"	s
-put_kstack	kern/process/proc.c	/^put_kstack(struct proc_struct *proc) {$/;"	f	file:	signature:(struct proc_struct *proc)
-put_pgdir	kern/process/proc.c	/^put_pgdir(struct mm_struct *mm) {$/;"	f	file:	signature:(struct mm_struct *mm)
+put_kstack	kern/process/proc.c	/^put_kstack(struct proc_struct *proc) {$/;"	f	file:
+put_pgdir	kern/process/proc.c	/^put_pgdir(struct mm_struct *mm) {$/;"	f	file:
 quick_check	tools/grade.sh	/^quick_check() {$/;"	f
 quick_run	tools/grade.sh	/^quick_run() {$/;"	f
-rand	libs/rand.c	/^rand(void) {$/;"	f	signature:(void)
-rand	libs/stdlib.h	/^int rand(void);$/;"	p	signature:(void)
-rand.c	libs/rand.c	1;"	F
-rcr0	libs/x86.h	/^rcr0(void) {$/;"	f	signature:(void)
-rcr0	libs/x86.h	/^static inline uintptr_t rcr0(void) __attribute__((always_inline));$/;"	p	signature:(void)
-rcr1	libs/x86.h	/^rcr1(void) {$/;"	f	signature:(void)
-rcr1	libs/x86.h	/^static inline uintptr_t rcr1(void) __attribute__((always_inline));$/;"	p	signature:(void)
-rcr2	libs/x86.h	/^rcr2(void) {$/;"	f	signature:(void)
-rcr2	libs/x86.h	/^static inline uintptr_t rcr2(void) __attribute__((always_inline));$/;"	p	signature:(void)
-rcr3	libs/x86.h	/^rcr3(void) {$/;"	f	signature:(void)
-rcr3	libs/x86.h	/^static inline uintptr_t rcr3(void) __attribute__((always_inline));$/;"	p	signature:(void)
-read_dr	libs/x86.h	/^read_dr(unsigned regnum) {$/;"	f	signature:(unsigned regnum)
-read_dr	libs/x86.h	/^static inline uint32_t read_dr(unsigned regnum) __attribute__((always_inline));$/;"	p	signature:(unsigned regnum)
-read_ebp	libs/x86.h	/^read_ebp(void) {$/;"	f	signature:(void)
-read_ebp	libs/x86.h	/^static inline uint32_t read_ebp(void) __attribute__((always_inline));$/;"	p	signature:(void)
-read_eflags	libs/x86.h	/^read_eflags(void) {$/;"	f	signature:(void)
-read_eflags	libs/x86.h	/^static inline uint32_t read_eflags(void) __attribute__((always_inline));$/;"	p	signature:(void)
-read_eip	kern/debug/kdebug.c	/^read_eip(void) {$/;"	f	file:	signature:(void)
+rand	libs/rand.c	/^rand(void) {$/;"	f
+rcr0	libs/x86.h	/^rcr0(void) {$/;"	f
+rcr1	libs/x86.h	/^rcr1(void) {$/;"	f
+rcr2	libs/x86.h	/^rcr2(void) {$/;"	f
+rcr3	libs/x86.h	/^rcr3(void) {$/;"	f
+read_dr	libs/x86.h	/^read_dr(unsigned regnum) {$/;"	f
+read_ebp	libs/x86.h	/^read_ebp(void) {$/;"	f
+read_eflags	libs/x86.h	/^read_eflags(void) {$/;"	f
+read_eip	kern/debug/kdebug.c	/^read_eip(void) {$/;"	f	file:
 read_packet	tools/function.mk	/^read_packet = $(foreach p,$(call packetname,$(1)),$($(p)))$/;"	m
-readline	kern/libs/readline.c	/^readline(const char *prompt) {$/;"	f	signature:(const char *prompt)
-readline	libs/stdio.h	/^char *readline(const char *prompt);$/;"	p	signature:(const char *prompt)
-readline.c	kern/libs/readline.c	1;"	F
-readsect	boot/bootmain.c	/^readsect(void *dst, uint32_t secno) {$/;"	f	file:	signature:(void *dst, uint32_t secno)
-readseg	boot/bootmain.c	/^readseg(uintptr_t va, uint32_t count, uint32_t offset) {$/;"	f	file:	signature:(uintptr_t va, uint32_t count, uint32_t offset)
-ref	kern/mm/memlayout.h	/^    int ref;                        \/\/ page frame's reference counter$/;"	m	struct:Page	access:public
-reg_eax	kern/trap/trap.h	/^    uint32_t reg_eax;$/;"	m	struct:pushregs	access:public
-reg_ebp	kern/trap/trap.h	/^    uint32_t reg_ebp;$/;"	m	struct:pushregs	access:public
-reg_ebx	kern/trap/trap.h	/^    uint32_t reg_ebx;$/;"	m	struct:pushregs	access:public
-reg_ecx	kern/trap/trap.h	/^    uint32_t reg_ecx;$/;"	m	struct:pushregs	access:public
-reg_edi	kern/trap/trap.h	/^    uint32_t reg_edi;$/;"	m	struct:pushregs	access:public
-reg_edx	kern/trap/trap.h	/^    uint32_t reg_edx;$/;"	m	struct:pushregs	access:public
-reg_esi	kern/trap/trap.h	/^    uint32_t reg_esi;$/;"	m	struct:pushregs	access:public
-reg_oesp	kern/trap/trap.h	/^    uint32_t reg_oesp;          \/* Useless *\/$/;"	m	struct:pushregs	access:public
+readline	kern/libs/readline.c	/^readline(const char *prompt) {$/;"	f
+readsect	boot/bootmain.c	/^readsect(void *dst, uint32_t secno) {$/;"	f	file:
+readseg	boot/bootmain.c	/^readseg(uintptr_t va, uint32_t count, uint32_t offset) {$/;"	f	file:
+ref	kern/mm/memlayout.h	/^    int ref;                        \/\/ page frame's reference counter$/;"	m	struct:Page
+reg_eax	kern/trap/trap.h	/^    uint32_t reg_eax;$/;"	m	struct:pushregs
+reg_ebp	kern/trap/trap.h	/^    uint32_t reg_ebp;$/;"	m	struct:pushregs
+reg_ebx	kern/trap/trap.h	/^    uint32_t reg_ebx;$/;"	m	struct:pushregs
+reg_ecx	kern/trap/trap.h	/^    uint32_t reg_ecx;$/;"	m	struct:pushregs
+reg_edi	kern/trap/trap.h	/^    uint32_t reg_edi;$/;"	m	struct:pushregs
+reg_edx	kern/trap/trap.h	/^    uint32_t reg_edx;$/;"	m	struct:pushregs
+reg_esi	kern/trap/trap.h	/^    uint32_t reg_esi;$/;"	m	struct:pushregs
+reg_oesp	kern/trap/trap.h	/^    uint32_t reg_oesp;          \/* Useless *\/$/;"	m	struct:pushregs
 relocated	kern/init/entry.S	/^relocated:$/;"	l
-remove_links	kern/process/proc.c	/^remove_links(struct proc_struct *proc) {$/;"	f	file:	signature:(struct proc_struct *proc)
-right	libs/skew_heap.h	/^     struct skew_heap_entry *parent, *left, *right;$/;"	m	struct:skew_heap_entry	typeref:struct:skew_heap_entry::	access:public
-rpos	kern/driver/console.c	/^    uint32_t rpos;$/;"	m	struct:__anon1	file:	access:public
-rq	kern/process/proc.h	/^    struct run_queue *rq;                       \/\/ running queue contains Process$/;"	m	struct:proc_struct	typeref:struct:proc_struct::run_queue	access:public
+remove_links	kern/process/proc.c	/^remove_links(struct proc_struct *proc) {$/;"	f	file:
+right	libs/skew_heap.h	/^     struct skew_heap_entry *parent, *left, *right;$/;"	m	struct:skew_heap_entry	typeref:struct:skew_heap_entry::
+rpos	kern/driver/console.c	/^    uint32_t rpos;$/;"	m	struct:__anon1	file:
+rq	kern/process/proc.h	/^    struct run_queue *rq;                       \/\/ running queue contains Process$/;"	m	struct:proc_struct	typeref:struct:proc_struct::run_queue
 rq	kern/schedule/sched.c	/^static struct run_queue *rq;$/;"	v	typeref:struct:run_queue	file:
-run_link	kern/process/proc.h	/^    list_entry_t run_link;                      \/\/ the entry linked in run queue$/;"	m	struct:proc_struct	access:public
-run_list	kern/schedule/sched.h	/^    list_entry_t run_list;$/;"	m	struct:run_queue	access:public
+run_link	kern/process/proc.h	/^    list_entry_t run_link;                      \/\/ the entry linked in run queue$/;"	m	struct:proc_struct
+run_list	kern/schedule/sched.h	/^    list_entry_t run_list;$/;"	m	struct:run_queue
 run_qemu	tools/grade.sh	/^run_qemu() {$/;"	f
 run_queue	kern/schedule/sched.h	/^struct run_queue {$/;"	s
-run_queue	kern/schedule/sched.h	/^struct run_queue;$/;"	x
 run_test	tools/grade.sh	/^run_test() {$/;"	f
-runcmd	kern/debug/kmonitor.c	/^runcmd(char *buf, struct trapframe *tf) {$/;"	f	file:	signature:(char *buf, struct trapframe *tf)
-runs	kern/process/proc.h	/^    int runs;                                   \/\/ the running times of Proces$/;"	m	struct:proc_struct	access:public
-sched.c	kern/schedule/sched.c	1;"	F
-sched.h	kern/schedule/sched.h	1;"	F
+runcmd	kern/debug/kmonitor.c	/^runcmd(char *buf, struct trapframe *tf) {$/;"	f	file:
+runs	kern/process/proc.h	/^    int runs;                                   \/\/ the running times of Proces$/;"	m	struct:proc_struct
 sched_class	kern/schedule/sched.c	/^static struct sched_class *sched_class;$/;"	v	typeref:struct:sched_class	file:
 sched_class	kern/schedule/sched.h	/^struct sched_class {$/;"	s
-sched_class_dequeue	kern/schedule/sched.c	/^sched_class_dequeue(struct proc_struct *proc) {$/;"	f	file:	signature:(struct proc_struct *proc)
-sched_class_enqueue	kern/schedule/sched.c	/^sched_class_enqueue(struct proc_struct *proc) {$/;"	f	file:	signature:(struct proc_struct *proc)
-sched_class_pick_next	kern/schedule/sched.c	/^sched_class_pick_next(void) {$/;"	f	file:	signature:(void)
-sched_class_proc_tick	kern/schedule/sched.c	/^void sched_class_proc_tick(struct proc_struct *proc) {$/;"	f	signature:(struct proc_struct *proc)
-sched_class_proc_tick	kern/schedule/sched.h	/^void sched_class_proc_tick(struct proc_struct *proc);$/;"	p	signature:(struct proc_struct *proc)
-sched_init	kern/schedule/sched.c	/^sched_init(void) {$/;"	f	signature:(void)
-sched_init	kern/schedule/sched.h	/^void sched_init(void);$/;"	p	signature:(void)
-schedule	kern/schedule/sched.c	/^schedule(void) {$/;"	f	signature:(void)
-schedule	kern/schedule/sched.h	/^void schedule(void);$/;"	p	signature:(void)
-sd_avl	kern/mm/mmu.h	/^    unsigned sd_avl : 1;            \/\/ unused (available for software use)$/;"	m	struct:segdesc	access:public
-sd_base_15_0	kern/mm/mmu.h	/^    unsigned sd_base_15_0 : 16;     \/\/ low bits of segment base address$/;"	m	struct:segdesc	access:public
-sd_base_23_16	kern/mm/mmu.h	/^    unsigned sd_base_23_16 : 8;     \/\/ middle bits of segment base address$/;"	m	struct:segdesc	access:public
-sd_base_31_24	kern/mm/mmu.h	/^    unsigned sd_base_31_24 : 8;     \/\/ high bits of segment base address$/;"	m	struct:segdesc	access:public
-sd_db	kern/mm/mmu.h	/^    unsigned sd_db : 1;             \/\/ 0 = 16-bit segment, 1 = 32-bit segment$/;"	m	struct:segdesc	access:public
-sd_dpl	kern/mm/mmu.h	/^    unsigned sd_dpl : 2;            \/\/ descriptor Privilege Level$/;"	m	struct:segdesc	access:public
-sd_g	kern/mm/mmu.h	/^    unsigned sd_g : 1;              \/\/ granularity: limit scaled by 4K when set$/;"	m	struct:segdesc	access:public
-sd_lim_15_0	kern/mm/mmu.h	/^    unsigned sd_lim_15_0 : 16;      \/\/ low bits of segment limit$/;"	m	struct:segdesc	access:public
-sd_lim_19_16	kern/mm/mmu.h	/^    unsigned sd_lim_19_16 : 4;      \/\/ high bits of segment limit$/;"	m	struct:segdesc	access:public
-sd_p	kern/mm/mmu.h	/^    unsigned sd_p : 1;              \/\/ present$/;"	m	struct:segdesc	access:public
-sd_rsv1	kern/mm/mmu.h	/^    unsigned sd_rsv1 : 1;           \/\/ reserved$/;"	m	struct:segdesc	access:public
-sd_s	kern/mm/mmu.h	/^    unsigned sd_s : 1;              \/\/ 0 = system, 1 = application$/;"	m	struct:segdesc	access:public
-sd_type	kern/mm/mmu.h	/^    unsigned sd_type : 4;           \/\/ segment type (see STS_ constants)$/;"	m	struct:segdesc	access:public
+sched_class_dequeue	kern/schedule/sched.c	/^sched_class_dequeue(struct proc_struct *proc) {$/;"	f	file:
+sched_class_enqueue	kern/schedule/sched.c	/^sched_class_enqueue(struct proc_struct *proc) {$/;"	f	file:
+sched_class_pick_next	kern/schedule/sched.c	/^sched_class_pick_next(void) {$/;"	f	file:
+sched_class_proc_tick	kern/schedule/sched.c	/^void sched_class_proc_tick(struct proc_struct *proc) {$/;"	f
+sched_init	kern/schedule/sched.c	/^sched_init(void) {$/;"	f
+schedule	kern/schedule/sched.c	/^schedule(void) {$/;"	f
+sd_avl	kern/mm/mmu.h	/^    unsigned sd_avl : 1;            \/\/ unused (available for software use)$/;"	m	struct:segdesc
+sd_base_15_0	kern/mm/mmu.h	/^    unsigned sd_base_15_0 : 16;     \/\/ low bits of segment base address$/;"	m	struct:segdesc
+sd_base_23_16	kern/mm/mmu.h	/^    unsigned sd_base_23_16 : 8;     \/\/ middle bits of segment base address$/;"	m	struct:segdesc
+sd_base_31_24	kern/mm/mmu.h	/^    unsigned sd_base_31_24 : 8;     \/\/ high bits of segment base address$/;"	m	struct:segdesc
+sd_db	kern/mm/mmu.h	/^    unsigned sd_db : 1;             \/\/ 0 = 16-bit segment, 1 = 32-bit segment$/;"	m	struct:segdesc
+sd_dpl	kern/mm/mmu.h	/^    unsigned sd_dpl : 2;            \/\/ descriptor Privilege Level$/;"	m	struct:segdesc
+sd_g	kern/mm/mmu.h	/^    unsigned sd_g : 1;              \/\/ granularity: limit scaled by 4K when set$/;"	m	struct:segdesc
+sd_lim_15_0	kern/mm/mmu.h	/^    unsigned sd_lim_15_0 : 16;      \/\/ low bits of segment limit$/;"	m	struct:segdesc
+sd_lim_19_16	kern/mm/mmu.h	/^    unsigned sd_lim_19_16 : 4;      \/\/ high bits of segment limit$/;"	m	struct:segdesc
+sd_p	kern/mm/mmu.h	/^    unsigned sd_p : 1;              \/\/ present$/;"	m	struct:segdesc
+sd_rsv1	kern/mm/mmu.h	/^    unsigned sd_rsv1 : 1;           \/\/ reserved$/;"	m	struct:segdesc
+sd_s	kern/mm/mmu.h	/^    unsigned sd_s : 1;              \/\/ 0 = system, 1 = application$/;"	m	struct:segdesc
+sd_type	kern/mm/mmu.h	/^    unsigned sd_type : 4;           \/\/ segment type (see STS_ constants)$/;"	m	struct:segdesc
 segdesc	kern/mm/mmu.h	/^struct segdesc {$/;"	s
 serial_exists	kern/driver/console.c	/^static bool serial_exists = 0;$/;"	v	file:
-serial_init	kern/driver/console.c	/^serial_init(void) {$/;"	f	file:	signature:(void)
-serial_intr	kern/driver/console.c	/^serial_intr(void) {$/;"	f	signature:(void)
-serial_intr	kern/driver/console.h	/^void serial_intr(void);$/;"	p	signature:(void)
-serial_proc_data	kern/driver/console.c	/^serial_proc_data(void) {$/;"	f	file:	signature:(void)
-serial_putc	kern/driver/console.c	/^serial_putc(int c) {$/;"	f	file:	signature:(int c)
-serial_putc_sub	kern/driver/console.c	/^serial_putc_sub(int c) {$/;"	f	file:	signature:(int c)
-set_bit	libs/atomic.h	/^set_bit(int nr, volatile void *addr) {$/;"	f	signature:(int nr, volatile void *addr)
-set_bit	libs/atomic.h	/^static inline void set_bit(int nr, volatile void *addr) __attribute__((always_inline));$/;"	p	signature:(int nr, volatile void *addr)
-set_links	kern/process/proc.c	/^set_links(struct proc_struct *proc) {$/;"	f	file:	signature:(struct proc_struct *proc)
-set_mm_count	kern/mm/vmm.h	/^set_mm_count(struct mm_struct *mm, int val) {$/;"	f	signature:(struct mm_struct *mm, int val)
-set_page_ref	kern/mm/pmm.h	/^set_page_ref(struct Page *page, int val) {$/;"	f	signature:(struct Page *page, int val)
-set_proc_name	kern/process/proc.c	/^set_proc_name(struct proc_struct *proc, const char *name) {$/;"	f	signature:(struct proc_struct *proc, const char *name)
-set_proc_name	kern/process/proc.h	/^char *set_proc_name(struct proc_struct *proc, const char *name);$/;"	p	signature:(struct proc_struct *proc, const char *name)
-set_unswappable	kern/mm/swap.h	/^     int (*set_unswappable) (struct mm_struct *mm, uintptr_t addr);$/;"	m	struct:swap_manager	access:public
-sets	kern/driver/ide.c	/^    unsigned int sets;          \/\/ Commend Sets Supported$/;"	m	struct:ide_device	file:	access:public
-setup_kstack	kern/process/proc.c	/^setup_kstack(struct proc_struct *proc) {$/;"	f	file:	signature:(struct proc_struct *proc)
-setup_pgdir	kern/process/proc.c	/^setup_pgdir(struct mm_struct *mm) {$/;"	f	file:	signature:(struct mm_struct *mm)
+serial_init	kern/driver/console.c	/^serial_init(void) {$/;"	f	file:
+serial_intr	kern/driver/console.c	/^serial_intr(void) {$/;"	f
+serial_proc_data	kern/driver/console.c	/^serial_proc_data(void) {$/;"	f	file:
+serial_putc	kern/driver/console.c	/^serial_putc(int c) {$/;"	f	file:
+serial_putc_sub	kern/driver/console.c	/^serial_putc_sub(int c) {$/;"	f	file:
+set_bit	libs/atomic.h	/^set_bit(int nr, volatile void *addr) {$/;"	f
+set_links	kern/process/proc.c	/^set_links(struct proc_struct *proc) {$/;"	f	file:
+set_mm_count	kern/mm/vmm.h	/^set_mm_count(struct mm_struct *mm, int val) {$/;"	f
+set_page_ref	kern/mm/pmm.h	/^set_page_ref(struct Page *page, int val) {$/;"	f
+set_proc_name	kern/process/proc.c	/^set_proc_name(struct proc_struct *proc, const char *name) {$/;"	f
+set_unswappable	kern/mm/swap.h	/^     int (*set_unswappable) (struct mm_struct *mm, uintptr_t addr);$/;"	m	struct:swap_manager
+sets	kern/driver/ide.c	/^    unsigned int sets;          \/\/ Commend Sets Supported$/;"	m	struct:ide_device	file:
+setup_kstack	kern/process/proc.c	/^setup_kstack(struct proc_struct *proc) {$/;"	f	file:
+setup_pgdir	kern/process/proc.c	/^setup_pgdir(struct mm_struct *mm) {$/;"	f	file:
 shiftcode	kern/driver/console.c	/^static uint8_t shiftcode[256] = {$/;"	v	file:
 shiftmap	kern/driver/console.c	/^static uint8_t shiftmap[256] = {$/;"	v	file:
 show_build_tag	tools/grade.sh	/^show_build_tag() {$/;"	f
@@ -1426,290 +1179,209 @@ show_final	tools/grade.sh	/^show_final() {$/;"	f
 show_msg	tools/grade.sh	/^show_msg() {$/;"	f
 show_part	tools/grade.sh	/^show_part() {$/;"	f
 show_time	tools/grade.sh	/^show_time() {$/;"	f
-sign.c	tools/sign.c	1;"	F
-size	kern/driver/ide.c	/^    unsigned int size;          \/\/ Size in Sectors$/;"	m	struct:ide_device	file:	access:public
-size	kern/mm/memlayout.h	/^        uint64_t size;$/;"	m	struct:e820map::__anon3	access:public
+size	kern/driver/ide.c	/^    unsigned int size;          \/\/ Size in Sectors$/;"	m	struct:ide_device	file:
+size	kern/mm/memlayout.h	/^        uint64_t size;$/;"	m	struct:e820map::__anon3
 size_t	libs/defs.h	/^typedef uintptr_t size_t;$/;"	t
-skew_heap.h	libs/skew_heap.h	1;"	F
 skew_heap_entry	libs/skew_heap.h	/^struct skew_heap_entry {$/;"	s
 skew_heap_entry_t	libs/skew_heap.h	/^typedef struct skew_heap_entry skew_heap_entry_t;$/;"	t	typeref:struct:skew_heap_entry
-skew_heap_init	libs/skew_heap.h	/^skew_heap_init(skew_heap_entry_t *a)$/;"	f	signature:(skew_heap_entry_t *a)
-skew_heap_init	libs/skew_heap.h	/^static inline void skew_heap_init(skew_heap_entry_t *a) __attribute__((always_inline));$/;"	p	signature:(skew_heap_entry_t *a)
-skew_heap_insert	libs/skew_heap.h	/^skew_heap_insert(skew_heap_entry_t *a, skew_heap_entry_t *b,$/;"	f	signature:(skew_heap_entry_t *a, skew_heap_entry_t *b, compare_f comp)
-skew_heap_insert	libs/skew_heap.h	/^static inline skew_heap_entry_t *skew_heap_insert($/;"	p	signature:( skew_heap_entry_t *a, skew_heap_entry_t *b, compare_f comp)
-skew_heap_merge	libs/skew_heap.h	/^skew_heap_merge(skew_heap_entry_t *a, skew_heap_entry_t *b,$/;"	f	signature:(skew_heap_entry_t *a, skew_heap_entry_t *b, compare_f comp)
-skew_heap_merge	libs/skew_heap.h	/^static inline skew_heap_entry_t *skew_heap_merge($/;"	p	signature:( skew_heap_entry_t *a, skew_heap_entry_t *b, compare_f comp)
-skew_heap_remove	libs/skew_heap.h	/^skew_heap_remove(skew_heap_entry_t *a, skew_heap_entry_t *b,$/;"	f	signature:(skew_heap_entry_t *a, skew_heap_entry_t *b, compare_f comp)
-skew_heap_remove	libs/skew_heap.h	/^static inline skew_heap_entry_t *skew_heap_remove($/;"	p	signature:( skew_heap_entry_t *a, skew_heap_entry_t *b, compare_f comp)
-slob_alloc	kern/mm/kmalloc.c	/^static void *slob_alloc(size_t size, gfp_t gfp, int align)$/;"	f	file:	signature:(size_t size, gfp_t gfp, int align)
-slob_allocated	kern/mm/kmalloc.c	/^slob_allocated(void) {$/;"	f	signature:(void)
+skew_heap_init	libs/skew_heap.h	/^skew_heap_init(skew_heap_entry_t *a)$/;"	f
+skew_heap_insert	libs/skew_heap.h	/^skew_heap_insert(skew_heap_entry_t *a, skew_heap_entry_t *b,$/;"	f
+skew_heap_merge	libs/skew_heap.h	/^skew_heap_merge(skew_heap_entry_t *a, skew_heap_entry_t *b,$/;"	f
+skew_heap_remove	libs/skew_heap.h	/^skew_heap_remove(skew_heap_entry_t *a, skew_heap_entry_t *b,$/;"	f
+slob_alloc	kern/mm/kmalloc.c	/^static void *slob_alloc(size_t size, gfp_t gfp, int align)$/;"	f	file:
+slob_allocated	kern/mm/kmalloc.c	/^slob_allocated(void) {$/;"	f
 slob_block	kern/mm/kmalloc.c	/^struct slob_block {$/;"	s	file:
-slob_free	kern/mm/kmalloc.c	/^static void slob_free(void *b, int size);$/;"	p	file:	signature:(void *b, int size)
-slob_free	kern/mm/kmalloc.c	/^static void slob_free(void *block, int size)$/;"	f	file:	signature:(void *block, int size)
-slob_init	kern/mm/kmalloc.c	/^slob_init(void) {$/;"	f	signature:(void)
+slob_free	kern/mm/kmalloc.c	/^static void slob_free(void *block, int size)$/;"	f	file:
+slob_init	kern/mm/kmalloc.c	/^slob_init(void) {$/;"	f
 slob_t	kern/mm/kmalloc.c	/^typedef struct slob_block slob_t;$/;"	t	typeref:struct:slob_block	file:
 slobfree	kern/mm/kmalloc.c	/^static slob_t *slobfree = &arena;$/;"	v	file:
 sm	kern/mm/swap.c	/^static struct swap_manager *sm;$/;"	v	typeref:struct:swap_manager	file:
-sm_priv	kern/mm/vmm.h	/^    void *sm_priv;                 \/\/ the private data for swap manager$/;"	m	struct:mm_struct	access:public
-snprintf	libs/printfmt.c	/^snprintf(char *str, size_t size, const char *fmt, ...) {$/;"	f	signature:(char *str, size_t size, const char *fmt, ...)
-snprintf	libs/stdio.h	/^int snprintf(char *str, size_t size, const char *fmt, ...);$/;"	p	signature:(char *str, size_t size, const char *fmt, ...)
-softint.c	user/softint.c	1;"	F
+sm_priv	kern/mm/vmm.h	/^    void *sm_priv;                 \/\/ the private data for swap manager$/;"	m	struct:mm_struct
+snprintf	libs/printfmt.c	/^snprintf(char *str, size_t size, const char *fmt, ...) {$/;"	f
 spin	boot/bootasm.S	/^spin:$/;"	l
 spin	kern/init/entry.S	/^spin:$/;"	l
-spin.c	user/spin.c	1;"	F
-spin_delay	user/priority.c	/^spin_delay(void)$/;"	f	file:	signature:(void)
+spin_delay	user/priority.c	/^spin_delay(void)$/;"	f	file:
 spin_lock_irqsave	kern/mm/kmalloc.c	43;"	d	file:
 spin_unlock_irqrestore	kern/mm/kmalloc.c	44;"	d	file:
 sprintbuf	libs/printfmt.c	/^struct sprintbuf {$/;"	s	file:
-sprintputch	libs/printfmt.c	/^sprintputch(int ch, struct sprintbuf *b) {$/;"	f	file:	signature:(int ch, struct sprintbuf *b)
-srand	libs/rand.c	/^srand(unsigned int seed) {$/;"	f	signature:(unsigned int seed)
-srand	libs/stdlib.h	/^void srand(unsigned int seed);$/;"	p	signature:(unsigned int seed)
+sprintputch	libs/printfmt.c	/^sprintputch(int ch, struct sprintbuf *b) {$/;"	f	file:
+srand	libs/rand.c	/^srand(unsigned int seed) {$/;"	f
 stab	kern/debug/stab.h	/^struct stab {$/;"	s
-stab.h	kern/debug/stab.h	1;"	F
-stab_binsearch	kern/debug/kdebug.c	/^stab_binsearch(const struct stab *stabs, int *region_left, int *region_right,$/;"	f	file:	signature:(const struct stab *stabs, int *region_left, int *region_right, int type, uintptr_t addr)
-stab_end	kern/debug/kdebug.c	/^    const struct stab *stab_end;$/;"	m	struct:userstabdata	typeref:struct:userstabdata::stab	file:	access:public
-stabs	kern/debug/kdebug.c	/^    const struct stab *stabs;$/;"	m	struct:userstabdata	typeref:struct:userstabdata::stab	file:	access:public
-stabstr	kern/debug/kdebug.c	/^    const char *stabstr;$/;"	m	struct:userstabdata	file:	access:public
-stabstr_end	kern/debug/kdebug.c	/^    const char *stabstr_end;$/;"	m	struct:userstabdata	file:	access:public
+stab_binsearch	kern/debug/kdebug.c	/^stab_binsearch(const struct stab *stabs, int *region_left, int *region_right,$/;"	f	file:
+stab_end	kern/debug/kdebug.c	/^    const struct stab *stab_end;$/;"	m	struct:userstabdata	typeref:struct:userstabdata::stab	file:
+stabs	kern/debug/kdebug.c	/^    const struct stab *stabs;$/;"	m	struct:userstabdata	typeref:struct:userstabdata::stab	file:
+stabstr	kern/debug/kdebug.c	/^    const char *stabstr;$/;"	m	struct:userstabdata	file:
+stabstr_end	kern/debug/kdebug.c	/^    const char *stabstr_end;$/;"	m	struct:userstabdata	file:
 start	boot/bootasm.S	/^start:$/;"	l
 start_probe	boot/bootasm.S	/^start_probe:$/;"	l
-state	kern/process/proc.h	/^    enum proc_state state;                      \/\/ Process state$/;"	m	struct:proc_struct	typeref:enum:proc_struct::proc_state	access:public
+state	kern/process/proc.h	/^    enum proc_state state;                      \/\/ Process state$/;"	m	struct:proc_struct	typeref:enum:proc_struct::proc_state
 static_assert	kern/debug/assert.h	23;"	d
 static_assert	user/libs/ulib.h	23;"	d
 status	user/priority.c	/^int status[TOTAL];$/;"	v
-stdarg.h	libs/stdarg.h	1;"	F
-stdio.c	kern/libs/stdio.c	1;"	F
-stdio.c	user/libs/stdio.c	1;"	F
-stdio.h	libs/stdio.h	1;"	F
-stdlib.h	libs/stdlib.h	1;"	F
-sti	libs/x86.h	/^static inline void sti(void) __attribute__((always_inline));$/;"	p	signature:(void)
-sti	libs/x86.h	/^sti(void) {$/;"	f	signature:(void)
-strchr	libs/string.c	/^strchr(const char *s, char c) {$/;"	f	signature:(const char *s, char c)
-strchr	libs/string.h	/^char *strchr(const char *s, char c);$/;"	p	signature:(const char *s, char c)
-strcmp	libs/string.c	/^strcmp(const char *s1, const char *s2) {$/;"	f	signature:(const char *s1, const char *s2)
-strcmp	libs/string.h	/^int strcmp(const char *s1, const char *s2);$/;"	p	signature:(const char *s1, const char *s2)
-strcpy	libs/string.c	/^strcpy(char *dst, const char *src) {$/;"	f	signature:(char *dst, const char *src)
-strcpy	libs/string.h	/^char *strcpy(char *dst, const char *src);$/;"	p	signature:(char *dst, const char *src)
-strfind	libs/string.c	/^strfind(const char *s, char c) {$/;"	f	signature:(const char *s, char c)
-strfind	libs/string.h	/^char *strfind(const char *s, char c);$/;"	p	signature:(const char *s, char c)
-stride_dequeue	kern/schedule/default_sched_stride.c	/^stride_dequeue(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:	signature:(struct run_queue *rq, struct proc_struct *proc)
-stride_enqueue	kern/schedule/default_sched_stride.c	/^stride_enqueue(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:	signature:(struct run_queue *rq, struct proc_struct *proc)
-stride_init	kern/schedule/default_sched_stride.c	/^stride_init(struct run_queue *rq) {$/;"	f	file:	signature:(struct run_queue *rq)
-stride_pick_next	kern/schedule/default_sched_stride.c	/^stride_pick_next(struct run_queue *rq) {$/;"	f	file:	signature:(struct run_queue *rq)
-stride_proc_tick	kern/schedule/default_sched_stride.c	/^stride_proc_tick(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:	signature:(struct run_queue *rq, struct proc_struct *proc)
-string.c	libs/string.c	1;"	F
-string.h	libs/string.h	1;"	F
-strlen	libs/string.c	/^strlen(const char *s) {$/;"	f	signature:(const char *s)
-strlen	libs/string.h	/^size_t strlen(const char *s);$/;"	p	signature:(const char *s)
-strncmp	libs/string.c	/^strncmp(const char *s1, const char *s2, size_t n) {$/;"	f	signature:(const char *s1, const char *s2, size_t n)
-strncmp	libs/string.h	/^int strncmp(const char *s1, const char *s2, size_t n);$/;"	p	signature:(const char *s1, const char *s2, size_t n)
-strncpy	libs/string.c	/^strncpy(char *dst, const char *src, size_t len) {$/;"	f	signature:(char *dst, const char *src, size_t len)
-strncpy	libs/string.h	/^char *strncpy(char *dst, const char *src, size_t len);$/;"	p	signature:(char *dst, const char *src, size_t len)
-strnlen	libs/string.c	/^strnlen(const char *s, size_t len) {$/;"	f	signature:(const char *s, size_t len)
-strnlen	libs/string.h	/^size_t strnlen(const char *s, size_t len);$/;"	p	signature:(const char *s, size_t len)
-strtol	libs/string.c	/^strtol(const char *s, char **endptr, int base) {$/;"	f	signature:(const char *s, char **endptr, int base)
-strtol	libs/string.h	/^long strtol(const char *s, char **endptr, int base);$/;"	p	signature:(const char *s, char **endptr, int base)
-swap.c	kern/mm/swap.c	1;"	F
-swap.h	kern/mm/swap.h	1;"	F
+sti	libs/x86.h	/^sti(void) {$/;"	f
+strchr	libs/string.c	/^strchr(const char *s, char c) {$/;"	f
+strcmp	libs/string.c	/^strcmp(const char *s1, const char *s2) {$/;"	f
+strcpy	libs/string.c	/^strcpy(char *dst, const char *src) {$/;"	f
+strfind	libs/string.c	/^strfind(const char *s, char c) {$/;"	f
+stride_dequeue	kern/schedule/default_sched_stride.c	/^stride_dequeue(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:
+stride_enqueue	kern/schedule/default_sched_stride.c	/^stride_enqueue(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:
+stride_init	kern/schedule/default_sched_stride.c	/^stride_init(struct run_queue *rq) {$/;"	f	file:
+stride_pick_next	kern/schedule/default_sched_stride.c	/^stride_pick_next(struct run_queue *rq) {$/;"	f	file:
+stride_proc_tick	kern/schedule/default_sched_stride.c	/^stride_proc_tick(struct run_queue *rq, struct proc_struct *proc) {$/;"	f	file:
+strlen	libs/string.c	/^strlen(const char *s) {$/;"	f
+strncmp	libs/string.c	/^strncmp(const char *s1, const char *s2, size_t n) {$/;"	f
+strncpy	libs/string.c	/^strncpy(char *dst, const char *src, size_t len) {$/;"	f
+strnlen	libs/string.c	/^strnlen(const char *s, size_t len) {$/;"	f
+strtol	libs/string.c	/^strtol(const char *s, char **endptr, int base) {$/;"	f
 swap_entry_t	kern/mm/memlayout.h	/^typedef pte_t swap_entry_t; \/\/the pte can also be a swap entry$/;"	t
-swap_fifo.c	kern/mm/swap_fifo.c	1;"	F
-swap_fifo.h	kern/mm/swap_fifo.h	1;"	F
-swap_in	kern/mm/swap.c	/^swap_in(struct mm_struct *mm, uintptr_t addr, struct Page **ptr_result)$/;"	f	signature:(struct mm_struct *mm, uintptr_t addr, struct Page **ptr_result)
-swap_in	kern/mm/swap.h	/^int swap_in(struct mm_struct *mm, uintptr_t addr, struct Page **ptr_result);$/;"	p	signature:(struct mm_struct *mm, uintptr_t addr, struct Page **ptr_result)
+swap_in	kern/mm/swap.c	/^swap_in(struct mm_struct *mm, uintptr_t addr, struct Page **ptr_result)$/;"	f
 swap_in_seq_no	kern/mm/swap.c	/^unsigned int swap_in_seq_no[MAX_SEQ_NO],swap_out_seq_no[MAX_SEQ_NO];$/;"	v
-swap_init	kern/mm/swap.c	/^swap_init(void)$/;"	f	signature:(void)
-swap_init	kern/mm/swap.h	/^int swap_init(void);$/;"	p	signature:(void)
-swap_init_mm	kern/mm/swap.c	/^swap_init_mm(struct mm_struct *mm)$/;"	f	signature:(struct mm_struct *mm)
-swap_init_mm	kern/mm/swap.h	/^int swap_init_mm(struct mm_struct *mm);$/;"	p	signature:(struct mm_struct *mm)
+swap_init	kern/mm/swap.c	/^swap_init(void)$/;"	f
+swap_init_mm	kern/mm/swap.c	/^swap_init_mm(struct mm_struct *mm)$/;"	f
 swap_init_ok	kern/mm/swap.c	/^volatile int swap_init_ok = 0;$/;"	v
-swap_init_ok	kern/mm/swap.h	/^extern volatile int swap_init_ok;$/;"	x
 swap_manager	kern/mm/swap.h	/^struct swap_manager$/;"	s
 swap_manager_fifo	kern/mm/swap_fifo.c	/^struct swap_manager swap_manager_fifo =$/;"	v	typeref:struct:swap_manager
-swap_manager_fifo	kern/mm/swap_fifo.h	/^extern struct swap_manager swap_manager_fifo;$/;"	x
-swap_map_swappable	kern/mm/swap.c	/^swap_map_swappable(struct mm_struct *mm, uintptr_t addr, struct Page *page, int swap_in)$/;"	f	signature:(struct mm_struct *mm, uintptr_t addr, struct Page *page, int swap_in)
-swap_map_swappable	kern/mm/swap.h	/^int swap_map_swappable(struct mm_struct *mm, uintptr_t addr, struct Page *page, int swap_in);$/;"	p	signature:(struct mm_struct *mm, uintptr_t addr, struct Page *page, int swap_in)
+swap_map_swappable	kern/mm/swap.c	/^swap_map_swappable(struct mm_struct *mm, uintptr_t addr, struct Page *page, int swap_in)$/;"	f
 swap_offset	kern/mm/swap.h	25;"	d
-swap_out	kern/mm/swap.c	/^swap_out(struct mm_struct *mm, int n, int in_tick)$/;"	f	signature:(struct mm_struct *mm, int n, int in_tick)
-swap_out	kern/mm/swap.h	/^int swap_out(struct mm_struct *mm, int n, int in_tick);$/;"	p	signature:(struct mm_struct *mm, int n, int in_tick)
+swap_out	kern/mm/swap.c	/^swap_out(struct mm_struct *mm, int n, int in_tick)$/;"	f
 swap_out_num	kern/mm/swap.c	/^volatile unsigned int swap_out_num=0;$/;"	v
 swap_out_seq_no	kern/mm/swap.c	/^unsigned int swap_in_seq_no[MAX_SEQ_NO],swap_out_seq_no[MAX_SEQ_NO];$/;"	v
-swap_out_victim	kern/mm/swap.h	/^     int (*swap_out_victim) (struct mm_struct *mm, struct Page **ptr_page, int in_tick);$/;"	m	struct:swap_manager	access:public
+swap_out_victim	kern/mm/swap.h	/^     int (*swap_out_victim) (struct mm_struct *mm, struct Page **ptr_page, int in_tick);$/;"	m	struct:swap_manager
 swap_page	kern/mm/swap.c	/^unsigned int swap_page[CHECK_VALID_VIR_PAGE_NUM];$/;"	v
-swap_set_unswappable	kern/mm/swap.c	/^swap_set_unswappable(struct mm_struct *mm, uintptr_t addr)$/;"	f	signature:(struct mm_struct *mm, uintptr_t addr)
-swap_set_unswappable	kern/mm/swap.h	/^int swap_set_unswappable(struct mm_struct *mm, uintptr_t addr);$/;"	p	signature:(struct mm_struct *mm, uintptr_t addr)
-swap_tick_event	kern/mm/swap.c	/^swap_tick_event(struct mm_struct *mm)$/;"	f	signature:(struct mm_struct *mm)
-swap_tick_event	kern/mm/swap.h	/^int swap_tick_event(struct mm_struct *mm);$/;"	p	signature:(struct mm_struct *mm)
-swapfs.c	kern/fs/swapfs.c	1;"	F
-swapfs.h	kern/fs/swapfs.h	1;"	F
-swapfs_init	kern/fs/swapfs.c	/^swapfs_init(void) {$/;"	f	signature:(void)
-swapfs_init	kern/fs/swapfs.h	/^void swapfs_init(void);$/;"	p	signature:(void)
-swapfs_read	kern/fs/swapfs.c	/^swapfs_read(swap_entry_t entry, struct Page *page) {$/;"	f	signature:(swap_entry_t entry, struct Page *page)
-swapfs_read	kern/fs/swapfs.h	/^int swapfs_read(swap_entry_t entry, struct Page *page);$/;"	p	signature:(swap_entry_t entry, struct Page *page)
-swapfs_write	kern/fs/swapfs.c	/^swapfs_write(swap_entry_t entry, struct Page *page) {$/;"	f	signature:(swap_entry_t entry, struct Page *page)
-swapfs_write	kern/fs/swapfs.h	/^int swapfs_write(swap_entry_t entry, struct Page *page);$/;"	p	signature:(swap_entry_t entry, struct Page *page)
-switch.S	kern/process/switch.S	1;"	F
-switch_to	kern/process/proc.c	/^void switch_to(struct context *from, struct context *to);$/;"	p	file:	signature:(struct context *from, struct context *to)
+swap_set_unswappable	kern/mm/swap.c	/^swap_set_unswappable(struct mm_struct *mm, uintptr_t addr)$/;"	f
+swap_tick_event	kern/mm/swap.c	/^swap_tick_event(struct mm_struct *mm)$/;"	f
+swapfs_init	kern/fs/swapfs.c	/^swapfs_init(void) {$/;"	f
+swapfs_read	kern/fs/swapfs.c	/^swapfs_read(swap_entry_t entry, struct Page *page) {$/;"	f
+swapfs_write	kern/fs/swapfs.c	/^swapfs_write(swap_entry_t entry, struct Page *page) {$/;"	f
 switch_to	kern/process/switch.S	/^switch_to:                      # switch_to(from, to)$/;"	l
 symfile	Makefile	/^symfile = $(call cgtype,$(call toobj,$(1)),o,sym)$/;"	m
-sync.h	kern/sync/sync.h	1;"	F
-sys_exec	kern/syscall/syscall.c	/^sys_exec(uint32_t arg[]) {$/;"	f	file:	signature:(uint32_t arg[])
-sys_exit	kern/syscall/syscall.c	/^sys_exit(uint32_t arg[]) {$/;"	f	file:	signature:(uint32_t arg[])
-sys_exit	user/libs/syscall.c	/^sys_exit(int error_code) {$/;"	f	signature:(int error_code)
-sys_exit	user/libs/syscall.h	/^int sys_exit(int error_code);$/;"	p	signature:(int error_code)
-sys_fork	kern/syscall/syscall.c	/^sys_fork(uint32_t arg[]) {$/;"	f	file:	signature:(uint32_t arg[])
-sys_fork	user/libs/syscall.c	/^sys_fork(void) {$/;"	f	signature:(void)
-sys_fork	user/libs/syscall.h	/^int sys_fork(void);$/;"	p	signature:(void)
-sys_getpid	kern/syscall/syscall.c	/^sys_getpid(uint32_t arg[]) {$/;"	f	file:	signature:(uint32_t arg[])
-sys_getpid	user/libs/syscall.c	/^sys_getpid(void) {$/;"	f	signature:(void)
-sys_getpid	user/libs/syscall.h	/^int sys_getpid(void);$/;"	p	signature:(void)
-sys_gettime	kern/syscall/syscall.c	/^sys_gettime(uint32_t arg[]) {$/;"	f	file:	signature:(uint32_t arg[])
-sys_gettime	user/libs/syscall.c	/^sys_gettime(void) {$/;"	f	signature:(void)
-sys_gettime	user/libs/syscall.h	/^int sys_gettime(void);$/;"	p	signature:(void)
-sys_kill	kern/syscall/syscall.c	/^sys_kill(uint32_t arg[]) {$/;"	f	file:	signature:(uint32_t arg[])
-sys_kill	user/libs/syscall.c	/^sys_kill(int pid) {$/;"	f	signature:(int pid)
-sys_kill	user/libs/syscall.h	/^int sys_kill(int pid);$/;"	p	signature:(int pid)
-sys_lab6_set_priority	kern/syscall/syscall.c	/^sys_lab6_set_priority(uint32_t arg[])$/;"	f	file:	signature:(uint32_t arg[])
-sys_lab6_set_priority	user/libs/syscall.c	/^sys_lab6_set_priority(uint32_t priority)$/;"	f	signature:(uint32_t priority)
-sys_lab6_set_priority	user/libs/syscall.h	/^void sys_lab6_set_priority(uint32_t priority);$/;"	p	signature:(uint32_t priority)
-sys_pgdir	kern/syscall/syscall.c	/^sys_pgdir(uint32_t arg[]) {$/;"	f	file:	signature:(uint32_t arg[])
-sys_pgdir	user/libs/syscall.c	/^sys_pgdir(void) {$/;"	f	signature:(void)
-sys_pgdir	user/libs/syscall.h	/^int sys_pgdir(void);$/;"	p	signature:(void)
-sys_putc	kern/syscall/syscall.c	/^sys_putc(uint32_t arg[]) {$/;"	f	file:	signature:(uint32_t arg[])
-sys_putc	user/libs/syscall.c	/^sys_putc(int c) {$/;"	f	signature:(int c)
-sys_putc	user/libs/syscall.h	/^int sys_putc(int c);$/;"	p	signature:(int c)
-sys_wait	kern/syscall/syscall.c	/^sys_wait(uint32_t arg[]) {$/;"	f	file:	signature:(uint32_t arg[])
-sys_wait	user/libs/syscall.c	/^sys_wait(int pid, int *store) {$/;"	f	signature:(int pid, int *store)
-sys_wait	user/libs/syscall.h	/^int sys_wait(int pid, int *store);$/;"	p	signature:(int pid, int *store)
-sys_yield	kern/syscall/syscall.c	/^sys_yield(uint32_t arg[]) {$/;"	f	file:	signature:(uint32_t arg[])
-sys_yield	user/libs/syscall.c	/^sys_yield(void) {$/;"	f	signature:(void)
-sys_yield	user/libs/syscall.h	/^int sys_yield(void);$/;"	p	signature:(void)
-syscall	kern/syscall/syscall.c	/^syscall(void) {$/;"	f	signature:(void)
-syscall	kern/syscall/syscall.h	/^void syscall(void);$/;"	p	signature:(void)
-syscall	user/libs/syscall.c	/^syscall(int num, ...) {$/;"	f	file:	signature:(int num, ...)
-syscall.c	kern/syscall/syscall.c	1;"	F
-syscall.c	user/libs/syscall.c	1;"	F
-syscall.h	kern/syscall/syscall.h	1;"	F
-syscall.h	user/libs/syscall.h	1;"	F
+sys_exec	kern/syscall/syscall.c	/^sys_exec(uint32_t arg[]) {$/;"	f	file:
+sys_exit	kern/syscall/syscall.c	/^sys_exit(uint32_t arg[]) {$/;"	f	file:
+sys_exit	user/libs/syscall.c	/^sys_exit(int error_code) {$/;"	f
+sys_fork	kern/syscall/syscall.c	/^sys_fork(uint32_t arg[]) {$/;"	f	file:
+sys_fork	user/libs/syscall.c	/^sys_fork(void) {$/;"	f
+sys_getpid	kern/syscall/syscall.c	/^sys_getpid(uint32_t arg[]) {$/;"	f	file:
+sys_getpid	user/libs/syscall.c	/^sys_getpid(void) {$/;"	f
+sys_gettime	kern/syscall/syscall.c	/^sys_gettime(uint32_t arg[]) {$/;"	f	file:
+sys_gettime	user/libs/syscall.c	/^sys_gettime(void) {$/;"	f
+sys_kill	kern/syscall/syscall.c	/^sys_kill(uint32_t arg[]) {$/;"	f	file:
+sys_kill	user/libs/syscall.c	/^sys_kill(int pid) {$/;"	f
+sys_lab6_set_priority	kern/syscall/syscall.c	/^sys_lab6_set_priority(uint32_t arg[])$/;"	f	file:
+sys_lab6_set_priority	user/libs/syscall.c	/^sys_lab6_set_priority(uint32_t priority)$/;"	f
+sys_pgdir	kern/syscall/syscall.c	/^sys_pgdir(uint32_t arg[]) {$/;"	f	file:
+sys_pgdir	user/libs/syscall.c	/^sys_pgdir(void) {$/;"	f
+sys_putc	kern/syscall/syscall.c	/^sys_putc(uint32_t arg[]) {$/;"	f	file:
+sys_putc	user/libs/syscall.c	/^sys_putc(int c) {$/;"	f
+sys_wait	kern/syscall/syscall.c	/^sys_wait(uint32_t arg[]) {$/;"	f	file:
+sys_wait	user/libs/syscall.c	/^sys_wait(int pid, int *store) {$/;"	f
+sys_yield	kern/syscall/syscall.c	/^sys_yield(uint32_t arg[]) {$/;"	f	file:
+sys_yield	user/libs/syscall.c	/^sys_yield(void) {$/;"	f
+syscall	kern/syscall/syscall.c	/^syscall(void) {$/;"	f
+syscall	user/libs/syscall.c	/^syscall(int num, ...) {$/;"	f	file:
 syscalls	kern/syscall/syscall.c	/^static int (*syscalls[])(uint32_t arg[]) = {$/;"	v	file:
 taskstate	kern/mm/mmu.h	/^struct taskstate {$/;"	s
-test_and_clear_bit	libs/atomic.h	/^test_and_clear_bit(int nr, volatile void *addr) {$/;"	f	signature:(int nr, volatile void *addr)
-test_and_set_bit	libs/atomic.h	/^test_and_set_bit(int nr, volatile void *addr) {$/;"	f	signature:(int nr, volatile void *addr)
-test_bit	libs/atomic.h	/^static inline bool test_bit(int nr, volatile void *addr) __attribute__((always_inline));$/;"	p	signature:(int nr, volatile void *addr)
-test_bit	libs/atomic.h	/^test_bit(int nr, volatile void *addr) {$/;"	f	signature:(int nr, volatile void *addr)
-testbss.c	user/testbss.c	1;"	F
-tf	kern/process/proc.h	/^    struct trapframe *tf;                       \/\/ Trap frame for current interrupt$/;"	m	struct:proc_struct	typeref:struct:proc_struct::trapframe	access:public
-tf_cs	kern/trap/trap.h	/^    uint16_t tf_cs;$/;"	m	struct:trapframe	access:public
-tf_ds	kern/trap/trap.h	/^    uint16_t tf_ds;$/;"	m	struct:trapframe	access:public
-tf_eflags	kern/trap/trap.h	/^    uint32_t tf_eflags;$/;"	m	struct:trapframe	access:public
-tf_eip	kern/trap/trap.h	/^    uintptr_t tf_eip;$/;"	m	struct:trapframe	access:public
-tf_err	kern/trap/trap.h	/^    uint32_t tf_err;$/;"	m	struct:trapframe	access:public
-tf_es	kern/trap/trap.h	/^    uint16_t tf_es;$/;"	m	struct:trapframe	access:public
-tf_esp	kern/trap/trap.h	/^    uintptr_t tf_esp;$/;"	m	struct:trapframe	access:public
-tf_fs	kern/trap/trap.h	/^    uint16_t tf_fs;$/;"	m	struct:trapframe	access:public
-tf_gs	kern/trap/trap.h	/^    uint16_t tf_gs;$/;"	m	struct:trapframe	access:public
-tf_padding0	kern/trap/trap.h	/^    uint16_t tf_padding0;$/;"	m	struct:trapframe	access:public
-tf_padding1	kern/trap/trap.h	/^    uint16_t tf_padding1;$/;"	m	struct:trapframe	access:public
-tf_padding2	kern/trap/trap.h	/^    uint16_t tf_padding2;$/;"	m	struct:trapframe	access:public
-tf_padding3	kern/trap/trap.h	/^    uint16_t tf_padding3;$/;"	m	struct:trapframe	access:public
-tf_padding4	kern/trap/trap.h	/^    uint16_t tf_padding4;$/;"	m	struct:trapframe	access:public
-tf_padding5	kern/trap/trap.h	/^    uint16_t tf_padding5;$/;"	m	struct:trapframe	access:public
-tf_regs	kern/trap/trap.h	/^    struct pushregs tf_regs;$/;"	m	struct:trapframe	typeref:struct:trapframe::pushregs	access:public
-tf_ss	kern/trap/trap.h	/^    uint16_t tf_ss;$/;"	m	struct:trapframe	access:public
-tf_trapno	kern/trap/trap.h	/^    uint32_t tf_trapno;$/;"	m	struct:trapframe	access:public
-tick_event	kern/mm/swap.h	/^     int (*tick_event)      (struct mm_struct *mm);$/;"	m	struct:swap_manager	access:public
+test_and_clear_bit	libs/atomic.h	/^test_and_clear_bit(int nr, volatile void *addr) {$/;"	f
+test_and_set_bit	libs/atomic.h	/^test_and_set_bit(int nr, volatile void *addr) {$/;"	f
+test_bit	libs/atomic.h	/^test_bit(int nr, volatile void *addr) {$/;"	f
+tf	kern/process/proc.h	/^    struct trapframe *tf;                       \/\/ Trap frame for current interrupt$/;"	m	struct:proc_struct	typeref:struct:proc_struct::trapframe
+tf_cs	kern/trap/trap.h	/^    uint16_t tf_cs;$/;"	m	struct:trapframe
+tf_ds	kern/trap/trap.h	/^    uint16_t tf_ds;$/;"	m	struct:trapframe
+tf_eflags	kern/trap/trap.h	/^    uint32_t tf_eflags;$/;"	m	struct:trapframe
+tf_eip	kern/trap/trap.h	/^    uintptr_t tf_eip;$/;"	m	struct:trapframe
+tf_err	kern/trap/trap.h	/^    uint32_t tf_err;$/;"	m	struct:trapframe
+tf_es	kern/trap/trap.h	/^    uint16_t tf_es;$/;"	m	struct:trapframe
+tf_esp	kern/trap/trap.h	/^    uintptr_t tf_esp;$/;"	m	struct:trapframe
+tf_fs	kern/trap/trap.h	/^    uint16_t tf_fs;$/;"	m	struct:trapframe
+tf_gs	kern/trap/trap.h	/^    uint16_t tf_gs;$/;"	m	struct:trapframe
+tf_padding0	kern/trap/trap.h	/^    uint16_t tf_padding0;$/;"	m	struct:trapframe
+tf_padding1	kern/trap/trap.h	/^    uint16_t tf_padding1;$/;"	m	struct:trapframe
+tf_padding2	kern/trap/trap.h	/^    uint16_t tf_padding2;$/;"	m	struct:trapframe
+tf_padding3	kern/trap/trap.h	/^    uint16_t tf_padding3;$/;"	m	struct:trapframe
+tf_padding4	kern/trap/trap.h	/^    uint16_t tf_padding4;$/;"	m	struct:trapframe
+tf_padding5	kern/trap/trap.h	/^    uint16_t tf_padding5;$/;"	m	struct:trapframe
+tf_regs	kern/trap/trap.h	/^    struct pushregs tf_regs;$/;"	m	struct:trapframe	typeref:struct:trapframe::pushregs
+tf_ss	kern/trap/trap.h	/^    uint16_t tf_ss;$/;"	m	struct:trapframe
+tf_trapno	kern/trap/trap.h	/^    uint32_t tf_trapno;$/;"	m	struct:trapframe
+tick_event	kern/mm/swap.h	/^     int (*tick_event)      (struct mm_struct *mm);$/;"	m	struct:swap_manager
 ticks	kern/driver/clock.c	/^volatile size_t ticks;$/;"	v
-ticks	kern/driver/clock.h	/^extern volatile size_t ticks;$/;"	x
-time_slice	kern/process/proc.h	/^    int time_slice;                             \/\/ time slice for occupying the CPU$/;"	m	struct:proc_struct	access:public
+time_slice	kern/process/proc.h	/^    int time_slice;                             \/\/ time slice for occupying the CPU$/;"	m	struct:proc_struct
 timer_list	kern/schedule/sched.c	/^static list_entry_t timer_list;$/;"	v	file:
-tlb_invalidate	kern/mm/pmm.c	/^tlb_invalidate(pde_t *pgdir, uintptr_t la) {$/;"	f	signature:(pde_t *pgdir, uintptr_t la)
-tlb_invalidate	kern/mm/pmm.h	/^void tlb_invalidate(pde_t *pgdir, uintptr_t la);$/;"	p	signature:(pde_t *pgdir, uintptr_t la)
+tlb_invalidate	kern/mm/pmm.c	/^tlb_invalidate(pde_t *pgdir, uintptr_t la) {$/;"	f
 to_struct	libs/defs.h	64;"	d
 todep	tools/function.mk	/^todep = $(patsubst %.o,%.d,$(call toobj,$(1),$(2)))$/;"	m
 togglecode	kern/driver/console.c	/^static uint8_t togglecode[256] = {$/;"	v	file:
 toobj	tools/function.mk	/^toobj = $(addprefix $(OBJDIR)$(SLASH)$(if $(2),$(2)$(SLASH)),\\$/;"	m
 total	user/matrix.c	/^const int total = 21;$/;"	v
 totarget	tools/function.mk	/^totarget = $(addprefix $(BINDIR)$(SLASH),$(1))$/;"	m
-trap	kern/trap/trap.c	/^trap(struct trapframe *tf) {$/;"	f	signature:(struct trapframe *tf)
-trap.c	kern/trap/trap.c	1;"	F
-trap.h	kern/trap/trap.h	1;"	F
-trap_dispatch	kern/trap/trap.c	/^trap_dispatch(struct trapframe *tf) {$/;"	f	file:	signature:(struct trapframe *tf)
-trap_in_kernel	kern/trap/trap.c	/^trap_in_kernel(struct trapframe *tf) {$/;"	f	signature:(struct trapframe *tf)
-trap_in_kernel	kern/trap/trap.h	/^bool trap_in_kernel(struct trapframe *tf);$/;"	p	signature:(struct trapframe *tf)
-trapentry.S	kern/trap/trapentry.S	1;"	F
+trap	kern/trap/trap.c	/^trap(struct trapframe *tf) {$/;"	f
+trap_dispatch	kern/trap/trap.c	/^trap_dispatch(struct trapframe *tf) {$/;"	f	file:
+trap_in_kernel	kern/trap/trap.c	/^trap_in_kernel(struct trapframe *tf) {$/;"	f
 trapframe	kern/trap/trap.h	/^struct trapframe {$/;"	s
-trapname	kern/trap/trap.c	/^trapname(int trapno) {$/;"	f	file:	signature:(int trapno)
-try_lock	kern/sync/sync.h	/^try_lock(lock_t *lock) {$/;"	f	signature:(lock_t *lock)
+trapname	kern/trap/trap.c	/^trapname(int trapno) {$/;"	f	file:
+try_lock	kern/sync/sync.h	/^try_lock(lock_t *lock) {$/;"	f
 ts	kern/mm/pmm.c	/^static struct taskstate ts = {0};$/;"	v	typeref:struct:taskstate	file:
-ts_cr3	kern/mm/mmu.h	/^    uintptr_t ts_cr3;       \/\/ page directory base$/;"	m	struct:taskstate	access:public
-ts_cs	kern/mm/mmu.h	/^    uint16_t ts_cs;$/;"	m	struct:taskstate	access:public
-ts_ds	kern/mm/mmu.h	/^    uint16_t ts_ds;$/;"	m	struct:taskstate	access:public
-ts_eax	kern/mm/mmu.h	/^    uint32_t ts_eax;        \/\/ more saved state (registers)$/;"	m	struct:taskstate	access:public
-ts_ebp	kern/mm/mmu.h	/^    uintptr_t ts_ebp;$/;"	m	struct:taskstate	access:public
-ts_ebx	kern/mm/mmu.h	/^    uint32_t ts_ebx;$/;"	m	struct:taskstate	access:public
-ts_ecx	kern/mm/mmu.h	/^    uint32_t ts_ecx;$/;"	m	struct:taskstate	access:public
-ts_edi	kern/mm/mmu.h	/^    uint32_t ts_edi;$/;"	m	struct:taskstate	access:public
-ts_edx	kern/mm/mmu.h	/^    uint32_t ts_edx;$/;"	m	struct:taskstate	access:public
-ts_eflags	kern/mm/mmu.h	/^    uint32_t ts_eflags;$/;"	m	struct:taskstate	access:public
-ts_eip	kern/mm/mmu.h	/^    uintptr_t ts_eip;       \/\/ saved state from last task switch$/;"	m	struct:taskstate	access:public
-ts_es	kern/mm/mmu.h	/^    uint16_t ts_es;         \/\/ even more saved state (segment selectors)$/;"	m	struct:taskstate	access:public
-ts_esi	kern/mm/mmu.h	/^    uint32_t ts_esi;$/;"	m	struct:taskstate	access:public
-ts_esp	kern/mm/mmu.h	/^    uintptr_t ts_esp;$/;"	m	struct:taskstate	access:public
-ts_esp0	kern/mm/mmu.h	/^    uintptr_t ts_esp0;      \/\/ stack pointers and segment selectors$/;"	m	struct:taskstate	access:public
-ts_esp1	kern/mm/mmu.h	/^    uintptr_t ts_esp1;$/;"	m	struct:taskstate	access:public
-ts_esp2	kern/mm/mmu.h	/^    uintptr_t ts_esp2;$/;"	m	struct:taskstate	access:public
-ts_fs	kern/mm/mmu.h	/^    uint16_t ts_fs;$/;"	m	struct:taskstate	access:public
-ts_gs	kern/mm/mmu.h	/^    uint16_t ts_gs;$/;"	m	struct:taskstate	access:public
-ts_iomb	kern/mm/mmu.h	/^    uint16_t ts_iomb;       \/\/ i\/o map base address$/;"	m	struct:taskstate	access:public
-ts_ldt	kern/mm/mmu.h	/^    uint16_t ts_ldt;$/;"	m	struct:taskstate	access:public
-ts_link	kern/mm/mmu.h	/^    uint32_t ts_link;       \/\/ old ts selector$/;"	m	struct:taskstate	access:public
-ts_padding1	kern/mm/mmu.h	/^    uint16_t ts_padding1;$/;"	m	struct:taskstate	access:public
-ts_padding10	kern/mm/mmu.h	/^    uint16_t ts_padding10;$/;"	m	struct:taskstate	access:public
-ts_padding2	kern/mm/mmu.h	/^    uint16_t ts_padding2;$/;"	m	struct:taskstate	access:public
-ts_padding3	kern/mm/mmu.h	/^    uint16_t ts_padding3;$/;"	m	struct:taskstate	access:public
-ts_padding4	kern/mm/mmu.h	/^    uint16_t ts_padding4;$/;"	m	struct:taskstate	access:public
-ts_padding5	kern/mm/mmu.h	/^    uint16_t ts_padding5;$/;"	m	struct:taskstate	access:public
-ts_padding6	kern/mm/mmu.h	/^    uint16_t ts_padding6;$/;"	m	struct:taskstate	access:public
-ts_padding7	kern/mm/mmu.h	/^    uint16_t ts_padding7;$/;"	m	struct:taskstate	access:public
-ts_padding8	kern/mm/mmu.h	/^    uint16_t ts_padding8;$/;"	m	struct:taskstate	access:public
-ts_padding9	kern/mm/mmu.h	/^    uint16_t ts_padding9;$/;"	m	struct:taskstate	access:public
-ts_ss	kern/mm/mmu.h	/^    uint16_t ts_ss;$/;"	m	struct:taskstate	access:public
-ts_ss0	kern/mm/mmu.h	/^    uint16_t ts_ss0;        \/\/ after an increase in privilege level$/;"	m	struct:taskstate	access:public
-ts_ss1	kern/mm/mmu.h	/^    uint16_t ts_ss1;$/;"	m	struct:taskstate	access:public
-ts_ss2	kern/mm/mmu.h	/^    uint16_t ts_ss2;$/;"	m	struct:taskstate	access:public
-ts_t	kern/mm/mmu.h	/^    uint16_t ts_t;          \/\/ trap on task switch$/;"	m	struct:taskstate	access:public
-type	kern/mm/memlayout.h	/^        uint32_t type;$/;"	m	struct:e820map::__anon3	access:public
+ts_cr3	kern/mm/mmu.h	/^    uintptr_t ts_cr3;       \/\/ page directory base$/;"	m	struct:taskstate
+ts_cs	kern/mm/mmu.h	/^    uint16_t ts_cs;$/;"	m	struct:taskstate
+ts_ds	kern/mm/mmu.h	/^    uint16_t ts_ds;$/;"	m	struct:taskstate
+ts_eax	kern/mm/mmu.h	/^    uint32_t ts_eax;        \/\/ more saved state (registers)$/;"	m	struct:taskstate
+ts_ebp	kern/mm/mmu.h	/^    uintptr_t ts_ebp;$/;"	m	struct:taskstate
+ts_ebx	kern/mm/mmu.h	/^    uint32_t ts_ebx;$/;"	m	struct:taskstate
+ts_ecx	kern/mm/mmu.h	/^    uint32_t ts_ecx;$/;"	m	struct:taskstate
+ts_edi	kern/mm/mmu.h	/^    uint32_t ts_edi;$/;"	m	struct:taskstate
+ts_edx	kern/mm/mmu.h	/^    uint32_t ts_edx;$/;"	m	struct:taskstate
+ts_eflags	kern/mm/mmu.h	/^    uint32_t ts_eflags;$/;"	m	struct:taskstate
+ts_eip	kern/mm/mmu.h	/^    uintptr_t ts_eip;       \/\/ saved state from last task switch$/;"	m	struct:taskstate
+ts_es	kern/mm/mmu.h	/^    uint16_t ts_es;         \/\/ even more saved state (segment selectors)$/;"	m	struct:taskstate
+ts_esi	kern/mm/mmu.h	/^    uint32_t ts_esi;$/;"	m	struct:taskstate
+ts_esp	kern/mm/mmu.h	/^    uintptr_t ts_esp;$/;"	m	struct:taskstate
+ts_esp0	kern/mm/mmu.h	/^    uintptr_t ts_esp0;      \/\/ stack pointers and segment selectors$/;"	m	struct:taskstate
+ts_esp1	kern/mm/mmu.h	/^    uintptr_t ts_esp1;$/;"	m	struct:taskstate
+ts_esp2	kern/mm/mmu.h	/^    uintptr_t ts_esp2;$/;"	m	struct:taskstate
+ts_fs	kern/mm/mmu.h	/^    uint16_t ts_fs;$/;"	m	struct:taskstate
+ts_gs	kern/mm/mmu.h	/^    uint16_t ts_gs;$/;"	m	struct:taskstate
+ts_iomb	kern/mm/mmu.h	/^    uint16_t ts_iomb;       \/\/ i\/o map base address$/;"	m	struct:taskstate
+ts_ldt	kern/mm/mmu.h	/^    uint16_t ts_ldt;$/;"	m	struct:taskstate
+ts_link	kern/mm/mmu.h	/^    uint32_t ts_link;       \/\/ old ts selector$/;"	m	struct:taskstate
+ts_padding1	kern/mm/mmu.h	/^    uint16_t ts_padding1;$/;"	m	struct:taskstate
+ts_padding10	kern/mm/mmu.h	/^    uint16_t ts_padding10;$/;"	m	struct:taskstate
+ts_padding2	kern/mm/mmu.h	/^    uint16_t ts_padding2;$/;"	m	struct:taskstate
+ts_padding3	kern/mm/mmu.h	/^    uint16_t ts_padding3;$/;"	m	struct:taskstate
+ts_padding4	kern/mm/mmu.h	/^    uint16_t ts_padding4;$/;"	m	struct:taskstate
+ts_padding5	kern/mm/mmu.h	/^    uint16_t ts_padding5;$/;"	m	struct:taskstate
+ts_padding6	kern/mm/mmu.h	/^    uint16_t ts_padding6;$/;"	m	struct:taskstate
+ts_padding7	kern/mm/mmu.h	/^    uint16_t ts_padding7;$/;"	m	struct:taskstate
+ts_padding8	kern/mm/mmu.h	/^    uint16_t ts_padding8;$/;"	m	struct:taskstate
+ts_padding9	kern/mm/mmu.h	/^    uint16_t ts_padding9;$/;"	m	struct:taskstate
+ts_ss	kern/mm/mmu.h	/^    uint16_t ts_ss;$/;"	m	struct:taskstate
+ts_ss0	kern/mm/mmu.h	/^    uint16_t ts_ss0;        \/\/ after an increase in privilege level$/;"	m	struct:taskstate
+ts_ss1	kern/mm/mmu.h	/^    uint16_t ts_ss1;$/;"	m	struct:taskstate
+ts_ss2	kern/mm/mmu.h	/^    uint16_t ts_ss2;$/;"	m	struct:taskstate
+ts_t	kern/mm/mmu.h	/^    uint16_t ts_t;          \/\/ trap on task switch$/;"	m	struct:taskstate
+type	kern/mm/memlayout.h	/^        uint32_t type;$/;"	m	struct:e820map::__anon3
 ubinfile	Makefile	/^ubinfile = $(call outfile,$(addprefix $(USER_PREFIX),$(call filename,$(1))))$/;"	m
 uint16_t	libs/defs.h	/^typedef unsigned short uint16_t;$/;"	t
 uint32_t	libs/defs.h	/^typedef unsigned int uint32_t;$/;"	t
 uint64_t	libs/defs.h	/^typedef unsigned long long uint64_t;$/;"	t
 uint8_t	libs/defs.h	/^typedef unsigned char uint8_t;$/;"	t
 uintptr_t	libs/defs.h	/^typedef uint32_t uintptr_t;$/;"	t
-ulib.c	user/libs/ulib.c	1;"	F
-ulib.h	user/libs/ulib.h	1;"	F
-umain	user/libs/umain.c	/^umain(void) {$/;"	f	signature:(void)
-umain.c	user/libs/umain.c	1;"	F
-unhash_proc	kern/process/proc.c	/^unhash_proc(struct proc_struct *proc) {$/;"	f	file:	signature:(struct proc_struct *proc)
-unistd.h	libs/unistd.h	1;"	F
-units	kern/mm/kmalloc.c	/^	int units;$/;"	m	struct:slob_block	file:	access:public
-unlock	kern/sync/sync.h	/^unlock(lock_t *lock) {$/;"	f	signature:(lock_t *lock)
-unlock_mm	kern/mm/vmm.h	/^unlock_mm(struct mm_struct *mm) {$/;"	f	signature:(struct mm_struct *mm)
-unmap_range	kern/mm/pmm.c	/^unmap_range(pde_t *pgdir, uintptr_t start, uintptr_t end) {$/;"	f	signature:(pde_t *pgdir, uintptr_t start, uintptr_t end)
-unmap_range	kern/mm/pmm.h	/^void unmap_range(pde_t *pgdir, uintptr_t start, uintptr_t end);$/;"	p	signature:(pde_t *pgdir, uintptr_t start, uintptr_t end)
+umain	user/libs/umain.c	/^umain(void) {$/;"	f
+unhash_proc	kern/process/proc.c	/^unhash_proc(struct proc_struct *proc) {$/;"	f	file:
+units	kern/mm/kmalloc.c	/^	int units;$/;"	m	struct:slob_block	file:
+unlock	kern/sync/sync.h	/^unlock(lock_t *lock) {$/;"	f
+unlock_mm	kern/mm/vmm.h	/^unlock_mm(struct mm_struct *mm) {$/;"	f
+unmap_range	kern/mm/pmm.c	/^unmap_range(pde_t *pgdir, uintptr_t start, uintptr_t end) {$/;"	f
 update_score	tools/grade.sh	/^update_score() {$/;"	f
 uprog_ld	Makefile	/^define uprog_ld$/;"	m
-user_main	kern/process/proc.c	/^user_main(void *arg) {$/;"	f	file:	signature:(void *arg)
-user_mem_check	kern/mm/vmm.c	/^user_mem_check(struct mm_struct *mm, uintptr_t addr, size_t len, bool write) {$/;"	f	signature:(struct mm_struct *mm, uintptr_t addr, size_t len, bool write)
-user_mem_check	kern/mm/vmm.h	/^bool user_mem_check(struct mm_struct *mm, uintptr_t start, size_t len, bool write);$/;"	p	signature:(struct mm_struct *mm, uintptr_t start, size_t len, bool write)
+user_main	kern/process/proc.c	/^user_main(void *arg) {$/;"	f	file:
+user_mem_check	kern/mm/vmm.c	/^user_mem_check(struct mm_struct *mm, uintptr_t addr, size_t len, bool write) {$/;"	f
 userstabdata	kern/debug/kdebug.c	/^struct userstabdata {$/;"	s	file:
 va_arg	libs/stdarg.h	8;"	d
 va_end	libs/stdarg.h	9;"	d
 va_list	libs/stdarg.h	/^typedef __builtin_va_list va_list;$/;"	t
 va_start	libs/stdarg.h	7;"	d
-valid	kern/driver/ide.c	/^    unsigned char valid;        \/\/ 0 or 1 (If Device Really Exists)$/;"	m	struct:ide_device	file:	access:public
-vcprintf	kern/libs/stdio.c	/^vcprintf(const char *fmt, va_list ap) {$/;"	f	signature:(const char *fmt, va_list ap)
-vcprintf	libs/stdio.h	/^int vcprintf(const char *fmt, va_list ap);$/;"	p	signature:(const char *fmt, va_list ap)
-vcprintf	user/libs/stdio.c	/^vcprintf(const char *fmt, va_list ap) {$/;"	f	signature:(const char *fmt, va_list ap)
-vector.c	tools/vector.c	1;"	F
+valid	kern/driver/ide.c	/^    unsigned char valid;        \/\/ 0 or 1 (If Device Really Exists)$/;"	m	struct:ide_device	file:
+vcprintf	kern/libs/stdio.c	/^vcprintf(const char *fmt, va_list ap) {$/;"	f
+vcprintf	user/libs/stdio.c	/^vcprintf(const char *fmt, va_list ap) {$/;"	f
 vector0	kern/trap/vectors.S	/^vector0:$/;"	l
 vector1	kern/trap/vectors.S	/^vector1:$/;"	l
 vector10	kern/trap/vectors.S	/^vector10:$/;"	l
@@ -1966,45 +1638,29 @@ vector96	kern/trap/vectors.S	/^vector96:$/;"	l
 vector97	kern/trap/vectors.S	/^vector97:$/;"	l
 vector98	kern/trap/vectors.S	/^vector98:$/;"	l
 vector99	kern/trap/vectors.S	/^vector99:$/;"	l
-vectors.S	kern/trap/vectors.S	1;"	F
-vm_end	kern/mm/vmm.h	/^    uintptr_t vm_end;        \/\/ end addr of vma, not include the vm_end itself$/;"	m	struct:vma_struct	access:public
-vm_flags	kern/mm/vmm.h	/^    uint32_t vm_flags;       \/\/ flags of vma$/;"	m	struct:vma_struct	access:public
-vm_mm	kern/mm/vmm.h	/^    struct mm_struct *vm_mm; \/\/ the set of vma using the same PDT $/;"	m	struct:vma_struct	typeref:struct:vma_struct::mm_struct	access:public
-vm_start	kern/mm/vmm.h	/^    uintptr_t vm_start;      \/\/ start addr of vma      $/;"	m	struct:vma_struct	access:public
-vma_create	kern/mm/vmm.c	/^vma_create(uintptr_t vm_start, uintptr_t vm_end, uint32_t vm_flags) {$/;"	f	signature:(uintptr_t vm_start, uintptr_t vm_end, uint32_t vm_flags)
-vma_create	kern/mm/vmm.h	/^struct vma_struct *vma_create(uintptr_t vm_start, uintptr_t vm_end, uint32_t vm_flags);$/;"	p	signature:(uintptr_t vm_start, uintptr_t vm_end, uint32_t vm_flags)
+vm_end	kern/mm/vmm.h	/^    uintptr_t vm_end;        \/\/ end addr of vma, not include the vm_end itself$/;"	m	struct:vma_struct
+vm_flags	kern/mm/vmm.h	/^    uint32_t vm_flags;       \/\/ flags of vma$/;"	m	struct:vma_struct
+vm_mm	kern/mm/vmm.h	/^    struct mm_struct *vm_mm; \/\/ the set of vma using the same PDT $/;"	m	struct:vma_struct	typeref:struct:vma_struct::mm_struct
+vm_start	kern/mm/vmm.h	/^    uintptr_t vm_start;      \/\/ start addr of vma      $/;"	m	struct:vma_struct
+vma_create	kern/mm/vmm.c	/^vma_create(uintptr_t vm_start, uintptr_t vm_end, uint32_t vm_flags) {$/;"	f
 vma_struct	kern/mm/vmm.h	/^struct vma_struct {$/;"	s
-vmm.c	kern/mm/vmm.c	1;"	F
-vmm.h	kern/mm/vmm.h	1;"	F
-vmm_init	kern/mm/vmm.c	/^vmm_init(void) {$/;"	f	signature:(void)
-vmm_init	kern/mm/vmm.h	/^void vmm_init(void);$/;"	p	signature:(void)
+vmm_init	kern/mm/vmm.c	/^vmm_init(void) {$/;"	f
 vpd	kern/mm/pmm.c	/^pde_t * const vpd = (pde_t *)PGADDR(PDX(VPT), PDX(VPT), 0);$/;"	v
-vprintfmt	libs/printfmt.c	/^vprintfmt(void (*putch)(int, void*), void *putdat, const char *fmt, va_list ap) {$/;"	f	signature:(void (*putch)(int, void*), void *putdat, const char *fmt, va_list ap)
-vprintfmt	libs/stdio.h	/^void vprintfmt(void (*putch)(int, void *), void *putdat, const char *fmt, va_list ap);$/;"	p	signature:(void (*putch)(int, void *), void *putdat, const char *fmt, va_list ap)
+vprintfmt	libs/printfmt.c	/^vprintfmt(void (*putch)(int, void*), void *putdat, const char *fmt, va_list ap) {$/;"	f
 vpt	kern/mm/pmm.c	/^pte_t * const vpt = (pte_t *)VPT;$/;"	v
-vsnprintf	libs/printfmt.c	/^vsnprintf(char *str, size_t size, const char *fmt, va_list ap) {$/;"	f	signature:(char *str, size_t size, const char *fmt, va_list ap)
-vsnprintf	libs/stdio.h	/^int vsnprintf(char *str, size_t size, const char *fmt, va_list ap);$/;"	p	signature:(char *str, size_t size, const char *fmt, va_list ap)
-wait	user/libs/ulib.c	/^wait(void) {$/;"	f	signature:(void)
-wait	user/libs/ulib.h	/^int wait(void);$/;"	p	signature:(void)
-wait_state	kern/process/proc.h	/^    uint32_t wait_state;                        \/\/ waiting state$/;"	m	struct:proc_struct	access:public
-waitdisk	boot/bootmain.c	/^waitdisk(void) {$/;"	f	file:	signature:(void)
-waitkill.c	user/waitkill.c	1;"	F
-waitpid	user/libs/ulib.c	/^waitpid(int pid, int *store) {$/;"	f	signature:(int pid, int *store)
-waitpid	user/libs/ulib.h	/^int waitpid(int pid, int *store);$/;"	p	signature:(int pid, int *store)
-wakeup_proc	kern/schedule/sched.c	/^wakeup_proc(struct proc_struct *proc) {$/;"	f	signature:(struct proc_struct *proc)
-wakeup_proc	kern/schedule/sched.h	/^void wakeup_proc(struct proc_struct *proc);$/;"	p	signature:(struct proc_struct *proc)
+vsnprintf	libs/printfmt.c	/^vsnprintf(char *str, size_t size, const char *fmt, va_list ap) {$/;"	f
+wait	user/libs/ulib.c	/^wait(void) {$/;"	f
+wait_state	kern/process/proc.h	/^    uint32_t wait_state;                        \/\/ waiting state$/;"	m	struct:proc_struct
+waitdisk	boot/bootmain.c	/^waitdisk(void) {$/;"	f	file:
+waitpid	user/libs/ulib.c	/^waitpid(int pid, int *store) {$/;"	f
+wakeup_proc	kern/schedule/sched.c	/^wakeup_proc(struct proc_struct *proc) {$/;"	f
 warn	kern/debug/assert.h	9;"	d
 warn	user/libs/ulib.h	9;"	d
-work	user/matrix.c	/^work(unsigned int times) {$/;"	f	signature:(unsigned int times)
-work	user/waitkill.c	/^work(void) {$/;"	f	signature:(void)
-wpos	kern/driver/console.c	/^    uint32_t wpos;$/;"	m	struct:__anon1	file:	access:public
-write_dr	libs/x86.h	/^static inline void write_dr(unsigned regnum, uint32_t value) __attribute__((always_inline));$/;"	p	signature:(unsigned regnum, uint32_t value)
-write_dr	libs/x86.h	/^write_dr(unsigned regnum, uint32_t value) {$/;"	f	signature:(unsigned regnum, uint32_t value)
-write_eflags	libs/x86.h	/^static inline void write_eflags(uint32_t eflags) __attribute__((always_inline));$/;"	p	signature:(uint32_t eflags)
-write_eflags	libs/x86.h	/^write_eflags(uint32_t eflags) {$/;"	f	signature:(uint32_t eflags)
-x86.h	libs/x86.h	1;"	F
-yield	user/libs/ulib.c	/^yield(void) {$/;"	f	signature:(void)
-yield	user/libs/ulib.h	/^void yield(void);$/;"	p	signature:(void)
-yield.c	user/yield.c	1;"	F
-yptr	kern/process/proc.h	/^    struct proc_struct *cptr, *yptr, *optr;     \/\/ relations between processes$/;"	m	struct:proc_struct	typeref:struct:proc_struct::	access:public
+work	user/matrix.c	/^work(unsigned int times) {$/;"	f
+work	user/waitkill.c	/^work(void) {$/;"	f
+wpos	kern/driver/console.c	/^    uint32_t wpos;$/;"	m	struct:__anon1	file:
+write_dr	libs/x86.h	/^write_dr(unsigned regnum, uint32_t value) {$/;"	f
+write_eflags	libs/x86.h	/^write_eflags(uint32_t eflags) {$/;"	f
+yield	user/libs/ulib.c	/^yield(void) {$/;"	f
+yptr	kern/process/proc.h	/^    struct proc_struct *cptr, *yptr, *optr;     \/\/ relations between processes$/;"	m	struct:proc_struct	typeref:struct:proc_struct::
 zero	user/divzero.c	/^int zero;$/;"	v
