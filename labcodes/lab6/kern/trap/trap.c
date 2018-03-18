@@ -254,8 +254,11 @@ trap_dispatch(struct trapframe *tf) {
             assert(current != NULL);
             current->need_resched = 1;
         }*/
-        //LAB6 时间片轮转调度算法
+        //LAB6 时间片轮转调度算法(FIFO算法或stride算法)
+        assert(current != NULL);
         sched_class_proc_tick(current);
+        if(current->need_resched == 1)
+            schedule();
         break;
     case IRQ_OFFSET + IRQ_COM1:
         c = cons_getc();
