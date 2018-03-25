@@ -9,7 +9,7 @@
 
 //int nr_sche = 0;          //统计schedule被调用次数
 //决定调用哪种处理机调度算法
-#define USE_SKEW_HEAP 1
+#define USE_SKEW_HEAP 0
 
 // the list of timer
 static list_entry_t timer_list;
@@ -58,7 +58,7 @@ sched_init(void) {
 #endif
 
     rq = &__rq;
-    rq->max_time_slice = 5;
+    rq->max_time_slice = MAX_TIME_SLICE;
     sched_class->init(rq);
 
     cprintf("sched class: %s\n", sched_class->name);
