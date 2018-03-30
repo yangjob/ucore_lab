@@ -267,6 +267,7 @@ trap_dispatch(struct trapframe *tf) {
         //LAB6 codes
         ticks ++;
         assert(current != NULL);
+        run_timer_list();
 
         break;
     case IRQ_OFFSET + IRQ_COM1:
