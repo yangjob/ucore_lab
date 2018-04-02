@@ -18,6 +18,7 @@ static __noinline void __up(semaphore_t *sem, uint32_t wait_state) {
     local_intr_save(intr_flag);
     {
         wait_t *wait;
+        //有进程在等待则唤醒，无则信号量值加一
         if ((wait = wait_queue_first(&(sem->wait_queue))) == NULL) {
             sem->value ++;
         }
@@ -32,6 +33,7 @@ static __noinline void __up(semaphore_t *sem, uint32_t wait_state) {
 static __noinline uint32_t __down(semaphore_t *sem, uint32_t wait_state) {
     bool intr_flag;
     local_intr_save(intr_flag);
+    //信号量值大于0则使信号量值减一，否则进入等待队列
     if (sem->value > 0) {
         sem->value --;
         local_intr_restore(intr_flag);
@@ -53,11 +55,13 @@ static __noinline uint32_t __down(semaphore_t *sem, uint32_t wait_state) {
     return 0;
 }
 
+//V操作，释放对共享资源访问的权限
 void
 up(semaphore_t *sem) {
     __up(sem, WT_KSEM);
 }
 
+//P操作，试图获得对共享资源访问的权限
 void
 down(semaphore_t *sem) {
     uint32_t flags = __down(sem, WT_KSEM);

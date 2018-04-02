@@ -396,6 +396,18 @@ get_pte(pde_t *pgdir, uintptr_t la, bool create) {
     }
     return NULL;          // (8) return page table entry
 #endif
+    pde_t *pdep = &pgdir[PDX(la)];              //由PDX(la)找到pdt的index，从而得知该线性地址的二级页表的起始地址pde
+    if(!(*pdep & PTE_P))                        //驻留位，若该页不在内存中，则创建页 
+    {
+            struct Page *p;                     //创建页表p
+            if(!create || (p = alloc_page()) == NULL)
+                    return NULL;
+            set_page_ref(p, 1);              //设置该页被引用过一次
+            uintptr_t pa = page2pa(p);          //获得页表p的物理地址
+            memset(KADDR(pa), 0, PGSIZE);       //清空页表
+            *pdep = pa | PTE_U | PTE_W | PTE_P;
+    }
+    return &((pte_t *)KADDR(PDE_ADDR(*pdep)))[PTX(la)];  //由PTX(la)找到页表的index,结合pde，得到页帧起始地址pte
 }
 
 //get_page - get related Page struct for linear address la using PDT pgdir
@@ -441,6 +453,14 @@ page_remove_pte(pde_t *pgdir, uintptr_t la, pte_t *ptep) {
                                   //(6) flush tlb
     }
 #endif
+    if(*ptep & PTE_P)
+    {
+            struct Page *p = pte2page(*ptep);       //找到放该ptep的页表p
+            if(page_ref_dec(p) == 0)
+                    free_page(p);
+            *ptep = 0;                              //清空pte
+            tlb_invalidate(pgdir, la);
+    }
 }
 
 void
@@ -522,6 +542,12 @@ copy_range(pde_t *to, pde_t *from, uintptr_t start, uintptr_t end, bool share) {
          * (3) memory copy from src_kvaddr to dst_kvaddr, size is PGSIZE
          * (4) build the map of phy addr of  nage with the linear addr start
          */
+        void * kva_src = page2kva(page);
+        void * kva_dst = page2kva(npage);
+    
+        memcpy(kva_dst, kva_src, PGSIZE);
+
+        ret = page_insert(to, npage, start, perm);
         assert(ret == 0);
         }
         start += PGSIZE;

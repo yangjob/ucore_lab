@@ -37,6 +37,12 @@ static struct gatedesc idt[256] = {{0}};
 
 static struct pseudodesc idt_pd = {
     sizeof(idt) - 1, (uintptr_t)idt
+
+    //和lgdt的gdtdesc相似？
+    /*gdtdesc:
+        .word 0x17                                      # sizeof(gdt) - 1
+        .long gdt                                       # address gdti
+    */    
 };
 
 /* idt_init - initialize IDT to each of the entry points in kern/trap/vectors.S */
@@ -57,6 +63,19 @@ idt_init(void) {
      /* LAB5 YOUR CODE */ 
      //you should update your lab1 code (just add ONE or TWO lines of code), let user app to use syscall to get the service of ucore
      //so you should setup the syscall interrupt gate in here
+    extern uintptr_t __vectors[];
+    int i;
+    for(i = 0; i < sizeof(idt) / sizeof(struct gatedesc); i ++){
+        SETGATE(idt[i], 0, GD_KTEXT, __vectors[i], DPL_KERNEL);
+    }
+
+    //设置用户态跳转到内核态
+    SETGATE(idt[T_SWITCH_TOK], 0, GD_KTEXT, __vectors[T_SWITCH_TOK], DPL_USER);
+
+    //设置系统调用
+    SETGATE(idt[T_SYSCALL], 1, GD_KTEXT, __vectors[T_SYSCALL], DPL_USER);
+    //load the IDT，和lgdt相似？
+    lidt(&idt_pd);
 }
 
 static const char *
@@ -234,6 +253,22 @@ trap_dispatch(struct trapframe *tf) {
          * IMPORTANT FUNCTIONS:
 	     * run_timer_list
          */
+        //LAB5 codes
+        /*ticks ++;
+        if(ticks % TICK_NUM == 0){
+            assert(current != NULL);
+            current->need_resched = 1;
+        }*/
+        //我自己加的LAB6 时间片轮转调度算法(FIFO算法或stride算法)
+        /*assert(current != NULL);
+        sched_class_proc_tick(current);
+        if(current->need_resched == 1)
+            schedule();*/
+        //LAB6 codes
+        ticks ++;
+        assert(current != NULL);
+        run_timer_list();
+
         break;
     case IRQ_OFFSET + IRQ_COM1:
     case IRQ_OFFSET + IRQ_KBD:
@@ -292,6 +327,7 @@ trap(struct trapframe *tf) {
                 do_exit(-E_KILLED);
             }
             if (current->need_resched) {
+                //cprintf("schedule in trap\n");
                 schedule();
             }
         }

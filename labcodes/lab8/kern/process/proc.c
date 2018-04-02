@@ -113,16 +113,35 @@ alloc_proc(void) {
      *       struct proc_struct *cptr, *yptr, *optr;     // relations between processes
 	 */
      //LAB6 YOUR CODE : (update LAB5 steps)
-    /*
-     * below fields(add in LAB6) in proc_struct need to be initialized
-     *     struct run_queue *rq;                       // running queue contains Process
-     *     list_entry_t run_link;                      // the entry linked in run queue
-     *     int time_slice;                             // time slice for occupying the CPU
-     *     skew_heap_entry_t lab6_run_pool;            // FOR LAB6 ONLY: the entry in the run pool
-     *     uint32_t lab6_stride;                       // FOR LAB6 ONLY: the current stride of the process
-     *     uint32_t lab6_priority;                     // FOR LAB6 ONLY: the priority of process, set by lab6_set_priority(uint32_t)
-     */
-    //LAB8:EXERCISE2 YOUR CODE HINT:need add some code to init fs in proc_struct, ...
+     /*
+      * 114      * below fields(add in LAB6) in proc_struct need to be initialized
+      * 115      *     struct run_queue *rq;                       // running queue contains Process
+      * 116      *     list_entry_t run_link;                      // the entry linked in run queue
+      * 117      *     int time_slice;                             // time slice for occupying the CPU
+      * 118      *     skew_heap_entry_t lab6_run_pool;            // FOR LAB6 ONLY: the entry in the run pool
+      * 119      *     uint32_t lab6_stride;                       // FOR LAB6 ONLY: the current stride of the process
+      * 120      *     uint32_t lab6_priority;                     // FOR LAB6 ONLY: the priority of process, set by lab6_set_priority(uint32_t)
+      * 121      */
+     proc->state = PROC_UNINIT;
+     proc->pid = -1;
+     proc->runs = 0;
+     proc->kstack = 0;
+     proc->need_resched = 0;
+     proc->parent = NULL;
+     proc->mm = NULL;
+     memset(&(proc->context), 0, sizeof(struct context));
+     proc->tf = NULL;
+     proc->cr3 = boot_cr3;
+     proc->flags = 0;
+     memset(proc->name, 0, PROC_NAME_LEN);
+     proc->wait_state = 0;
+     proc->cptr = proc->optr = proc->yptr = NULL;
+     proc->rq = NULL;
+     list_init(&(proc->run_link));
+     proc->time_slice = 0;
+     proc->lab6_run_pool.left = proc->lab6_run_pool.right = proc->lab6_run_pool.parent = NULL;
+     proc->lab6_stride = 0;
+     proc->lab6_priority = 0;       //优先级
     }
     return proc;
 }
@@ -461,7 +480,35 @@ do_fork(uint32_t clone_flags, uintptr_t stack, struct trapframe *tf) {
 	*    update step 1: set child proc's parent to current process, make sure current process's wait_state is 0
 	*    update step 5: insert proc_struct into hash_list && proc_list, set the relation links of process
     */
-	
+    if((proc = alloc_proc()) == NULL){
+            goto fork_out;
+    }
+    proc->parent = current;         //设置fork的子进程的父进程为current进程
+    assert(current->wait_state == 0);       //LAB5更新，确保目前进程?
+
+    if(setup_kstack(proc) !=0)      //为子进程建立内核栈
+            goto bad_fork_cleanup_proc;
+
+    if(copy_mm(clone_flags, proc) != 0)     //为子进程设置内存管理信息，或分享，或复制
+            goto bad_fork_cleanup_kstack;
+
+    copy_thread(proc, stack, tf);           //复制原进程上下文到新进程
+
+    //把新进程添加到进程队列中
+    bool intr_flag;                 //用于同步，关中断，开中断
+    local_intr_save(intr_flag);
+    { 
+            proc->pid = get_pid();
+            hash_proc(proc);
+            //list_add(&proc_list, &(proc->list_link));
+            //nr_process ++;                                //为什么要注释掉？？？
+            set_links(proc);        //LAB5更新，设置进程之间的联系
+    }
+    local_intr_restore(intr_flag);
+
+    wakeup_proc(proc);
+    ret = proc->pid;
+
 fork_out:
     return ret;
 
@@ -527,7 +574,8 @@ do_exit(int error_code) {
         }
     }
     local_intr_restore(intr_flag);
-    
+
+    //cprintf("schedule in do_exit\n");
     schedule();
     panic("do_exit will not return!! %d.\n", current->pid);
 }
@@ -685,6 +733,7 @@ do_yield(void) {
 // NOTE: only after do_wait function, all resources of the child proces are free.
 int
 do_wait(int pid, int *code_store) {
+    //cprintf("do_wait arg[0](pid) is %d\t", pid);
     struct mm_struct *mm = current->mm;
     if (code_store != NULL) {
         if (!user_mem_check(mm, (uintptr_t)code_store, sizeof(int), 1)) {
@@ -717,6 +766,7 @@ repeat:
     if (haskid) {
         current->state = PROC_SLEEPING;
         current->wait_state = WT_CHILD;
+        //cprintf("schedule in do_wait\n");
         schedule();
         if (current->flags & PF_EXITING) {
             do_exit(-E_KILLED);
@@ -824,6 +874,7 @@ init_main(void *arg) {
     check_sync();                // check philosopher sync problem
 
     while (do_wait(0, NULL) == 0) {
+        //cprintf("schedule in inti_main while do_wait(0, NULL) == 0\n");
         schedule();
     }
 
@@ -886,6 +937,7 @@ void
 cpu_idle(void) {
     while (1) {
         if (current->need_resched) {
+            //cprintf("schedule in cpu_idle\n");
             schedule();
         }
     }
