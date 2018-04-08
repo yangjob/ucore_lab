@@ -273,7 +273,7 @@ print-%:
 
 .PHONY: clean distclean handin tags
 clean:
-	$(V)$(RM) $(GRADE_GDB_IN) $(GRADE_QEMU_OUT) cscope* tags
+	$(V)$(RM) $(GRADE_GDB_IN) $(GRADE_QEMU_OUT) #cscope* tags
 	$(V)$(RM) -r $(OBJDIR) $(BINDIR)
 
 distclean: clean

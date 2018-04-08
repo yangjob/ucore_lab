@@ -248,7 +248,7 @@ print-%:
 
 .PHONY: clean dist-clean handin packall tags
 clean:
-	$(V)$(RM) $(GRADE_GDB_IN) $(GRADE_QEMU_OUT) cscope* tags
+	$(V)$(RM) $(GRADE_GDB_IN) $(GRADE_QEMU_OUT) #cscope* tags
 	-$(RM) -r $(OBJDIR) $(BINDIR)
 
 dist-clean: clean
